@@ -19,9 +19,9 @@ CREATE TABLE member
     PRIMARY KEY(mem_id)
  );
 
- CREATE TABLE order
+ CREATE TABLE invoice
 (
-	ord_id int not null unique,
+	inv_id int not null unique,
     receiver_name varchar(15) not null,
     receiver_phone varchar(8) not null,
     receiver_email varchar(35) not null,
@@ -31,9 +31,9 @@ CREATE TABLE member
 	total_price float(8) not null,
 	if_success int(1), 
     mem_id int not null,
-    PRIMARY KEY(ord_id),
+    PRIMARY KEY(inv_id),
     FOREIGN KEY(mem_id) REFERENCES logistics.member(mem_id) ON UPDATE CASCADE
-)
+);
 
  CREATE TABLE package
 (
@@ -45,7 +45,7 @@ CREATE TABLE member
 	pac_weight int not null,
 	pac_delivery_method varchar(15) not null,
 	pac_price float(8) not null,
-	ord_id int not null,
+	inv_id int not null,
     PRIMARY KEY(pac_id),
-    FOREIGN KEY(ord_id) REFERENCES logistics.order(ord_id) ON UPDATE CASCADE
-)
+    FOREIGN KEY(inv_id) REFERENCES logistics.invoice(inv_id) ON UPDATE CASCADE
+);
