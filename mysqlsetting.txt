@@ -4,7 +4,7 @@ use logistics;
 
 CREATE TABLE member
 (
-    mem_id int not null unique,
+    mem_id int auto_increment unique,
     mem_name varchar(15) not null,
     mem_phone varchar(8) not null,
     mem_address varchar(35) not null,
@@ -13,7 +13,6 @@ CREATE TABLE member
     mem_password varchar(35) not null,
     manager_right int not null,
     mem_birth datetime not null,
-    mem_salary int not null,
     mem_career varchar(8) not null,
     mem_gender varchar(4) not null,
     PRIMARY KEY(mem_id)
