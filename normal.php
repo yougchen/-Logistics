@@ -127,7 +127,7 @@ table {
     $link=@mysql_connect(
         'localhost',
         'root',
-        '',
+        '123456',
         'logistics');
 
     //開啟資料庫
