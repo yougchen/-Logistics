@@ -1,4 +1,4 @@
-CREATE DATABASE logistics;
+﻿CREATE DATABASE logistics;
 
 use logistics;
 
@@ -17,19 +17,18 @@ CREATE TABLE member
     mem_gender varchar(4) not null,
     PRIMARY KEY(mem_id)
  );
-<<<<<<< HEAD
-INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_email`, `mem_account_num`, `mem_password`, `manager_right`, `mem_birth`, `mem_career`, `mem_gender`) VALUES
-(1, 'roy', '09050954', 'myhome', 'roy123@yahoo.com.hk', 'roy123', '123456', 0, '2016-10-19 00:00:00', '', '男'),
-(2, 'rook', '0903239', 'home', 'rook123@yahoo.com.hk', 'rook', '123456', 0, '2017-06-06 00:00:00', '', '女'),
-(3, 'jager', '888398', 'homes', 'jager123@gmail.com', 'jager123', '123456', 0, '2017-06-02 08:00:00', '', '男');
-=======
- 
->>>>>>> ff4b515c0e3c8bda05102c558d7a0199ecab1684
+
 ALTER TABLE `member` CHANGE `mem_name` `mem_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 ALTER TABLE `member` CHANGE `mem_address` `mem_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 ALTER TABLE `member` CHANGE `mem_account_num` `mem_account_num` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL; 
 ALTER TABLE `member` CHANGE `mem_career` `mem_career` VARCHAR(8) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 ALTER TABLE `member` CHANGE `mem_gender` `mem_gender` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+
+
+INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_email`, `mem_account_num`, `mem_password`, `manager_right`, `mem_birth`, `mem_career`, `mem_gender`) VALUES
+(1, 'roy', '09050954', 'myhome', 'roy123@yahoo.com.hk', 'roy123', '123456', 0, '2016-10-19 00:00:00', '', '男'),
+(2, 'rook', '0903239', 'home', 'rook123@yahoo.com.hk', 'rook', '123456', 0, '2017-06-06 00:00:00', '', '女'),
+(3, 'jager', '888398', 'homes', 'jager123@gmail.com', 'jager123', '123456', 0, '2017-06-02 08:00:00', '', '男');
 
 
 CREATE TABLE invoice
@@ -47,15 +46,15 @@ CREATE TABLE invoice
     PRIMARY KEY(inv_id),
     FOREIGN KEY(mem_id) REFERENCES logistics.member(mem_id) ON UPDATE CASCADE
 );
-<<<<<<< HEAD
+
+
+ALTER TABLE `invoice` CHANGE `receiver_name` `receiver_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+
+
 INSERT INTO `invoice` (`inv_id`, `receiver_name`, `receiver_phone`, `receiver_email`, `arrive_time`, `arrive_address`, `send_time`, `total_price`, `if_success`, `mem_id`) VALUES
 (1, 'jackel', '990288', 'jackel230@gmail.com', '2017-06-22 00:00:00', 'home', '2017-06-13 00:00:00', 100320, 1, 2),
 (2, 'Kel', '992839', 'Kel@gmail.com', '2017-06-30 00:00:00', 'kelhotel', '2017-06-15 00:00:00', 12302, 1, 3);
-=======
- 
->>>>>>> ff4b515c0e3c8bda05102c558d7a0199ecab1684
-ALTER TABLE `invoice` CHANGE `receiver_name` `receiver_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
-ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 
 
  CREATE TABLE package
@@ -72,13 +71,11 @@ ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARA
     PRIMARY KEY(pac_id),
     FOREIGN KEY(inv_id) REFERENCES logistics.invoice(inv_id) ON UPDATE CASCADE
 );
-<<<<<<< HEAD
-INSERT INTO `package` (`pac_id`, `pac_type`, `pac_length`, `pac_width`, `pac_height`, `pac_weight`, `pac_delivery_method`, `pac_price`, `inv_id`) VALUES
-(1, '1', 20, 30, 20, 20, 'car', 100, 1),
-(2, '1', 25, 0, 30, 20, 'car', 200, 2);
-=======
 
->>>>>>> ff4b515c0e3c8bda05102c558d7a0199ecab1684
 ALTER TABLE `package` CHANGE `pac_type` `pac_type` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 ALTER TABLE `package` CHANGE `pac_delivery_method` `pac_delivery_method` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 
+
+INSERT INTO `package` (`pac_id`, `pac_type`, `pac_length`, `pac_width`, `pac_height`, `pac_weight`, `pac_delivery_method`, `pac_price`, `inv_id`) VALUES
+(1, '1', 20, 30, 20, 20, 'car', 100, 1),
+(2, '1', 25, 0, 30, 20, 'car', 200, 2);
