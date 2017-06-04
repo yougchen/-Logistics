@@ -130,6 +130,8 @@ table {
         '123456',
         'logistics');
 
+     mysql_query("SET NAMES 'UTF8'");
+
     //開啟資料庫
     $db = mysql_select_db("logistics", $link);
     $mem_account_num = $_POST['mem_account_num'];
@@ -142,11 +144,13 @@ table {
     $mem_address = $_POST['mem_address'];
     $mem_career = $_POST['mem_career'];
   
-    $queryStr = "INSERT into logistics.member(mem_account_num, mem_name, mem_password, mem_birth, mem_gender, mem_phone, mem_email, mem_address, mem_career)
-          values ('$mem_account_num', '$mem_name', '$mem_password', '$mem_birth', '$mem_gender', '$mem_phone', '$mem_email', '$mem_address', '$mem_career')";
+    $queryStr = "INSERT into member(mem_id, mem_name, mem_phone, mem_address, mem_email, mem_account_num, mem_password, manager_right, mem_birth, mem_career, mem_gender)
+        
+        values (NULL, '$mem_name', '$mem_phone', '$mem_address', '$mem_email', '$mem_account_num', '$mem_password', '0',  '$mem_birth', '$mem_career', '$mem_gender')";
 
-           mysql_query($queryStr, $link) or die('加入失敗');
-   
+           mysql_query ($queryStr,$link) or die ('<br/> 加入失敗');
+
+    
     echo "<h2 style= 'font-size:30px; text-align:center; margin:0 auto; margin-top:30px;' >- - - - 歡迎加入會員 - - - -</h2>";
     echo "<br>";
     echo "<p style= 'font-size:20px; margin: 10px;'>賬號："; 

@@ -18,14 +18,14 @@ CREATE TABLE member
     PRIMARY KEY(mem_id)
  );
  
-ALTER TABLE `member` CHANGE `mem_name` `mem_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-ALTER TABLE `member` CHANGE `mem_address` `mem_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-ALTER TABLE `member` CHANGE `mem_account_num` `mem_account_num` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL; 
-ALTER TABLE `member` CHANGE `mem_career` `mem_career` VARCHAR(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-ALTER TABLE `member` CHANGE `mem_gender` `mem_gender` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+ALTER TABLE `member` CHANGE `mem_name` `mem_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `member` CHANGE `mem_address` `mem_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `member` CHANGE `mem_account_num` `mem_account_num` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL; 
+ALTER TABLE `member` CHANGE `mem_career` `mem_career` VARCHAR(8) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `member` CHANGE `mem_gender` `mem_gender` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 
 
-CREATE TABLE invoice
+CREATE TABLE invoiceunicode_ci
 (
     inv_id int not null unique,
     receiver_name varchar(15) not null,
@@ -41,8 +41,8 @@ CREATE TABLE invoice
     FOREIGN KEY(mem_id) REFERENCES logistics.member(mem_id) ON UPDATE CASCADE
 );
  
-ALTER TABLE `invoice` CHANGE `receiver_name` `receiver_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+ALTER TABLE `invoice` CHANGE `receiver_name` `receiver_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 
 
  CREATE TABLE package
@@ -60,6 +60,6 @@ ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARA
     FOREIGN KEY(inv_id) REFERENCES logistics.invoice(inv_id) ON UPDATE CASCADE
 );
 
-ALTER TABLE `package` CHANGE `pac_type` `pac_type` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-ALTER TABLE `package` CHANGE `pac_delivery_method` `pac_delivery_method` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+ALTER TABLE `package` CHANGE `pac_type` `pac_type` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
+ALTER TABLE `package` CHANGE `pac_delivery_method` `pac_delivery_method` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
 

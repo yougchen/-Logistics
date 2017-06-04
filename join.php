@@ -138,7 +138,7 @@ table {
     //開啟資料庫
     $db = mysql_select_db("logistics", $link);
 
-    echo "<form method=\"post\" name=\"form\"action=\"normal.php\" onClick=\"return check\">";
+    echo "<form method=\"post\" name=\"form\"action=\"normal.php\" onClick=\"return check\" accept-charset=\"utf-8\">";
     echo "帳號名稱：<input type='text' name='mem_account_num' required maxlength='15' pattern='.{6,}'>";
     echo "<span style= 'font-size:15px;'>(只能輸入A-Z,a-z,0-9, 至少6個字, 不超過15個字)</span><br>";
     echo "姓名：<input type='text' name='mem_name' required maxlength='15'>";
