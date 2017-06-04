@@ -21,7 +21,7 @@ $message = "
 <?php
 if (isset($_POST['get_date'])) {
     echo '<hr>' . 'get_date : ' . $_POST['get_date'];
-}
+}?>
 到件地址: $_POST[textfield4]
 到件時間: $_POST[textfield5]
 遞件日期: <form action="" method="post">
@@ -36,7 +36,7 @@ if (isset($_POST['get_date'])) {
     echo '<hr>' . 'get_date : ' . $_POST['get_date'];
 }
 總數: $_POST[textfield6]
-";
+;
 mb_internal_encoding("UTF-8");
 mb_send_mail(",", "", $message ,"From:send");
 ?>
