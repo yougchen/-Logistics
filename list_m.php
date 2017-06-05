@@ -11,9 +11,9 @@
         <?php
         session_start();
         include("config.php");
-        $account = $_SESSION["login)session"];
-        $sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
-        $result = mysqli_query($link, $sql);
+
+        
+        $result = mysqli_query($link, "SELECT * FROM member");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";
@@ -23,6 +23,7 @@
         echo "<th>信箱</th>";
         echo "<th>帳號</th>";
         echo "<th>密碼</th>";
+        echo "<th>管理權限</th>";
         echo "<th>生日</th>";
         echo "<th>職業</th>";
         echo "<th>性別</th>";
@@ -47,6 +48,8 @@
             echo "</td><td>";
         	echo $row["mem_password"];
             echo "</td><td>";
+        	echo $row["manager_right"];
+            echo "</td><td>";
         	echo $row["mem_birth"];
             echo "</td><td>";
         	echo $row["mem_career"];
@@ -54,18 +57,17 @@
         	echo $row["mem_gender"];
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'delete.php?mem_id=$id'>刪除</a>";
+        	echo "<a href = 'delete_m.php?mem_id=$id'>delete</a>";
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'update.php?mem_id=$id'>資料修改</a>";
+        	echo "<a href = 'update_m.php?mem_id=$id'>modify</a>";
         	echo "</td>";
             echo "<td>";
-        	echo "<a href = 'pwd_edit.php?mem_id=$id'>密碼修改</a>";
+        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>pwd_edit</a>";
         	echo "</td>";
         	echo "</tr>";
         }
         echo "</table>";
-        echo "<a href = 'logout.php'>登出</a>";
 
         mysqli_close($link);
         ?>

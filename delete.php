@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <title></title>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
-        <link href = "css/style.css" rel = "stylesheet">
-    </head>
-    <body>
+<?php
+session_start();
+include("config.php");
 
-        <?php
-        session_start();
-        include("config.php");
-        $account = $_SESSION["login)session"];
-        $sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
-        $result = mysqli_query($link, $sql);
-        echo "<table border=1>";
-        echo "<thead>";
+$account = $_SESSION["login)session"];
+$id=$_GET["mem_id"];
+
+$sql2="DELETE FROM member WHERE mem_id='$id'";
+$sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
+$result=mysqli_query($link,$sql2);
+$result=mysqli_query($link,"SELECT * FROM member");
+$result2 = mysqli_query($link, $sql);
+echo "<table border=1>";
+echo "<thead>";
         echo "<tr>";
         echo "<th>姓名</th>";
         echo "<th>電話</th>";
@@ -31,8 +27,8 @@
         echo "<th>密碼修改</th>";
         echo "</tr>";
         echo "</thead>";
-        while($row = mysqli_fetch_assoc($result)){
-	        echo "<tr>";
+while($row=mysqli_fetch_assoc($result2)){
+	echo "<tr>";
         	echo "<td>";
 	        echo $row["mem_name"];
         	$id = $row["mem_id"];
@@ -52,22 +48,19 @@
         	echo $row["mem_career"];
             echo "</td><td>";
         	echo $row["mem_gender"];
-        	echo "</td>";
-        	echo "<td>";
-        	echo "<a href = 'delete.php?mem_id=$id'>刪除</a>";
-        	echo "</td>";
-        	echo "<td>";
-        	echo "<a href = 'update.php?mem_id=$id'>資料修改</a>";
-        	echo "</td>";
-            echo "<td>";
+	echo "</td>";
+	echo "<td>";
+	echo "<a href='delete.php?mem_id=$id'>刪除</a>";
+	echo "</td>";
+	echo "<td>";
+	echo "<a href='update.php?mem_id=$id'>資料修改</a>";
+	echo "</td>";
+	echo "<td>";
         	echo "<a href = 'pwd_edit.php?mem_id=$id'>密碼修改</a>";
         	echo "</td>";
-        	echo "</tr>";
-        }
-        echo "</table>";
-        echo "<a href = 'logout.php'>登出</a>";
+	echo "</tr>";
+}
+echo "</table>";
+echo "<a href = 'logout.php'>登出</a>";
 
-        mysqli_close($link);
-        ?>
-    </body>
-</html>
+mysqli_close($link);

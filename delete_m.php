@@ -1,17 +1,15 @@
 <?php
-	session_start();
-    include("config.php");
-	$account = $_SESSION["login)session"];
+session_start();
+include("config.php");
 
-$mem_id=$_POST["mem_id"];
-$mem_name=$_POST["mem_name"];
-$mem_account_num=$_POST["mem_account"];
+$account = $_SESSION["login)session"];
+$id=$_GET["mem_id"];
 
-$sql2="UPDATE member SET mem_name='$mem_name',mem_account_num='$mem_account_num'WHERE mem_id='$mem_id'";
-$sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
+$sql2="DELETE FROM member WHERE mem_id='$id'";
+
 $result=mysqli_query($link,$sql2);
-$result=mysqli_query($link,"SELECT*FROM member");
-$result2 = mysqli_query($link, $sql);
+$result=mysqli_query($link,"SELECT * FROM member");
+
 echo "<table border=1>";
 echo "<thead>";
         echo "<tr>";
@@ -21,6 +19,7 @@ echo "<thead>";
         echo "<th>信箱</th>";
         echo "<th>帳號</th>";
         echo "<th>密碼</th>";
+        echo "<th>管理權限</th>";
         echo "<th>生日</th>";
         echo "<th>職業</th>";
         echo "<th>性別</th>";
@@ -29,7 +28,7 @@ echo "<thead>";
         echo "<th>密碼修改</th>";
         echo "</tr>";
         echo "</thead>";
-while($row=mysqli_fetch_assoc($result2)){
+while($row=mysqli_fetch_assoc($result)){
 	echo "<tr>";
         	echo "<td>";
 	        echo $row["mem_name"];
@@ -45,6 +44,8 @@ while($row=mysqli_fetch_assoc($result2)){
             echo "</td><td>";
         	echo $row["mem_password"];
             echo "</td><td>";
+        	echo $row["manager_right"];
+            echo "</td><td>";
         	echo $row["mem_birth"];
             echo "</td><td>";
         	echo $row["mem_career"];
@@ -52,10 +53,10 @@ while($row=mysqli_fetch_assoc($result2)){
         	echo $row["mem_gender"];
 	echo "</td>";
 	echo "<td>";
-	echo "<a href='delete.php?mem_id=$mem_id'>刪除</a>";
+	echo "<a href='delete_m.php?mem_id=$id'>刪除</a>";
 	echo "</td>";
 	echo "<td>";
-	echo "<a href='update.php?mem_id=$mem_id'>資料修改</a>";
+	echo "<a href='update_m.php?mem_id=$id'>資料修改</a>";
 	echo "</td>";
 	echo "<td>";
         	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>密碼修改</a>";
@@ -64,4 +65,5 @@ while($row=mysqli_fetch_assoc($result2)){
 }
 echo "</table>";
 echo "<a href = 'logout.php'>登出</a>";
-?>
+
+mysqli_close($link);

@@ -126,7 +126,7 @@ table {
 
 		<div class="joinORloginin">
  		<a href="join.php">加入會員</a>
- 		<a href="loginin.php">登入會員</a></div>
+ 		<a href="login.php">登入會員</a></div>
 		
 		</body>
 
