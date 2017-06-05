@@ -1,4 +1,4 @@
-﻿CREATE DATABASE logistics;
+CREATE DATABASE logistics;
 
 use logistics;
 
@@ -31,7 +31,6 @@ INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_ema
 (3, 'jager', '888398', 'homes', 'jager123@gmail.com', 'jager123', '123456', 0, '2017-06-02 08:00:00', '', '男');
 
 INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_email`, `mem_account_num`, `mem_password`, `manager_right`, `mem_birth`, `mem_career`, `mem_gender`) VALUES (NULL, 'root', '0978763212', '高雄市', 'znmn@gmail.com', 'root', '123456', '1', '2017-06-29 00:00:00', '醫生', '男');
-
 
 
 CREATE TABLE invoice

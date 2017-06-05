@@ -107,16 +107,16 @@ table {
 
     <body>
     <h1>急速快遞</h1> <br/>
-    <div class = "menu">
-            <a href = "Service.php">商品服務</a>
+    <div class="menu">
+            <a href="Service.php">商品服務</a>
 
-            <a href = "send.php">寄件</a>
+            <a href="send.php">寄件</a>
    
-            <a href = "recive.php">收件</a>
+            <a href="recive.php">收件</a>
 
-            <a href = "search.php">查詢</a>
+            <a href="search.php">查詢</a>
   
-            <a href = "account.php">帳號</a>
+            <a href="account.php">帳號</a>
     </div>
 
 
