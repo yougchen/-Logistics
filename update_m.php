@@ -1,7 +1,9 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
+
 include("config.php");
-
-
+		
+mysqli_query($link,"SET NAMES 'UTF8'");
 $id=$_GET["mem_id"];
 
 $sql2="SELECT * FROM member WHERE mem_id='$id'";
@@ -18,7 +20,9 @@ while ($row=mysqli_fetch_assoc($result)) {
 	$career=$row["mem_career"];
 	$gender=$row["mem_gender"];
 }
-echo "<form action='actionupdate_m.php' method='post'>";
+echo "
+<meta charset=\"utf-8\">
+<form action='actionupdate_m.php' method='post' accept-charset=\"utf-8\">";
 //echo "ID:".$id."<br/>";
 echo "<input type='hidden' value='$id' name='mem_id'>";
 echo "姓名:<input type='text' value='$name' name='mem_name'><br/>";

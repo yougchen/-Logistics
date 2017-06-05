@@ -9,8 +9,12 @@
     <body>
 
         <?php
+   		header('Content-Type: text/html; charset=utf-8');
         session_start();
         include("config.php");
+		
+		mysqli_query($link,"SET NAMES 'UTF8'");
+		
         $account = $_SESSION["login)session"];
         $sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
         $result = mysqli_query($link, $sql);
