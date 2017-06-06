@@ -119,104 +119,92 @@ table {
 
     }
     table{
-        border:0;
-        width:700px;
+	border:0;
+	width:700px;
     }
 
     tr { 
-        border-bottom:1px solid; 
+	border-bottom:1px solid; 
     }
 </style>
 
 </head>
 
     <body>
+    
     <h1>急速快遞</h1> <br/>
-    <div class="menu">
-            <a href="Service.php">商品服務</a>
 
-            <a href="send.php">寄件</a>
-   
-            <a href="recive.php">收件</a>
 
-            <a href="search.php">查詢</a>
-  
-            <a href="account.php">帳號</a>
-    </div>
+    <h2>歡迎管理者!!</h2>
+    
 
 <h2>
 <?php
+
+
 header('Content-Type: text/html; charset=utf-8');
 session_start();
 include("config.php");
-        
 mysqli_query($link,"SET NAMES 'UTF8'");
-$account = $_SESSION["login)session"];
-$id=$_GET["mem_id"];
 
-$sql2="DELETE FROM member WHERE mem_id='$id'";
+$account = $_SESSION["login)session"];
+$id=$_GET["pac_id"];
+
+$sql2="DELETE FROM package WHERE pac_id='$id'";
 
 $result=mysqli_query($link,$sql2);
-$result=mysqli_query($link,"SELECT * FROM member");
 
-echo "<table border=1>";
-echo "<thead>";
-        echo "<tr>";
-        echo "<th>姓名</th>";
-        echo "<th>電話</th>";
-        echo "<th>地址</th>";
-        echo "<th>信箱</th>";
-        echo "<th>帳號</th>";
-        echo "<th>密碼</th>";
-        echo "<th>管理權限</th>";
-        echo "<th>生日</th>";
-        echo "<th>職業</th>";
-        echo "<th>性別</th>";
-        echo "<th>刪除</th>";
-        echo "<th>修改</th>";
-        echo "<th>密碼修改</th>";
-        echo "</tr>";
-        echo "</thead>";
-while($row=mysqli_fetch_assoc($result)){
+	
+	$result = mysqli_query($link, "SELECT * FROM package");
+	echo "<table border=1>";
+	echo "<thead>";
 	echo "<tr>";
-        	echo "<td>";
-	        echo $row["mem_name"];
-        	$id = $row["mem_id"];
-        	echo "</td><td>";
-        	echo $row["mem_phone"];
-        	echo "</td><td>";
-        	echo $row["mem_address"];
-            echo "</td><td>";
-        	echo $row["mem_email"];
-            echo "</td><td>";
-        	echo $row["mem_account_num"];
-            echo "</td><td>";
-        	echo $row["mem_password"];
-            echo "</td><td>";
-        	echo $row["manager_right"];
-            echo "</td><td>";
-        	echo $row["mem_birth"];
-            echo "</td><td>";
-        	echo $row["mem_career"];
-            echo "</td><td>";
-        	echo $row["mem_gender"];
-	echo "</td>";
-	echo "<td>";
-	echo "<a href='delete_m.php?mem_id=$id'>刪除</a>";
-	echo "</td>";
-	echo "<td>";
-	echo "<a href='update_m.php?mem_id=$id'>資料修改</a>";
-	echo "</td>";
-	echo "<td>";
-        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>密碼修改</a>";
-        	echo "</td>";
+	echo "<th>包裹編號</th>";
+	echo "<th>包裹品項</th>";
+	echo "<th>包裹長度</th>";
+	echo "<th>包裹寬度</th>";
+	echo "<th>包裹高度</th>";
+	echo "<th>包裹運送方式</th>";
+	echo "<th>寄件時間</th>";
+	echo "<th>金額</th>";
+	echo "<th>訂單編號</th>";
 	echo "</tr>";
-}
-echo "</table>";
-echo "<a href = 'logout.php'>登出</a>";
+	echo "</thead>";
+	while($row = mysqli_fetch_assoc($result)){
+		echo "<tr>";
+		echo "<td>";
+		echo $row["pac_id"];
+		$id = $row["pac_id"];
+		echo "</td><td>";
+		echo $row["pac_type"];
+		echo "</td><td>";
+		echo $row["pac_length"];
+		echo "</td><td>";
+		echo $row["pac_width"];
+	    echo "</td><td>";
+		echo $row["pac_height"];
+	    echo "</td><td>";
+		echo $row["pac_weight"];
+	    echo "</td><td>";
+		echo $row["pac_delivery_method"];
+	    echo "</td><td>";
+		echo $row["pac_price"];
+	    echo "</td><td>";
+		echo $row["inv_id"];
+		echo "</td>";
+		echo "<td>";
+		echo "<a href = 'pdelete_m.php?pac_id=$id'>delete</a>";
+		echo "</td>";
+		echo "<td>";
+		echo "<a href = 'pupdate_m.php?pac_id=$id'>modify</a>";
+		echo "</td>";
+		echo "</tr>";
+	}
+	echo "</table>";
 
-mysqli_close($link);
-?>
+	mysqli_close($link);
+	?>
+
 </h2>
 </body>
 </html>

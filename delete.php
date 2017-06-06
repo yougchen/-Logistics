@@ -149,8 +149,7 @@ table {
 header('Content-Type: text/html; charset=utf-8');
 session_start();
 include("config.php");
-
-    
+		
 mysqli_query($link,"SET NAMES 'UTF8'");
 $account = $_SESSION["login)session"];
 $id=$_GET["mem_id"];
@@ -215,5 +214,6 @@ echo "<a href = 'logout.php'>登出</a>";
 
 mysqli_close($link);
 ?>
-<h2/>
-<html/>
+</h2>
+</body>
+</html>
