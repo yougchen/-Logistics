@@ -8,25 +8,41 @@
     </head>
     <body>
     <?session_start();?>
-    <form action = "actionsend.php" method = "POST">
+    <form action = "packagesend.php" method = "POST">
     寄件資料 <br>
     收件人姓名:<input type="text" name="rname" value=""><br>
     收件人電話:<input type="text" name="rphone" value=""><br>
     收件人信箱:<input type="text" name="remail" value=""><br>
     收件人地址:<input type="text" name="raddress" value=""><br>
     送出時間:<input type="date" name="rsend_time" value=""><br>
-    ===================================================<br>
-    包裹資料 <br>
-    包裹類型:<input type="radio" name="PackageType" value="1" checked = "True">一般常溫用品
-    <input type="radio" name="PackageType" value="2">低溫保鮮品
-    <input type="radio" name="PackageType" value="3">冷凍保鮮品
-    <input type="radio" name="PackageType" value="4">易碎品 <br>
-    包裹長度:<input type="text" name="length" value=""><br>
-    包裹寬度:<input type="text" name="width" value=""><br>
-    包裹高度:<input type="text" name="height" value=""><br>
-    包裹重量:<input type="text" name="weight" value=""><br>
-    運送方式:<input type="radio" name="delivery_method" value="1" checked = "True">一般寄件
-             <input type="radio" name="delivery_method" value="2">急件 <br>
+    請選擇你要選幾個包裹(<=20)<br/>
+
+			<select name="number" >
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+
+
+			</select>
+
+
     
     <input type="submit" name="submit" value="submit">
     </form>
