@@ -53,10 +53,10 @@
         	echo $row["inv_id"];
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'pdelete_m.php?mem_id=$id'>delete</a>";
+        	echo "<a href = 'pdelete_m.php?pac_id=$id'>delete</a>";
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'pupdate_m.php?mem_id=$id'>modify</a>";
+        	echo "<a href = 'pupdate_m.php?pac_id=$id'>modify</a>";
         	echo "</td>";
         	echo "</tr>";
         }
