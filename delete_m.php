@@ -115,17 +115,12 @@ table {
       font-size: 10px; 
       font-family: 微軟正黑體;
       margin: 0px 50px 0px 50px;
-      padding: 0px 10px 0px 10px  
+      padding: 0px 10px 0px 10px
 
     }
-    table{
-        border:0;
-        width:1100px;
-    }
-
-    tr { 
-        border-bottom:1px solid; 
-    }
+    table, th, td {
+    border: 1px solid black;
+    }  
 </style>
 
 </head>
