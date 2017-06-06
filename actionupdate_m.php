@@ -143,6 +143,8 @@ table {
   
         <a href = "list_m.php">會員管理</a>
 
+        <a href = "analysis_m.php">資料分析</a>
+
         <a href="index.php">首頁</a>
 
          <a href="logout.php">登出</a>

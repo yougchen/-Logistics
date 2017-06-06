@@ -147,6 +147,8 @@ table {
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
+        
+        <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 

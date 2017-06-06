@@ -112,25 +112,20 @@ table {
       text-decoration: none;
       background-color: black;
       color: white;
-      font-size: 10px; 
+      font-size: 20px; 
       font-family: 微軟正黑體;
-      margin: 0px 50px 0px 50px;
+      margin: 0px -800px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
-    table, th, td {
-    border: 1px solid black;
-    }  
-
-    table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px -250px;
+    table{
+        border:0;
+        width:700px;
     }
 
-    th, td {
-      padding: 15px;
-    }    
+    tr { 
+        border-bottom:1px solid; 
+    }
 </style>
 
 </head>
@@ -138,7 +133,7 @@ table {
     <body>
     <h1>急速快遞</h1> <br/>
     <div class="menu">
-            <a href = "invoice_list.php">訂單管理</a>
+        <a href = "invoice_list.php">訂單管理</a>
    
         <a href = "package_list.php">包裹管理</a>
   
@@ -150,80 +145,17 @@ table {
 
          <a href="logout.php">登出</a>
     </div>
+    <?php
+		echo "<form action=\"PackageService.php\" method=\"post\" >";
 
-<h2>
-<?php
-header('Content-Type: text/html; charset=utf-8');
-session_start();
-include("config.php");
-        
-mysqli_query($link,"SET NAMES 'UTF8'");
-//$account = $_SESSION["login)session"];
-$id=$_GET["mem_id"];
+		echo "
+			<a href=\"PackageService.php?factor=寄送包裹種類分析\">寄送包裹種類分析</a>
+			<a href=\"PackageService.php?factor=寄件地區數量分析\">寄件地區數量分析</a>
+			<a href=\"PackageService.php?factor=收件地區數量分析\">收件地區數量分析</a>
+			<a href=\"PackageService.php?factor=會員分析\">會員分析</a>";
 
-$sql2="DELETE FROM member WHERE mem_id='$id'";
 
-$result=mysqli_query($link,$sql2);
-$result=mysqli_query($link,"SELECT * FROM member");
-
-echo "<table border=1>";
-echo "<thead>";
-        echo "<tr>";
-        echo "<th>姓名</th>";
-        echo "<th>電話</th>";
-        echo "<th>地址</th>";
-        echo "<th>信箱</th>";
-        echo "<th>帳號</th>";
-        echo "<th>密碼</th>";
-        echo "<th>管理權限</th>";
-        echo "<th>生日</th>";
-        echo "<th>職業</th>";
-        echo "<th>性別</th>";
-        echo "<th>刪除</th>";
-        echo "<th>修改</th>";
-        echo "<th>密碼修改</th>";
-        echo "</tr>";
-        echo "</thead>";
-while($row=mysqli_fetch_assoc($result)){
-	echo "<tr>";
-        	echo "<td>";
-	        echo $row["mem_name"];
-        	$id = $row["mem_id"];
-        	echo "</td><td>";
-        	echo $row["mem_phone"];
-        	echo "</td><td>";
-        	echo $row["mem_address"];
-            echo "</td><td>";
-        	echo $row["mem_email"];
-            echo "</td><td>";
-        	echo $row["mem_account_num"];
-            echo "</td><td>";
-        	echo $row["mem_password"];
-            echo "</td><td>";
-        	echo $row["manager_right"];
-            echo "</td><td>";
-        	echo $row["mem_birth"];
-            echo "</td><td>";
-        	echo $row["mem_career"];
-            echo "</td><td>";
-        	echo $row["mem_gender"];
-	echo "</td>";
-	echo "<td>";
-	echo "<a href='delete_m.php?mem_id=$id'>delete</a>";
-	echo "</td>";
-	echo "<td>";
-	echo "<a href='update_m.php?mem_id=$id'>modify</a>";
-	echo "</td>";
-	echo "<td>";
-        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>pwd_edit</a>";
-        	echo "</td>";
-	echo "</tr>";
-}
-echo "</table>";
-echo "<a href = 'logout.php'>登出</a>";
-
-mysqli_close($link);
 ?>
-</h2>
 </body>
 </html>
+
