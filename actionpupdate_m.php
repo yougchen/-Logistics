@@ -120,7 +120,16 @@ table {
     }
     table, th, td {
     border: 1px solid black;
-    }  
+    } 
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    th, td {
+      padding: 15px;
+    }
 </style>
 
 </head>
