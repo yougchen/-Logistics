@@ -12,22 +12,22 @@ $rphone = $_POST["rphone"];
 $remail = $_POST["remail"];
 $raddress = $_POST["raddress"];
 $rsend_time = $_POST["rsend_time"];
-$now = date("Y-m-j H:i:s");
-echo $now;
 
 
 
-$sql = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$now."')";
+
+
+// $sql = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$now."')";
 
 
 
-if (!mysqli_query($link,$sql))
-  {
-  echo("<br/>Error description: " . mysqli_error($link));
-  }
+// if (!mysqli_query($link,$sql))
+//   {
+//   echo("<br/>Error description: " . mysqli_error($link));
+//   }
 
 
-$result = mysqli_query($link,$sql) or die("MySQL insert error");
+// $result = mysqli_query($link,$sql) or die("MySQL insert error");
 
 
 //找出當前Auto_increment當前值
@@ -57,6 +57,34 @@ $sql2 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height
 
 
 $result = mysqli_query($link,$sql2) or die("MySQL insert error");
+
+//======================================================================================
+
+if ($delivery_method == 1) {
+  $arrive_time = strtotime($rsend_time);
+  $arrive_time = strtotime("+5 days", $arrive_time);
+  //echo date("Y-m-d", $arrive_time);
+  $arrive_time = date("Y-m-d", $arrive_time);
+  echo $arrive_time;
+} else {
+	$arrive_time = strtotime($rsend_time);
+  $arrive_time = strtotime("+2 days", $arrive_time);
+  //echo date("Y-m-d", $arrive_time);
+  $arrive_time = date("Y-m-d", $arrive_time);
+  echo $arrive_time;
+}
+
+$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$arrive_time."')";
+
+
+
+if (!mysqli_query($link,$sql3))
+  {
+  echo("<br/>Error description: " . mysqli_error($link));
+  }
+
+
+$result = mysqli_query($link,$sql3) or die("MySQL insert error");
 
 
 echo "表單已送出";
