@@ -1,4 +1,4 @@
-CREATE DATABASE logistics;
+﻿CREATE DATABASE logistics;
 
 use logistics;
 
@@ -35,7 +35,7 @@ INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_ema
 
 CREATE TABLE invoice
 (
-    inv_id int not null unique,
+    inv_id int auto_increment unique,
     receiver_name varchar(15) not null,
     receiver_phone varchar(8) not null,
     receiver_email varchar(35) not null,
@@ -62,7 +62,7 @@ INSERT INTO `invoice` (`inv_id`, `receiver_name`, `receiver_phone`, `receiver_em
 
  CREATE TABLE package
 (
-    pac_id int not null unique,
+    pac_id int auto_increment unique,
     pac_type varchar(15) not null,
     pac_length int not null,
     pac_width int not null,
