@@ -153,7 +153,7 @@ if ($total_records > 0) {
        $_SESSION["loginsession"] = $account;
        header("Location:list.php");
     } else {
-        $_SESION["loginsession"] = $account;
+        $_SESSION["loginsession"] = $account;
         header("Location:manager.php");
     }
 } else {
