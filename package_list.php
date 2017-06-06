@@ -148,6 +148,8 @@ table {
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
+        
+        <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
@@ -168,7 +170,7 @@ table {
         <?php
 
    		header('Content-Type: text/html; charset=utf-8');
-        session_start();
+   		
         include("config.php");
 		
 		mysqli_query($link,"SET NAMES 'UTF8'");

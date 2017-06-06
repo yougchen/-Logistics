@@ -138,6 +138,8 @@ table {
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
+        
+        <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
@@ -171,15 +173,15 @@ echo "
 <form action='actionpupdate_m.php' method='post' accept-charset=\"utf-8\">";
 //echo "ID:".$id."<br/>";
 
-echo "姓名:<input type='text' value='$pac_id' name='pac_id'><br/>";
-echo "電話:<input type='text' value='$pac_type' name='pac_type'><br/>";
-echo "地址:<input type='text' value='$pac_length' name='pac_length'><br/>";
-echo "信箱:<input type='text' value='$pac_width' name='pac_width'><br/>";
-echo "帳號:<input type='text' value='$pac_height' name='pac_height'><br/>";
-echo "管理權限:<input type='text' value='$pac_weight' name='pac_weight'><br/>";
-echo "生日:<input type='text' value='$pac_delivery_method' name='pac_delivery_method'><br/>";
-echo "職業:<input type='text' value='$pac_price' name='pac_price'><br/>";
-echo "性別:<input type='text' value='$inv_id' name='inv_id'><br/>";
+echo "包裹編號:<input type='text' value='$pac_id' name='pac_id'><br/>";
+echo "包裹品項:<input type='text' value='$pac_type' name='pac_type'><br/>";
+echo "包裹長度:<input type='text' value='$pac_length' name='pac_length'><br/>";
+echo "包裹寬度:<input type='text' value='$pac_width' name='pac_width'><br/>";
+echo "包裹高度:<input type='text' value='$pac_height' name='pac_height'><br/>";
+echo "包裹運送方式:<input type='text' value='$pac_weight' name='pac_weight'><br/>";
+echo "寄件時間:<input type='text' value='$pac_delivery_method' name='pac_delivery_method'><br/>";
+echo "金額:<input type='text' value='$pac_price' name='pac_price'><br/>";
+echo "訂單編號:<input type='text' value='$inv_id' name='inv_id'><br/>";
 echo "<input type='submit' neme = 'submit' value='修改'>";
 echo "</form>";
 
