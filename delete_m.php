@@ -151,7 +151,7 @@ session_start();
 include("config.php");
         
 mysqli_query($link,"SET NAMES 'UTF8'");
-$account = $_SESSION["login)session"];
+//$account = $_SESSION["login)session"];
 $id=$_GET["mem_id"];
 
 $sql2="DELETE FROM member WHERE mem_id='$id'";

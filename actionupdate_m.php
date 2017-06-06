@@ -152,11 +152,6 @@ include("config.php");
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
 
-header('Content-Type: text/html; charset=utf-8');
-session_start();
-include("config.php");
-    
-mysqli_query($link,"SET NAMES 'UTF8'");
 
 $mem_id=$_POST["mem_id"];
 $mem_name=$_POST["mem_name"];
