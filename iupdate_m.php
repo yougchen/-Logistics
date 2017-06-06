@@ -138,6 +138,8 @@ table {
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
+        
+        <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
@@ -172,16 +174,16 @@ echo "
 <form action='actioniupdate_m.php' method='post' accept-charset=\"utf-8\">";
 //echo "ID:".$id."<br/>";
 
-echo "姓名:<input type='text' value='$inv_id' name='inv_id'><br/>";
-echo "電話:<input type='text' value='$receiver_name' name='receiver_name'><br/>";
-echo "地址:<input type='text' value='$receiver_phone' name='receiver_phone'><br/>";
-echo "信箱:<input type='text' value='$receiver_email' name='receiver_email'><br/>";
-echo "帳號:<input type='text' value='$arrive_time' name='arrive_time'><br/>";
-echo "管理權限:<input type='text' value='$arrive_address' name='arrive_address'><br/>";
-echo "生日:<input type='text' value='$send_time' name='send_time'><br/>";
-echo "職業:<input type='text' value='$total_price' name='total_price'><br/>";
-echo "性別:<input type='text' value='$if_success' name='if_success'><br/>";
-echo "寄件人<input type='text' value='$mem_id' name='mem_id'>";
+echo "編號:<input type='text' value='$inv_id' name='inv_id'><br/>";
+echo "收件人名字:<input type='text' value='$receiver_name' name='receiver_name'><br/>";
+echo "收件人手機:<input type='text' value='$receiver_phone' name='receiver_phone'><br/>";
+echo "收件人信箱:<input type='text' value='$receiver_email' name='receiver_email'><br/>";
+echo "收件時間:<input type='text' value='$arrive_time' name='arrive_time'><br/>";
+echo "收件地址:<input type='text' value='$arrive_address' name='arrive_address'><br/>";
+echo "寄件時間:<input type='text' value='$send_time' name='send_time'><br/>";
+echo "金額:<input type='text' value='$total_price' name='total_price'><br/>";
+echo "送達:<input type='text' value='$if_success' name='if_success'><br/>";
+echo "寄件人編號<input type='text' value='$mem_id' name='mem_id'>";
 echo "<input type='submit' neme = 'submit' value='修改'>";
 echo "</form>";
 

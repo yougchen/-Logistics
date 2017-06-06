@@ -155,6 +155,8 @@ table {
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
+        
+        <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
@@ -194,6 +196,8 @@ table {
         echo "<th>金額</th>";
         echo "<th>送達</th>";
         echo "<th>寄件人編號</th>";
+        echo "<th>刪除</th>";
+        echo "<th>資料修改</th>";
         echo "</tr>";
         echo "</thead>";
         while($row = mysqli_fetch_assoc($result)){
