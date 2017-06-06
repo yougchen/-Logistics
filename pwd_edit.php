@@ -170,9 +170,5 @@ echo "確認密碼:<input type = 'text' name = 'NewPassword2'>請再一次輸入
 echo "<input type = 'submit' name = 'submit' value='修改'>";
 
 ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
 <h2/>
 <html/>
