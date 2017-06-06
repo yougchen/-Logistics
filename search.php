@@ -120,7 +120,7 @@ table {
 </head>
 
     <body>
-    <h1>急速快遞</h1> <br/>
+<h1>急速快遞</h1> <br/>
     <div class="menu">
             <a href="Service.php">商品服務</a>
 
@@ -131,6 +131,10 @@ table {
             <a href="search.php">查詢</a>
   
             <a href="account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
+
+            <a href="logout.php">登出</a>
     </div>
 
 </html>

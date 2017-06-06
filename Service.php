@@ -67,6 +67,14 @@ table {
       margin: 10px 10px 20px 10px;
     }
 
+   h2{
+      text-align: center;
+      font-size: 50px; 
+      font-family: 微軟正黑體;
+      margin: 10px 10px 20px 10px;
+    }
+
+
 
     .menu{
       text-align: center;
@@ -115,7 +123,7 @@ table {
 </head>
 
     <body>
-    <h1>急速快遞</h1> <br/>
+  <h1>急速快遞</h1> <br/>
     <div class="menu">
             <a href="Service.php">商品服務</a>
 
@@ -126,11 +134,15 @@ table {
             <a href="search.php">查詢</a>
   
             <a href="account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
+
+            <a href="logout.php">登出</a>
     </div>
 
 </html>
 	
-<h1>
+<h2>
 <?php
 echo "<form action=\"PackageService.php\" method=\"post\" >";
 
@@ -145,7 +157,7 @@ echo "
 
 //<a href="">訂單管理/取消</a>
 ?>
-<h1/>
+<h2/>
 </body>	
 </html>
 

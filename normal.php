@@ -117,6 +117,8 @@ table {
             <a href = "search.php">查詢</a>
   
             <a href = "account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
     </div>
 
 
