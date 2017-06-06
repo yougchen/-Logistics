@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 <!--加入會員-->
 <!DOCTYPE html>
 <html>
@@ -138,7 +136,6 @@ table {
     </div>
 
 <h4>
->>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
 <?php
 session_start();
 include("config.php");
@@ -162,10 +159,7 @@ if ($total_records > 0) {
 } else {
     echo "fail";
 }
-<<<<<<< HEAD
 ?>
-=======
 ?>
 <h4/>
 <html/>
->>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
