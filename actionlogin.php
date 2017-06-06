@@ -160,6 +160,5 @@ if ($total_records > 0) {
     echo "fail";
 }
 ?>
-?>
 <h4/>
 <html/>

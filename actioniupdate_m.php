@@ -110,17 +110,17 @@ table {
 
     a{
       text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
+      background-color: white;
+      color: black;
+      font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
+      margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
     table{
         border:0;
-        width:1400px;
+        width:1100px;
     }
 
     tr { 

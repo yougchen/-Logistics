@@ -110,17 +110,17 @@ table {
 
     a{
       text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
+      background-color: white;
+      color: black;
+      font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
+      margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
     table{
         border:0;
-        width:700px;
+        width:1100px;
     }
 
     tr { 
@@ -174,6 +174,8 @@ echo "<th>寄件時間</th>";
 echo "<th>金額</th>";
 echo "<th>送達</th>";
 echo "<th>寄件人編號</th>";
+echo "<th>刪除</th>";
+echo "<th>修改</th>";
 echo "</tr>";
 echo "</thead>";
 while($row = mysqli_fetch_assoc($result)){

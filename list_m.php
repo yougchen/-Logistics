@@ -112,9 +112,9 @@ table {
       text-decoration: none;
       background-color: black;
       color: white;
-      font-size: 20px; 
+      font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
+      margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
@@ -160,12 +160,8 @@ table {
         session_start();
         include("config.php");
 		
-		mysqli_query($link,"SET NAMES 'UTF8'");
-        header('Content-Type: text/html; charset=utf-8');
-        session_start();
-        include("config.php");
+		  mysqli_query($link,"SET NAMES 'UTF8'");
 
-        mysqli_query($link,"SET NAMES 'UTF8'");
         
         $result = mysqli_query($link, "SELECT * FROM member");
         echo "<table border=1>";

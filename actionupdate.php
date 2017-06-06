@@ -112,15 +112,15 @@ table {
       text-decoration: none;
       background-color: black;
       color: white;
-      font-size: 20px; 
+      font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
+      margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
     table{
         border:0;
-        width:700px;
+        width:1100px;
     }
 
     tr { 
@@ -207,13 +207,13 @@ while($row=mysqli_fetch_assoc($result)){
         	echo $row["mem_gender"];
 	echo "</td>";
 	echo "<td>";
-	echo "<a href='delete.php?mem_id=$mem_id'>刪除</a>";
+	echo "<a href='delete.php?mem_id=$mem_id'>delete</a>";
 	echo "</td>";
 	echo "<td>";
-	echo "<a href='update.php?mem_id=$mem_id'>資料修改</a>";
+	echo "<a href='update.php?mem_id=$mem_id'>modify</a>";
 	echo "</td>";
 	echo "<td>";
-        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>密碼修改</a>";
+        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>pwd_edit</a>";
         	echo "</td>";
 	echo "</tr>";
 }
