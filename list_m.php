@@ -125,6 +125,7 @@ table {
     table {
     border-collapse: collapse;
     width: 100%;
+    margin: 0px 0px 0px -250px;
     }
 
     th, td {
@@ -137,15 +138,11 @@ table {
     <body>
     <h1>急速快遞</h1> <br/>
     <div class="menu">
-            <a href="Service.php">商品服務</a>
-
-            <a href="send.php">寄件</a>
+        <a href = "invoice_list.php">訂單管理</a>
    
-            <a href="recive.php">收件</a>
-
-            <a href="search.php">查詢</a>
+        <a href = "package_list.php">包裹管理</a>
   
-            <a href="account.php">帳號</a>
+        <a href = "list_m.php">會員管理</a>
     </div>
 
 <h2>

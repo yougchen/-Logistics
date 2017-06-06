@@ -125,6 +125,7 @@ table {
     table {
     border-collapse: collapse;
     width: 100%;
+    margin: 0px 0px 0px -250px;
     }
 
     th, td {

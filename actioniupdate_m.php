@@ -70,7 +70,7 @@ table {
 
     h2{
       text-align: center;
-      font-size: 15px; 
+      font-size: 35px; 
       font-family: 微軟正黑體;
       margin: 35px 20px 20px 10px;
     }
@@ -119,12 +119,14 @@ table {
 
     }
     table, th, td {
+
     border: 1px solid black;
     }
 
     table {
     border-collapse: collapse;
     width: 100%;
+    margin: 0px 0px 0px -250px;
     }
 
     th, td {
