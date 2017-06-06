@@ -186,6 +186,8 @@ table {
         echo "<th>寄件時間</th>";
         echo "<th>金額</th>";
         echo "<th>訂單編號</th>";
+        echo "<th>刪除</th>";
+        echo "<th>資料修改</th>";
         echo "</tr>";
         echo "</thead>";
         while($row = mysqli_fetch_assoc($result)){
