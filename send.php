@@ -7,7 +7,12 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    <?session_start();?>
+    <?php session_start();?>
+	<?php if (empty($_SESSION['loginsession'])) {
+			echo "請先登入會員!!!";
+			header("refresh:3;url = login.php");
+			} else {
+	?>
     <form action = "packagesend.php" method = "POST">
     寄件資料 <br>
     收件人姓名:<input type="text" name="rname" value=""><br>
@@ -46,6 +51,6 @@
     
     <input type="submit" name="submit" value="submit">
     </form>
-
+<?php } ?>
     </body>
 </html>
