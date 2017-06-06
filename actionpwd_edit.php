@@ -281,11 +281,5 @@ echo "</table>";
 echo "<a href = 'logout.php'>登出</a>";
     }
 ?>
-<<<<<<< HEAD
-</h2>
-</body>
-</html>
-=======
 <h2/>
 <html/>
->>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
