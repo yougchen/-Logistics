@@ -1,46 +1,35 @@
-<html>
-<head>
-<meta charset="utf-8">
-送件資料</head>
-<table>
-<form action="sendform.php" method="post">
-<?php 
-$message = "
-<title>送件表單</title>
-<meta http-equiv=\"refresh\" content=\"3; =b.html\">
-收件人姓名: $_POST['text']
-收件人行動電話: $_POST['textfield2']
-收件人Mail: $_POST['textfield3']
-到件日期: <form action=\"\" method=\"post\">
-    select_date :
-    <input type=\"date\" value='<?= isset($_POST['get_date']) ? $_POST['get_date'] :''; ?>' name=\"get_date\"
-                         min='<?= date('Y-m-d'); ?>'> ";  ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <?session_start();?>
+    <form action = "actionsend.php" method = "POST">
+    寄件資料 <br>
+    收件人姓名:<input type="text" name="rname" value=""><br>
+    收件人電話:<input type="text" name="rphone" value=""><br>
+    收件人信箱:<input type="text" name="remail" value=""><br>
+    收件人地址:<input type="text" name="raddress" value=""><br>
+    送出時間:<input type="date" name="rsend_time" value=""><br>
+    ===================================================<br>
+    包裹資料 <br>
+    包裹類型:<input type="radio" name="PackageType" value="1" checked = "True">一般常溫用品
+    <input type="radio" name="PackageType" value="2">低溫保鮮品
+    <input type="radio" name="PackageType" value="3">冷凍保鮮品
+    <input type="radio" name="PackageType" value="4">易碎品 <br>
+    包裹長度:<input type="text" name="length" value=""><br>
+    包裹寬度:<input type="text" name="width" value=""><br>
+    包裹高度:<input type="text" name="height" value=""><br>
+    包裹重量:<input type="text" name="weight" value=""><br>
+    運送方式:<input type="radio" name="delivery_method" value="1" checked = "True">一般寄件
+             <input type="radio" name="delivery_method" value="2">急件 <br>
     
-    <input type="submit" value="submit_date">
-</form>
+    <input type="submit" name="submit" value="submit">
+    </form>
 
-<?php
-if (isset($_POST["get_date"])) {
-    echo '<hr>' . 'get_date : ' . $_POST["get_date"];
-}?>
-到件地址: $_POST[textfield4]
-到件時間: $_POST[textfield5]
-遞件日期: <form action="" method="post">
-    select_date :
-    <input type="date" value="<?= isset($_POST['get_date']) ? $_POST['get_date'] : ''; ?>" name="get_date"
-                         min="<?= date('Y-m-d'); ?>">
-    <input type="submit" value="submit_date">
-</form>
-
-<?php
-if (isset($_POST['get_date'])) {
-    echo '<hr>' . 'get_date : ' . $_POST['get_date'];
-}
-總數: $_POST[textfield6]
-;
-mb_internal_encoding("UTF-8");
-mb_send_mail(",", "", $message ,"From:send");
-?>
-</form>
-</table>
+    </body>
 </html>
