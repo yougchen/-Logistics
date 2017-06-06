@@ -219,6 +219,9 @@ table {
         }
         echo "</table>";
 
+        echo "</table>";
+echo "<a href = 'logout.php'>登出</a>";
+
         mysqli_close($link);
         ?>
     </body>
