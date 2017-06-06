@@ -107,16 +107,16 @@ table {
 
     <body>
     <h1>急速快遞</h1> <br/>
-    <div class="menu">
-            <a href="Service.php">商品服務</a>
+    <div class = "menu">
+            <a href = "Service.php">商品服務</a>
 
-            <a href="send.php">寄件</a>
+            <a href = "send.php">寄件</a>
    
-            <a href="recive.php">收件</a>
+            <a href = "recive.php">收件</a>
 
-            <a href="search.php">查詢</a>
+            <a href = "search.php">查詢</a>
   
-            <a href="account.php">帳號</a>
+            <a href = "account.php">帳號</a>
     </div>
 
 
@@ -183,7 +183,7 @@ table {
 
     mysql_close($link);
 
-    echo "<a href=loginin.php style='border:1px solid black; background-color:black; color:white; margin:10px 10px 10px 200px; padding: 8px 20px 8px 20px; '>登入賬號</a>";
+    echo "<a href=login.php style='border:1px solid black; background-color:black; color:white; margin:10px 10px 10px 200px; padding: 8px 20px 8px 20px; '>登入賬號</a>";
     echo "<a href=account.php style='border:1px solid black; background-color:black; color:white; margin:10px; padding: 8px 20px 8px 20px;'>返回賬號頁</a>";
     ?>
 

@@ -2,16 +2,18 @@
 <html lang = "en">
     <head>
         <title></title>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1" charset = "UTF-8">
         <link href = "css/style.css" rel = "stylesheet">
     </head>
     <body>
 
         <?php
+
+   		header('Content-Type: text/html; charset=utf-8');
         session_start();
         include("config.php");
-
+		
+		mysqli_query($link,"SET NAMES 'UTF8'");
         
         $result = mysqli_query($link, "SELECT * FROM member");
         echo "<table border=1>";

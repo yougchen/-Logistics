@@ -30,6 +30,9 @@ INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_ema
 (2, 'rook', '0903239', 'home', 'rook123@yahoo.com.hk', 'rook', '123456', 0, '2017-06-06 00:00:00', '', '女'),
 (3, 'jager', '888398', 'homes', 'jager123@gmail.com', 'jager123', '123456', 0, '2017-06-02 08:00:00', '', '男');
 
+INSERT INTO `member` (`mem_id`, `mem_name`, `mem_phone`, `mem_address`, `mem_email`, `mem_account_num`, `mem_password`, `manager_right`, `mem_birth`, `mem_career`, `mem_gender`) VALUES (NULL, 'root', '0978763212', '高雄市', 'znmn@gmail.com', 'root', '123456', '1', '2017-06-29 00:00:00', '醫生', '男');
+
+
 
 CREATE TABLE invoice
 (
@@ -54,7 +57,8 @@ ALTER TABLE `invoice` CHANGE `arrive_address` `arrive_address` VARCHAR(35) CHARA
 
 INSERT INTO `invoice` (`inv_id`, `receiver_name`, `receiver_phone`, `receiver_email`, `arrive_time`, `arrive_address`, `send_time`, `total_price`, `if_success`, `mem_id`) VALUES
 (1, 'jackel', '990288', 'jackel230@gmail.com', '2017-06-22 00:00:00', 'home', '2017-06-13 00:00:00', 100320, 1, 2),
-(2, 'Kel', '992839', 'Kel@gmail.com', '2017-06-30 00:00:00', 'kelhotel', '2017-06-15 00:00:00', 12302, 1, 3);
+(2, 'Kel', '992839', 'Kel@gmail.com', '2017-06-30 00:00:00', 'kelhotel', '2017-06-15 00:00:00', 12302, 1, 3),
+(3, 'halo', '992654', 'keds@gmail.com', '2017-01-22 00:00:00', '高雄市', '2017-1-11 00:00:00', 12502, 1, 4);
 
 
  CREATE TABLE package

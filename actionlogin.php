@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include("config.php");
@@ -16,8 +17,9 @@ if ($total_records > 0) {
        header("Location:list.php");
     } else {
         $_SESION["login)session"] = $account;
-        header("Location:list_m.php");
+        header("Location:manager.php");
     }
 } else {
     echo "fail";
 }
+?>

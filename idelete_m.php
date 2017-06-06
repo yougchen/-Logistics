@@ -147,28 +147,70 @@ table {
 <h2>
 <?php
 
+
+header('Content-Type: text/html; charset=utf-8');
 session_start();
 include("config.php");
+mysqli_query($link,"SET NAMES 'UTF8'");
 
-$id = $_GET["mem_id"];
+$account = $_SESSION["login)session"];
+$id=$_GET["inv_id"];
 
-$sql = "SELECT * FROM member WHERE mem_id = '". $id ."'";
-$result = mysqli_query($link, $sql);
+$sql2="DELETE FROM invoice WHERE inv_id='$id'";
 
-while ($row = mysqli_fetch_assoc($result)) {
-    $name = $row["mem_name"];
-    $account_num = $row["mem_account_num"];
-    $password = $row["mem_password"];
+$result=mysqli_query($link,$sql2);
+
+$result = mysqli_query($link, "SELECT * FROM invoice");
+echo "<table border=1>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>編號</th>";
+echo "<th>收件人名字</th>";
+echo "<th>收件人手機</th>";
+echo "<th>收件人信箱</th>";
+echo "<th>收件時間</th>";
+echo "<th>收件地址</th>";
+echo "<th>寄件時間</th>";
+echo "<th>金額</th>";
+echo "<th>送達</th>";
+echo "<th>寄件人編號</th>";
+echo "</tr>";
+echo "</thead>";
+while($row = mysqli_fetch_assoc($result)){
+echo "<tr>";
+echo "<td>";
+echo $row["inv_id"];
+$id = $row["inv_id"];
+echo "</td><td>";
+echo $row["receiver_name"];
+echo "</td><td>";
+echo $row["receiver_phone"];
+echo "</td><td>";
+echo $row["receiver_email"];
+echo "</td><td>";
+echo $row["arrive_time"];
+echo "</td><td>";
+echo $row["arrive_address"];
+echo "</td><td>";
+echo $row["send_time"];
+echo "</td><td>";
+echo $row["total_price"];
+echo "</td><td>";
+echo $row["if_success"];
+echo "</td><td>";
+echo $row["mem_id"];
+echo "</td>";
+echo "<td>";
+echo "<a href = 'idelete_m.php?inv_id=$id'>delete</a>";
+echo "</td>";
+echo "<td>";
+echo "<a href = 'iupdate_m.php?inv_id=$id'>modify</a>";
+echo "</td>";
+echo "</tr>";
 }
+echo "</table>";
 
-echo "<form action = 'actionpwd_edit_m.php' method = 'post'>";
-echo "<input type = 'hidden' value = '$id' name = 'mem_id'>";
-echo "姓名:" . $name . "<br/>";
-echo "舊密碼:<input type = 'text' name = 'OldPassword'>請輸入舊密碼<br/>";
-echo "新密碼:<input type = 'text' name = 'NewPassword'>請輸入新密碼<br/>";
-echo "確認密碼:<input type = 'text' name = 'NewPassword2'>請再一次輸入新密碼<br/>";
-echo "<input type = 'submit' name = 'submit'>";
-
+mysqli_close($link);
 ?>
 </h2>
 </body>
