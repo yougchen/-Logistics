@@ -177,6 +177,11 @@ table {
         header("refresh:3;url = list_m.php");
     }
 ?>
+<<<<<<< HEAD
 </h2>
 </body>
 </html>
+=======
+<h2/>
+<html/>
+>>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9

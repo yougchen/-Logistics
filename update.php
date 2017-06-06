@@ -149,7 +149,11 @@ table {
 header('Content-Type: text/html; charset=utf-8');
 
 include("config.php");
+<<<<<<< HEAD
 		
+=======
+    
+>>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
 mysqli_query($link,"SET NAMES 'UTF8'");
 $id=$_GET["mem_id"];
 
@@ -184,6 +188,11 @@ echo "</form>";
 
 
 ?>
+<<<<<<< HEAD
 </h2>
 </body>
 </html>
+=======
+<h2/>
+<html/>
+>>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9

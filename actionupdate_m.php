@@ -146,11 +146,21 @@ table {
 
 <h2>
 <?php
+<<<<<<< HEAD
 header('Content-Type: text/html; charset=utf-8');
 session_start();
 include("config.php");
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
+=======
+
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+include("config.php");
+    
+mysqli_query($link,"SET NAMES 'UTF8'");
+
+>>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
 
 $mem_id=$_POST["mem_id"];
 $mem_name=$_POST["mem_name"];
@@ -217,13 +227,18 @@ while($row=mysqli_fetch_assoc($result)){
 	echo "<a href='update_m.php?mem_id=$id'>資料修改</a>";
 	echo "</td>";
 	echo "<td>";
-        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>密碼修改</a>";
+        	echo "<a href='update_m.php?mem_id=$id'>資料修改</a>";
         	echo "</td>";
 	echo "</tr>";
 }
 echo "</table>";
 echo "<a href = 'logout.php'>登出</a>";
 ?>
+<<<<<<< HEAD
 </h2>
 </body>
 </html>
+=======
+<h2/>
+<html/>
+>>>>>>> 9ff2ffdda469e39d43f7faf7fd63be7eec7fc5f9
