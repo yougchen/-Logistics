@@ -155,6 +155,7 @@ table {
 <html/>
 <!DOCTYPE html>
 <html lang="en">
+<h2>
     <head>
         <title></title>
         <meta charset="UTF-8">
@@ -208,4 +209,5 @@ table {
     </form>
 <?php } ?>
     </body>
+	<h2/>
 </html>
