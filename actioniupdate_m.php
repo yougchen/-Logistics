@@ -110,8 +110,8 @@ table {
 
     a{
       text-decoration: none;
-      background-color: white;
-      color: black;
+      background-color: black;
+      color: white;
       font-size: 10px; 
       font-family: 微軟正黑體;
       margin: 0px 50px 0px 50px;
@@ -175,6 +175,8 @@ $result=mysqli_query($link,$sql2);
         echo "<th>金額</th>";
         echo "<th>送達</th>";
         echo "<th>寄件人編號</th>";
+        echo "<th>刪除</th>";
+        echo "<th>資料修改</th>";
         echo "</tr>";
         echo "</thead>";
         while($row = mysqli_fetch_assoc($result)){
