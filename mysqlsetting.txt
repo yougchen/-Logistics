@@ -42,7 +42,7 @@ CREATE TABLE invoice
     arrive_time datetime not null,
     arrive_address varchar(35) not null,
     send_time datetime not null,
-    total_price float(8) not null,
+    total_price float(8) null,
     if_success int(1), 
     mem_id int not null,
     PRIMARY KEY(inv_id),
