@@ -144,9 +144,32 @@ if(isset($_POST["mem_gender"]))
 
 		$result = mysqli_query($link, "SELECT mem_birth FROM member ");
 
+
+		$now=time();
+		$nowdate=getdate($now);
+		$end=mktime(0,0,0,1,1,2018);//設定世界末日最後時間
+		$enddate=getdate($end);
+		$dingdong=$enddate["0"]-$nowdate["0"];//結束時間
+		$second=($dingdong%60);
+		$minute=(($dingdong-$second)/60);
+		$hour=(($minute-$minute%60)/60);
+		$day=(($hour-$hour%24)/24);
+
+		echo $day."日".($hour%24)."時".($minute%60)."分".$second."秒";
+
 		while($row_age = mysqli_fetch_assoc($result)){
-			echo time()-strtotime($row_age["mem_birth"])."<br/>";
-			echo date("Y-m-d H:i:s",time()-strtotime($row_age["mem_birth"]))."<br/>";
+
+			$change = time()-strtotime($row_age["mem_birth"]);
+
+			echo $change."<br/>";
+			$daychange=$change/(60*60*24);
+
+			(int)$age=(int)$daychange/365;
+
+			echo $daychange."<br/>";
+
+			echo $age."<br/>";
+
 
 		}
 
