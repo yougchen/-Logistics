@@ -112,27 +112,20 @@ table {
       text-decoration: none;
       background-color: black;
       color: white;
-      font-size: 10px; 
+      font-size: 20px; 
       font-family: 微軟正黑體;
-      margin: 0px 50px 0px 50px;
+      margin: 0px -800px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
-
-    table, th, td {
-      border: 1px solid black;
-    }  
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 0px 0px 0px -100px;
+    table{
+	border:0;
+	width:700px;
     }
 
-    th, td {
-      padding: 15px;
+    tr { 
+	border-bottom:1px solid; 
     }
-
 </style>
 
 </head>
@@ -140,8 +133,11 @@ table {
     <body>
     
     <h1>急速快遞</h1> <br/>
-    <div class="menu">
-        <a href = "invoice_list.php">訂單管理</a>
+
+
+    <h2>歡迎管理者!!</h2>
+    
+    <a href = "invoice_list.php">訂單管理</a>
    
         <a href = "package_list.php">包裹管理</a>
   
@@ -151,8 +147,7 @@ table {
 
         <a href="index.php">首頁</a>
 
-            <a href="logout.php">登出</a>
-    </div>
+        <a href="logout.php">登出</a>
 
 <h2>
 <?php
@@ -163,7 +158,7 @@ session_start();
 include("config.php");
 mysqli_query($link,"SET NAMES 'UTF8'");
 
-$account = $_SESSION["login)session"];
+$account = $_SESSION["loginsession"];
 $id=$_GET["pac_id"];
 
 $sql2="DELETE FROM package WHERE pac_id='$id'";
