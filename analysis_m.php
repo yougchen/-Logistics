@@ -48,7 +48,7 @@ table {
 
    h2{
       text-align: center;
-      font-size: 50px; 
+      font-size: 20px; 
       font-family: 微軟正黑體;
       margin: 10px 10px 20px 10px;
     }
@@ -89,14 +89,16 @@ table {
     }
 
     a{
-   	  text-decoration: none;
+      text-decoration: none;
       background-color: white;
       color: black;
       font-size: 15px; 
       font-family: 微軟正黑體;
-      margin: 10px 10px 10px 10px;
+      margin: 10px 0px 10px 0px;
       padding: 8px 20px 8px 20px;
+      line-height: 350%;
     }
+
 </style>
 
 </head>
@@ -126,7 +128,7 @@ table {
 			<a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
 
 			<a href="analysis_m.php?factor=會員分析">會員分析</a>
-
+<h2>
     <?php
 if(isset($_GET["factor"]))
 {
@@ -219,5 +221,6 @@ if(isset($_GET["factor"]))
 
 ?>
 </body>
+<h2/>
 </html>
 
