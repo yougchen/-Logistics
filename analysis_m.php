@@ -48,7 +48,7 @@ table {
 
    h2{
       text-align: center;
-      font-size: 20px; 
+      font-size: 50px; 
       font-family: 微軟正黑體;
       margin: 10px 10px 20px 10px;
     }
@@ -89,16 +89,14 @@ table {
     }
 
     a{
-      text-decoration: none;
+   	  text-decoration: none;
       background-color: white;
       color: black;
       font-size: 15px; 
       font-family: 微軟正黑體;
-      margin: 10px 0px 10px 0px;
+      margin: 10px 10px 10px 10px;
       padding: 8px 20px 8px 20px;
-      line-height: 350%;
     }
-
 </style>
 
 </head>
@@ -128,7 +126,7 @@ table {
 			<a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
 
 			<a href="analysis_m.php?factor=會員分析">會員分析</a>
-<h2>
+
     <?php
 if(isset($_GET["factor"]))
 {
@@ -177,12 +175,13 @@ if(isset($_GET["factor"]))
 
     if($_GET["factor"]=="會員分析")
     {
-    	echo  "<form action = \"analysis_m.php\" method = \"POST\">
- 		<select name=\"pac_type\">
-    			<option value = '一般常溫用品'>一般常溫用品</option>
-    			<option value = '低溫保鮮品'>低溫保鮮品</option>
-    			<option value = '冷凍保鮮品'>冷凍保鮮品</option>
-    			<option value = '易碎品'>易碎品</option>
+
+    	echo  "<form action = \"serch_account.php\" method = \"POST\">
+    	會員年齡:<input type=\"text\" name=\"age\" value=''><br>
+ 		<select name=\"mem_gender\">
+ 				<option value = 'null'></option>
+    			<option value = '男'>男</option>
+    			<option value = '女'>女</option>
 
     		</select>
     		<input type=\"submit\" name=\"submit\" value=\"submit\"";
@@ -221,6 +220,5 @@ if(isset($_GET["factor"]))
 
 ?>
 </body>
-<h2/>
 </html>
 

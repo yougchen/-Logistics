@@ -128,59 +128,94 @@ table {
             <a href="analysis_m.php?factor=會員分析">會員分析</a>
 
     <?php
-if(isset($_POST["pac_type"]))
+if(isset($_POST["mem_gender"]))
 {
-    	include("config.php");
+   		header('Content-Type: text/html; charset=utf-8');
+        session_start();
+        include("config.php");
+        date_default_timezone_set("Asia/Taipei");
+		
+		mysqli_query($link,"SET NAMES 'UTF8'");
 
-    	$pac_type = $_POST["pac_type"];
+		$mem_gender = $_POST["mem_gender"];
+		$mem_age = $_POST["age"];
+		echo $mem_age."<br/>";
+		//算年齡
 
-    	$sql = "SELECT * FROM package where pac_type = '$pac_type'";
+		$result = mysqli_query($link, "SELECT mem_birth FROM member ");
 
-    	$result = mysqli_query($link, $sql);
+		while($row_age = mysqli_fetch_assoc($result)){
+			echo time()-strtotime($row_age["mem_birth"])."<br/>";
+			echo date("Y-m-d H:i:s",time()-strtotime($row_age["mem_birth"]))."<br/>";
 
+		}
 
-        echo "<table border=1>";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th>包裹編號</th>";
-        echo "<th>包裹品項</th>";
-        echo "<th>包裹長度</th>";
-        echo "<th>包裹寬度</th>";
-        echo "<th>包裹高度</th>";
-        echo "<th>包裹運送方式</th>";
-        echo "<th>寄件時間</th>";
-        echo "<th>金額</th>";
-        echo "<th>訂單編號</th>";
-        echo "</tr>";
-        echo "</thead>";
-        while($row = mysqli_fetch_assoc($result))
-        {
-	        echo "<tr>";
-        	echo "<td>";
-	        echo $row["pac_id"];
-	        $id = $row["pac_id"];
-        	echo "</td><td>";
-        	echo $row["pac_type"];
-        	echo "</td><td>";
-        	echo $row["pac_length"];
-        	echo "</td><td>";
-        	echo $row["pac_width"];
-            echo "</td><td>";
-        	echo $row["pac_height"];
-            echo "</td><td>";
-        	echo $row["pac_weight"];
-            echo "</td><td>";
-        	echo $row["pac_delivery_method"];
-            echo "</td><td>";
-        	echo $row["pac_price"];
-            echo "</td><td>";
-        	echo $row["inv_id"];
-        	echo "</td>";
-        	echo "</tr>";
-        }
-        echo "</table>";
+		$now = date("Y-m-j H:i:s");
+
+		echo $mem_gender;
+
+		if($mem_gender === "男"||$mem_gender === "女"){
+
+    		$sql = "SELECT * FROM member Where mem_gender like '%$mem_gender%'";
+
+    	}
+    	else if($mem_gender === "null"){
+
+    		$sql = "SELECT * FROM member ";
+    	}
+    		
+    		$result = mysqli_query($link, $sql);
+
+    	    echo "<table border=1>";
+    	    echo "<thead>";
+    	    echo "<tr>";
+    	    echo "<th>姓名</th>";
+    	    echo "<th>電話</th>";
+    	    echo "<th>地址</th>";
+    	    echo "<th>信箱</th>";
+    	    echo "<th>帳號</th>";
+    	    echo "<th>密碼</th>";
+    	    echo "<th>管理權限</th>";
+    	    echo "<th>生日</th>";
+    	    echo "<th>職業</th>";
+    	    echo "<th>性別</th>";
+    	    echo "</tr>";
+    	    echo "</thead>";
+    	    while($row = mysqli_fetch_assoc($result)){
+		        echo "<tr>";
+    	    	echo "<td>";
+		        echo $row["mem_name"];
+    	    	$id = $row["mem_id"];
+    	    	echo "</td><td>";
+    	    	echo $row["mem_phone"];
+    	    	echo "</td><td>";
+    	    	echo $row["mem_address"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_email"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_account_num"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_password"];
+    	        echo "</td><td>";
+    	    	echo $row["manager_right"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_birth"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_career"];
+    	        echo "</td><td>";
+    	    	echo $row["mem_gender"];
+    	    	echo "</td>";
+        		echo "</tr>";
+       		}
+        	echo "</table>";
+
+        
+
 
         mysqli_close($link);
+        
+
 
 
 }
+?>

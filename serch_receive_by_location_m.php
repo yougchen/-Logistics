@@ -96,18 +96,6 @@ table {
       font-family: 微軟正黑體;
       margin: 10px 10px 10px 10px;
       padding: 8px 20px 8px 20px;
-      line-height: 300%;
-    }
-
-    table, th, td {
-    border: 1px solid black;
-    }  
-
-    table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px 10px;
-
     }
 </style>
 
