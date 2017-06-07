@@ -140,7 +140,7 @@ table {
             
 
     <?php
-if(isset($_POST["pac_type"]))
+if(isset($_POST["location"]))
 {
    		header('Content-Type: text/html; charset=utf-8');
         session_start();
@@ -149,9 +149,9 @@ if(isset($_POST["pac_type"]))
 		mysqli_query($link,"SET NAMES 'UTF8'");
 
 
-    	$pac_type = $_POST["pac_type"];
+    	$location = $_POST["location"];
 
-    	$sql = "SELECT * FROM member Where mem_address like '%高雄%'";
+    	$sql = "SELECT * FROM member Where mem_address like '%$location%'";
 
     	$result = mysqli_query($link, $sql);
 
