@@ -1,4 +1,3 @@
-<!--加入會員-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,28 +13,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
+smay {
   line-height: 1;
 }
 ol, ul {
@@ -68,12 +46,14 @@ table {
       margin: 10px 10px 20px 10px;
     }
 
-    h2{
+   h2{
       text-align: center;
-      font-size: 15px; 
+      font-size: 50px; 
       font-family: 微軟正黑體;
-      margin: 35px 20px 20px 10px;
+      margin: 10px 10px 20px 10px;
     }
+
+
 
     .menu{
       text-align: center;
@@ -95,7 +75,7 @@ table {
     }
 
     form{
-      font-size: 18px;
+      font-size: 10px;
       font-family: 微軟正黑體;
       text-align: left;
       padding: 20px;
@@ -104,29 +84,22 @@ table {
     input{
       font-size: 18px;
       font-family: 微軟正黑體;
-      margin: 10px;
-      padding: 8px;
+      margin: 1px;
+      padding: 0px;
     }
 
     a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
+   	  text-decoration: none;
+      background-color: white;
+      color: black;
+      font-size: 15px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
-      padding: 0px 10px 0px 10px
-
-    }
-    table{
-        border:0;
-        width:700px;
-    }
-
-    tr { 
-        border-bottom:1px solid; 
+      margin: 10px 10px 10px 10px;
+      padding: 8px 20px 8px 20px;
     }
 </style>
+
+</head>
 
 </head>
 
@@ -145,15 +118,104 @@ table {
 
          <a href="logout.php">登出</a>
     </div>
+
+			<a href="analysis_m.php?factor=寄送包裹種類分析">寄送包裹種類分析</a>
+
+			<a href="analysis_m.php?factor=寄件地區數量分析">寄件地區數量分析</a>
+
+			<a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
+
+			<a href="analysis_m.php?factor=會員分析">會員分析</a>
+
     <?php
-		echo "<form action=\"PackageService.php\" method=\"post\" >";
+if(isset($_GET["factor"]))
+{
+    if($_GET["factor"]=="寄送包裹種類分析")
+    {
+    	echo "<form action = \"serch_pac_type_m.php\" method = \"POST\">
+ 		<select name=\"pac_type\">
+    			<option value = '一般常溫用品'>一般常溫用品</option>
+    			<option value = '低溫保鮮品'>低溫保鮮品</option>
+    			<option value = '冷凍保鮮品'>冷凍保鮮品</option>
+    			<option value = '易碎品'>易碎品</option>
 
-		echo "
-			<a href=\"PackageService.php?factor=寄送包裹種類分析\">寄送包裹種類分析</a>
-			<a href=\"PackageService.php?factor=寄件地區數量分析\">寄件地區數量分析</a>
-			<a href=\"PackageService.php?factor=收件地區數量分析\">收件地區數量分析</a>
-			<a href=\"PackageService.php?factor=會員分析\">會員分析</a>";
+    		</select>
+    		<input type=\"submit\" name=\"submit\" value=\"submit\">";
+    }
+	
+	if($_GET["factor"]=="收件地區數量分析")
+    {
+    	echo  "收件地區<form action = \"serch_receive_by_location_m.php\" method = \"POST\">
+ 		<select name=\"pac_type\">
+    			<option value = '基隆市'>基隆市</option>
+    			<option value = '台北市'>台北市</option>
+    			<option value = '新北市'>新北市</option>
+    			<option value = '桃園縣'>桃園縣</option>
+    			<option value = '新竹市'>新竹市</option>
+    			<option value = '新竹縣'>新竹縣</option>
+    			<option value = '苗栗縣'>苗栗縣</option>
+    			<option value = '台中市'>台中市</option>
+    			<option value = '彰化縣'>彰化縣</option>
+    			<option value = '南投縣'>南投縣</option>
+    			<option value = '雲林縣'>雲林縣</option>
+    			<option value = '嘉義市'>嘉義市</option>
+    			<option value = '嘉義縣'>嘉義縣</option>
+    			<option value = '台南市'>台南市</option>
+    			<option value = '高雄市'>高雄市</option>
+    			<option value = '屏東縣'>屏東縣</option>
+    			<option value = '台東縣'>台東縣</option>
+    			<option value = '花蓮縣'>花蓮縣</option>
+    			<option value = '澎湖縣'>澎湖縣</option>
+    			<option value = '金門縣'>金門縣</option>
+    			<option value = '連江縣'>連江縣</option>
 
+    		</select>
+    		<input type=\"submit\" name=\"submit\" value=\"submit\"";
+    }
+
+    if($_GET["factor"]=="會員分析")
+    {
+    	echo  "<form action = \"analysis_m.php\" method = \"POST\">
+ 		<select name=\"pac_type\">
+    			<option value = '一般常溫用品'>一般常溫用品</option>
+    			<option value = '低溫保鮮品'>低溫保鮮品</option>
+    			<option value = '冷凍保鮮品'>冷凍保鮮品</option>
+    			<option value = '易碎品'>易碎品</option>
+
+    		</select>
+    		<input type=\"submit\" name=\"submit\" value=\"submit\"";
+    }
+    
+    if($_GET["factor"]=="寄件地區數量分析")
+    {
+    	echo  "寄件地區<form action = \"serch_send_by_location_m.php\" method = \"POST\">
+ 		<select name=\"pac_type\">
+    			<option value = '基隆市'>基隆市</option>
+    			<option value = '台北市'>台北市</option>
+    			<option value = '新北市'>新北市</option>
+    			<option value = '桃園縣'>桃園縣</option>
+    			<option value = '新竹市'>新竹市</option>
+    			<option value = '新竹縣'>新竹縣</option>
+    			<option value = '苗栗縣'>苗栗縣</option>
+    			<option value = '台中市'>台中市</option>
+    			<option value = '彰化縣'>彰化縣</option>
+    			<option value = '南投縣'>南投縣</option>
+    			<option value = '雲林縣'>雲林縣</option>
+    			<option value = '嘉義市'>嘉義市</option>
+    			<option value = '嘉義縣'>嘉義縣</option>
+    			<option value = '台南市'>台南市</option>
+    			<option value = '高雄市'>高雄市</option>
+    			<option value = '屏東縣'>屏東縣</option>
+    			<option value = '台東縣'>台東縣</option>
+    			<option value = '花蓮縣'>花蓮縣</option>
+    			<option value = '澎湖縣'>澎湖縣</option>
+    			<option value = '金門縣'>金門縣</option>
+    			<option value = '連江縣'>連江縣</option>
+
+    		</select>
+    		<input type=\"submit\" name=\"submit\" value=\"submit\"";
+    }
+}
 
 ?>
 </body>
