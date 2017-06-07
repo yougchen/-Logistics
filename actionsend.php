@@ -1,11 +1,17 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Taipei");
+
+
+
 if(isset($_POST["number"])){
 
 
+header('Content-Type: text/html; charset=utf-8');
+
 
 include("config.php");
+mysqli_query($link,"SET NAMES 'UTF8'");
 $number = $_POST["number"];
 $rname = $_POST["rname"];
 $rphone = $_POST["rphone"];
@@ -45,7 +51,6 @@ $row2 = mysqli_fetch_array($query2);
 $mem_id=$row2["mem_id"];
 
 //echo "<br/>".$Auto_increment;
-echo $number."<br/>";
 
 for($n = 1;$n <= $number;$n++){
 	$packagename = "PackageType".$n;
@@ -70,9 +75,8 @@ for($n = 1;$n <= $number;$n++){
    $pac_price = 150;
   }
 
-echo $length[$array_num]."|<br/>";
   $sql3 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES (NULL,'".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
-  echo $weight[$array_num]."/<br/>";
+
 
 
   $result = mysqli_query($link,$sql3) or die("MySQL  insert error");
@@ -98,7 +102,6 @@ $sql4 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id 
 $result2 = mysqli_query($link,$sql4) or die("my sql select error");
 $row=mysqli_fetch_assoc($result2);
 $total_price = $row["total_price"];
-echo $total_price."<br/>".$Auto_increment;
 $sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id) VALUES ('$Auto_increment','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '$total_price','".$rsend_time."','$arrive_time','$mem_id')";
 
 /*if (!mysqli_query($link,$sql5))
@@ -112,5 +115,5 @@ $result = mysqli_query($link,$sql5) or die("MySQL insert error");
 
 
 echo "表單已送出";
-//header("refresh:3;url = account.php");
+header("refresh:3;url = account.php");
 }
