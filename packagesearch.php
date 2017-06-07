@@ -116,13 +116,20 @@ table {
       text-decoration: none;
       text-align: center;
     }
-    table{
-    	border:0;
-    	width:700px;
+
+    table, th, td {
+    border: 1px solid black;
+    }  
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0px 0px 0px -50px;
     }
 
-    tr { 
-  		border-bottom:1px solid; 
+    th, td {
+      padding: 15px;
+    } 
 	}
 </style>
 
