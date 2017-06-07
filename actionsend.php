@@ -34,9 +34,9 @@ $rsend_time = $_POST["rsend_time"];
 $sql="show table status where name ='invoice'";
 $query=mysqli_query($link,$sql);
 $row = mysqli_fetch_array($query);
-$Auto_increment = $row['Auto_increment']-1;
+$Auto_increment = $row['Auto_increment'];
 
-echo "<br/>".$Auto_increment;
+//echo "<br/>".$Auto_increment;
 
 for($n = 1;$n <= $number;$n++){
 	$packagename = "PackageType".$n;
@@ -50,8 +50,18 @@ for($n = 1;$n <= $number;$n++){
 
 	$array_num=$n-1;
 
+  if ($package_type == 1) {
+  $pac_price = 60;
+} else if ($package_type == 2) {
+  $pac_price = 120;
+} else if ($package_type == 3) {
+  $pac_price = 180;
+} else {
+  $pac_price = 150;
+}
 
-$sql2 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES (NULL,'".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','1','$Auto_increment')";
+
+$sql2 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES (NULL,'".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
 
 
 
@@ -64,17 +74,21 @@ if ($delivery_method == 1) {
   $arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+5 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
-  $arrive_time = date("Y-m-d", $arrive_time);
+  $arrive_time = date("Ymd", $arrive_time);
   echo $arrive_time;
 } else {
 	$arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+2 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
   $arrive_time = date("Y-m-d", $arrive_time);
-  echo $arrive_time;
+  //echo $arrive_time;
 }
 
-$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$arrive_time."')";
+$sql4 = "SELECT SUM(pac_price) as total_price FROM package, invoice WHERE package.inv_id = invoice.inv_id AND invoice.inv_id = $Auto_increment ";
+$result2 = mysqli_query($link,$sql4) or die("my sql select error");
+$row=mysqli_fetch_assoc($result2);
+$total_price = $row["total_price"];
+$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$total_price."','".$arrive_time."')";
 
 
 
