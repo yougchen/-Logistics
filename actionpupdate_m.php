@@ -115,46 +115,45 @@ table {
       font-size: 10px; 
       font-family: 微軟正黑體;
       margin: 0px 50px 0px 50px;
-      padding: 0px 10px 0px 10px
-
+      padding: 0px 10px 0px 10px;
     }
+
     table, th, td {
-    border: 1px solid black;
-    } 
+      border: 1px solid black;
+    }  
 
     table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px -250px;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0px 0px 0px -100px;
     }
 
     th, td {
       padding: 15px;
     }
+
 </style>
 
 </head>
 
     <body>
-    <h1>急速快遞</h1> <br/>
-
-
-    <h2>歡迎管理者!!</h2>
     
-    <a href = "invoice_list.php">訂單管理</a>
+    <h1>急速快遞</h1> <br/>
+    <div class="menu">
+        <a href = "invoice_list.php">訂單管理</a>
    
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
-        
+
         <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
-         <a href="logout.php">登出</a>
+            <a href="logout.php">登出</a>
+    </div>
 
-
-
+<h2>
 <?php
 header('Content-Type: text/html; charset=utf-8');
 session_start();
@@ -228,4 +227,5 @@ $result=mysqli_query($link,$sql2);
         mysqli_close($link);
         ?>
 </body>
+<h2/>
 </html>
