@@ -96,6 +96,8 @@ table {
       font-family: 微軟正黑體;
       margin: 10px 10px 10px 10px;
       padding: 8px 20px 8px 20px;
+      line-height: 350%;
+
     }
 </style>
 
