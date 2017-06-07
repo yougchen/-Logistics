@@ -150,10 +150,10 @@ $total_records = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
 if ($total_records > 0) {
     if($row["manager_right"] == 0) {
-       $_SESSION["loginsession"] = $account;
+       $_SESSION["loginsession"] = $row["mem_id"];
        header("Location:list.php");
     } else {
-        $_SESSION["loginsession"] = $account;
+        $_SESSION["loginsession"] = $row["mem_id"];
         header("Location:manager.php");
     }
 } else {

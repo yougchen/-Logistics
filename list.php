@@ -175,7 +175,7 @@ table {
         
 
         $account = $_SESSION["loginsession"];
-        $sql = "SELECT * FROM member WhERE mem_account_num = '".$account."'";
+        $sql = "SELECT * FROM member WhERE mem_id = '".$account."'";
         $result = mysqli_query($link, $sql);
         echo "<table border=1>";
         echo "<thead>";
