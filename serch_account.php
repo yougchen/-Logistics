@@ -125,7 +125,7 @@ table {
 
             <a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
 
-            <a href="analysis_m.php?factor=會員分析">會員分析</a>
+            
 
     <?php
 if(isset($_POST["mem_gender"]))
@@ -155,20 +155,23 @@ if(isset($_POST["mem_gender"]))
 		$hour=(($minute-$minute%60)/60);
 		$day=(($hour-$hour%24)/24);
 
-		echo $day."日".($hour%24)."時".($minute%60)."分".$second."秒";
+		//echo $day."日".($hour%24)."時".($minute%60)."分".$second."秒";
 
 		while($row_age = mysqli_fetch_assoc($result)){
 
-			$change = time()-strtotime($row_age["mem_birth"]);
+      echo $row_age["mem_birth"];
+      echo "<br>";
+      
+			// $change = time()-strtotime($row_age["mem_birth"]);
 
-			echo $change."<br/>";
-			$daychange=$change/(60*60*24);
+			// echo $change."<br/>";
+			// $daychange=$change/(60*60*24);
 
-			(int)$age=(int)$daychange/365;
+			// (int)$age=(int)$daychange/365;
 
-			echo $daychange."<br/>";
+			// echo $daychange."<br/>";
 
-			echo $age."<br/>";
+			// echo $age."<br/>";
 
 
 		}
@@ -189,6 +192,7 @@ if(isset($_POST["mem_gender"]))
     		
     		$result = mysqli_query($link, $sql);
 
+          if ($result) {
     	    echo "<table border=1>";
     	    echo "<thead>";
     	    echo "<tr>";
@@ -231,6 +235,9 @@ if(isset($_POST["mem_gender"]))
         		echo "</tr>";
        		}
         	echo "</table>";
+          } else {
+            echo "No data";
+          }
 
         
 
