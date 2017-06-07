@@ -13,6 +13,8 @@ $remail = $_POST["remail"];
 $raddress = $_POST["raddress"];
 $rsend_time = $_POST["rsend_time"];
 
+$rsend_time = date("Y-m-d H:i:s", $rsend_time);	
+$mem_id = $_SESSION['loginsession'];
 
 
 
@@ -36,6 +38,12 @@ $query=mysqli_query($link,$sql);
 $row = mysqli_fetch_array($query);
 $Auto_increment = $row['Auto_increment'];
 
+//尋找mem_id
+$sql5="SELECT mem_id FROM member WHERE mem_account_num='$mem_id'";
+$query2=mysqli_query($link,$sql5);
+$row2 = mysqli_fetch_array($query2);
+$mem_id=$row2["mem_id"];
+
 //echo "<br/>".$Auto_increment;
 
 for($n = 1;$n <= $number;$n++){
@@ -47,6 +55,7 @@ for($n = 1;$n <= $number;$n++){
 	$height = $_POST["height"];
 	$weight = $_POST["weight"];
 	$delivery_method = $_POST[$delivery_method];
+
 
 	$array_num=$n-1;
 
@@ -74,21 +83,21 @@ if ($delivery_method == 1) {
   $arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+5 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
-  $arrive_time = date("Ymd", $arrive_time);
-  echo $arrive_time;
+  $arrive_time = date("Y-m-d H:i:s", $arrive_time);
 } else {
 	$arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+2 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
-  $arrive_time = date("Y-m-d", $arrive_time);
+  $arrive_time = date("Y-m-d H:i:s", strtotime($arrive_time));
+
   //echo $arrive_time;
 }
 
-$sql4 = "SELECT SUM(pac_price) as total_price FROM package, invoice WHERE package.inv_id = invoice.inv_id AND invoice.inv_id = $Auto_increment ";
+$sql4 = "SELECT SUM(pac_price) as total_price FROM package, invoice WHERE package.inv_id = invoice.inv_id group by invoice.inv_id  ";
 $result2 = mysqli_query($link,$sql4) or die("my sql select error");
 $row=mysqli_fetch_assoc($result2);
 $total_price = $row["total_price"];
-$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$total_price."','".$arrive_time."')";
+$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','$arrive_time','$mem_id')";
 
 
 
