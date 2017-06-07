@@ -70,7 +70,7 @@ table {
 
     h2{
       text-align: center;
-      font-size: 10px; 
+      font-size: 15px; 
       font-family: 微軟正黑體;
       margin: 35px 20px 20px 10px;
     }
@@ -175,7 +175,7 @@ table {
     收件人電話:<input type="text" name="rphone" value=""><br>
     收件人信箱:<input type="text" name="remail" value=""><br>
     收件人地址:<input type="text" name="raddress" value=""><br>
-    送出時間:<input type="date" name="rsend_time" value=""><br>
+    送出時間:<input type="hidden" name="rsend_time" value="<?php date_default_timezone_set("Asia/Taipei");$rsend_time=time();echo $rsend_time?>"><br>
     請選擇你要選幾個包裹(<=20)<br/>
 
 			<select name="number" >
