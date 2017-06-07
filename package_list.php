@@ -70,7 +70,7 @@ table {
 
     h2{
       text-align: center;
-      font-size: 15px; 
+      font-size: 35px; 
       font-family: 微軟正黑體;
       margin: 35px 20px 20px 10px;
     }
