@@ -37,7 +37,7 @@ CREATE TABLE invoice
 (
     inv_id int auto_increment unique,
     receiver_name varchar(15) not null,
-    receiver_phone varchar(8) not null,
+    receiver_phone varchar(10) not null,
     receiver_email varchar(35) not null,
     arrive_time datetime not null,
     arrive_address varchar(35) not null,

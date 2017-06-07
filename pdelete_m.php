@@ -112,20 +112,26 @@ table {
       text-decoration: none;
       background-color: black;
       color: white;
-      font-size: 20px; 
+      font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px -800px 0px 50px;
-      padding: 0px 10px 0px 10px
-
-    }
-    table{
-	border:0;
-	width:700px;
+      margin: 0px 50px 0px 50px;
+      padding: 0px 10px 0px 10px;
     }
 
-    tr { 
-	border-bottom:1px solid; 
+    table, th, td {
+      border: 1px solid black;
+    }  
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0px 0px 0px -100px;
     }
+
+    th, td {
+      padding: 15px;
+    }
+
 </style>
 
 </head>
@@ -179,6 +185,8 @@ $result=mysqli_query($link,$sql2);
 	echo "<th>寄件時間</th>";
 	echo "<th>金額</th>";
 	echo "<th>訂單編號</th>";
+    echo "<th>刪除</th>";
+    echo "<th>資料修改</th>";
 	echo "</tr>";
 	echo "</thead>";
 	while($row = mysqli_fetch_assoc($result)){
