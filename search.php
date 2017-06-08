@@ -149,7 +149,7 @@ table {
 		<body>
 			<h4>請問你要查詢哪個包裹？</h4>
 				<form action="packagesearch.php" method="post">
-					<input type="text" name="inv_id">
+					<input type="text" name="inv_id">請輸入訂單編號<br>
 
 					<input type="submit" value="送出">	
 				</form>

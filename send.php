@@ -209,7 +209,7 @@ table {
 
 
     
-    <input type="submit" name="submit" value="submit">
+    <input type="submit" name="submit" value="送出">
     </form>
 <?php } ?>
     </body>

@@ -188,10 +188,10 @@ if(isset($_POST["number"]))
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"2\">低溫保鮮品
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"3\">冷凍保鮮品
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"4\">易碎品 <br>
-    		包裹長度:<input type=\"text\" name=\"length[]\" value=\"\"><br>
-    		包裹寬度:<input type=\"text\" name=\"width[]\" value=\"\"><br>
-    		包裹高度:<input type=\"text\" name=\"height[]\" value=\"\"><br>
-    		包裹重量:<input type=\"text\" name=\"weight[]\" value=\"\"><br>
+    		包裹長度:<input type=\"text\" name=\"length[]\" value=\"\">(單位:公分)<br>
+    		包裹寬度:<input type=\"text\" name=\"width[]\" value=\"\">(單位:公分)<br>
+    		包裹高度:<input type=\"text\" name=\"height[]\" value=\"\">(單位:公分)<br>
+    		包裹重量:<input type=\"text\" name=\"weight[]\" value=\"\">(單位:公克)<br>
     		運送方式:<input type=\"radio\" name=\"delivery_method".$n."\" value=\"1\" checked = \"True\">一般寄件
              <input type=\"radio\" name=\"delivery_method".$n."\" value=\"2\">急件 <br>";
 

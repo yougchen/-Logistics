@@ -25,6 +25,11 @@
     <?php $mem_id = $row["mem_id"]; ?>
     <?php } ?>
     <?php //echo $rname; ?>
+    <?php $sql2 = "SELECT * FROM member, invoice WHERE invoice.mem_id=member.mem_id AND invoice.inv_id='$inv_id'"; ?>
+    <?php $result2 = mysqli_query($link, $sql2); ?>
+    <?php while ($row = mysqli_fetch_assoc($result2)) { ?>
+    <?php $mem_name = $row["mem_name"]; ?>
+    <?php } ?>
 
     <table border = 1>
         <tr><td>訂單編號</td><td><?php echo $inv_id ?></td></tr>
@@ -35,7 +40,7 @@
         <tr><td>送達時間:</td><td><?php echo $arrive_time ?></td></tr>
         <tr><td>送達地址:</td><td><?php echo $arrive_address ?></td></tr>
         <tr><td>應收金額:</td><td><?php echo $total_price ?></td></tr>
-        <tr><td>寄出人:</td><td><?php echo $mem_id ?></td></tr>
+        <tr><td>寄出人:</td><td><?php echo $mem_name ?></td></tr>
         
 
     </table>
