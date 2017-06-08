@@ -102,7 +102,30 @@ $sql4 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id 
 $result2 = mysqli_query($link,$sql4) or die("my sql select error");
 $row=mysqli_fetch_assoc($result2);
 $total_price = $row["total_price"];
-$sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id) VALUES ('$Auto_increment','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '$total_price','".$rsend_time."','$arrive_time','$mem_id')";
+// $data_array1[] = array (
+// "package_type" => $package_type,
+// "delivery_method" => $delivery_method,
+// "packagename" => $packagename,
+// "length" => $length,
+// "width" => $width,
+// "height" => $height,
+// "weight" => $weight
+// );
+//echo json_encode($data_array1);
+
+// $data_array2[] = array (
+//   "inv_id" => $Auto_increment,
+//   "receiver_name" => $rname,
+//   "receiver_email" => $remail,
+//   "recevier_phone" => $rphone,
+//   "arrive_address" => $raddress,
+//   "total_price" => $total_price,
+//   "send_time" => $rsend_time,
+//   "arrive_time" => $arrive_time,
+//   "mem_id" => $mem_id
+// );
+//echo json_encode($data_array2);
+$sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id) VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$total_price."','".$rsend_time."','".$arrive_time."','".$mem_id."')";
 
 /*if (!mysqli_query($link,$sql5))
   {
@@ -110,10 +133,13 @@ $sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_ema
   }*/
 
 
-
 $result = mysqli_query($link,$sql5) or die("MySQL insert error");
 
 
 echo "表單已送出";
-header("refresh:3;url = account.php");
+echo "<br>";
+echo "<a href = 'bill.php?inv_id=$Auto_increment'>查看表單</a>";
+echo "<br>";
+echo "<a href = 'index.php'>回到首頁</a>";
+
 }
