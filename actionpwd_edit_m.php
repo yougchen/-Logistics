@@ -166,8 +166,8 @@ table {
             $sql2="UPDATE member SET mem_password ='".$NewPassword."' WHERE mem_id ='".$id."'";
             $result2=mysqli_query($link,$sql2);
             $result2=mysqli_query($link,"SELECT*FROM member");
-            echo "密碼更改成功 請重新登入";
-            header("refresh:3;url = logout.php");
+            echo "密碼更改成功 回到會員管理";
+            header("refresh:3;url = list_m.php");
         }
         else {
             echo "新密碼不同!!!";

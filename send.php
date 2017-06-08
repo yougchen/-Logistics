@@ -46,7 +46,7 @@ blockquote, q {
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
+  content: ";
   content: none;
 }
 table {
@@ -164,17 +164,17 @@ table {
     </head>
     <body>
     <?php session_start();?>
-	<?php if (empty($_SESSION['loginsession'])) {
+	<?php if (empty($_SESSION["loginsession"])) {
 			echo "請先登入會員!!!";
 			header("refresh:3;url = login.php");
 			} else {
 	?>
-    <form action = "packagesend.php" method = "POST">
+    <form action = "packagesend.php" method = "POST" accept-charset=\"utf-8\">
     寄件資料 <br>
     收件人姓名:<input type="text" name="rname" value=""><br>
-    收件人電話:<input type="text" name="rphone" value=""><br>
-    收件人信箱:<input type="text" name="remail" value=""><br>
-    收件人地址:<input type="text" name="raddress" value=""><br>
+    收件人電話:<input type="tel" name="rphone"  required placeholder="09xxxxxxxx" pattern="[0-9]{9,}" maxlength="10"><br>
+    收件人信箱:<input type='email' name='remail' required placeholder='example@mail.com' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'><br>
+    收件人地址:<input type="text" name="raddress" value="" required maxlength='35'><br>
     送出時間:<input type="hidden" name="rsend_time" value="<?php date_default_timezone_set("Asia/Taipei");$rsend_time=time();echo $rsend_time?>"><br>
     請選擇你要選幾個包裹(<=20)<br/>
 

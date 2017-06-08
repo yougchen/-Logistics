@@ -224,7 +224,7 @@ while($row=mysqli_fetch_assoc($result)){
 	echo "<a href='update_m.php?mem_id=$id'>modify</a>";
 	echo "</td>";
 	echo "<td>";
-        	echo "<a href='update_m.php?mem_id=$id'>pwd_edit</a>";
+        	echo "<a href='pwd_edit_m.php?mem_id=$id'>pwd_edit</a>";
         	echo "</td>";
 	echo "</tr>";
 }

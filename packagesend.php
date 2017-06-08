@@ -157,6 +157,8 @@ table {
 <?php
 if(isset($_POST["number"]))
 {
+
+
 	$number = $_POST["number"];
 
 	$rname = $_POST["rname"];
@@ -164,6 +166,7 @@ if(isset($_POST["number"]))
 	$remail = $_POST["remail"];
 	$raddress = $_POST["raddress"];
 	$rsend_time = $_POST["rsend_time"];
+	
 
 
     echo "<form action = \"actionsend.php\" method = \"POST\">";

@@ -148,7 +148,7 @@ if(isset($_GET["factor"]))
 	if($_GET["factor"]=="收件地區數量分析")
     {
     	echo  "收件地區<form action = \"serch_receive_by_location_m.php\" method = \"POST\">
- 		<select name=\"pac_type\">
+ 		<select name=\"location\">
     			<option value = '基隆市'>基隆市</option>
     			<option value = '台北市'>台北市</option>
     			<option value = '新北市'>新北市</option>
@@ -192,7 +192,7 @@ if(isset($_GET["factor"]))
     if($_GET["factor"]=="寄件地區數量分析")
     {
     	echo  "寄件地區<form action = \"serch_send_by_location_m.php\" method = \"POST\">
- 		<select name=\"pac_type\">
+ 		<select name=\"location\">
     			<option value = '基隆市'>基隆市</option>
     			<option value = '台北市'>台北市</option>
     			<option value = '新北市'>新北市</option>
