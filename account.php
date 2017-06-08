@@ -129,17 +129,28 @@ table {
 		</div>
 
 		<div class="joinORloginin">
-		<?php
-		session_start();
-		include("config.php");
-		if (empty($_SESSION["loginsession"])) { ?>
+		<?php session_start(); ?>
+		<?php include("config.php"); ?>
+		
+		<?php if (empty($_SESSION["loginsession"])) { ?>
 			<a href="join.php">加入會員</a>
  			<a href="login.php">登入會員</a>
 		
+		
+
 		<?php } else {?>
+			<?php $sql = "SELECT * FROM member WHERE mem_account_num = '".$_SESSION['loginsession']."'"; ?>
+			<?php $result = mysqli_query($link, $sql); ?>
+			<?php $total_records = mysqli_num_rows($result); ?>
+			<?php $row = mysqli_fetch_assoc($result); ?>
+					<?php if ($row["manager_right"] == 0) { ?>
 			<?php header("location:function.php"); ?>
-		 </div>
+		<?php } else {?>
+			<?php header("location:manager.php"); ?>
 		<?php } ?>
+		<?php } ?>
+		 </div>
+		
 		</body>
 
 </html>
