@@ -129,9 +129,17 @@ table {
 		</div>
 
 		<div class="joinORloginin">
- 		<a href="join.php">加入會員</a>
- 		<a href="login.php">登入會員</a></div>
+		<?php
+		session_start();
+		include("config.php");
+		if (empty($_SESSION["loginsession"])) { ?>
+			<a href="join.php">加入會員</a>
+ 			<a href="login.php">登入會員</a>
 		
+		<?php } else {?>
+			<?php header("location:function.php"); ?>
+		 </div>
+		<?php } ?>
 		</body>
 
 </html>

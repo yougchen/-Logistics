@@ -143,7 +143,11 @@ table {
 
             <a href="index.php">首頁</a>
 
+            <?php session_start(); ?>
+            <?php if (empty($_SESSION["loginsession"])) { ?>
+            <?php } else { ?>
             <a href="logout.php">登出</a>
+            <?php } ?>
     </div>
 
 </html>

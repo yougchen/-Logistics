@@ -128,8 +128,11 @@ table {
             <a href="account.php">帳號</a>
 
             <a href="index.php">首頁</a>
-
-         <a href="logout.php">登出</a>
+            <?php session_start(); ?>
+            <?php if (empty($_SESSION["loginsession"])) { ?>
+            <?php } else { ?>
+            <a href="logout.php">登出</a>
+            <?php } ?>
     </div>
 
 </html>

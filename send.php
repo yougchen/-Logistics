@@ -150,7 +150,11 @@ table {
 
             <a href="index.php">首頁</a>
 
+            <?php session_start(); ?>
+            <?php if (empty($_SESSION["loginsession"])) { ?>
+            <?php } else { ?>
             <a href="logout.php">登出</a>
+            <?php } ?>
     </div>
 <html/>
 <!DOCTYPE html>
@@ -163,7 +167,7 @@ table {
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    <?php session_start();?>
+    <?php //session_start();?>
 	<?php if (empty($_SESSION["loginsession"])) {
 			echo "請先登入會員!!!";
 			header("refresh:3;url = login.php");

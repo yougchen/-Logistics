@@ -1,5 +1,3 @@
-
-<!--加入會員-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -139,27 +137,9 @@ table {
 <?php
 session_start();
 include("config.php");
-
-
-$account = $_POST["account"];
-$password = $_POST["password"];
-
-$sql = "SELECT * FROM member WHERE mem_account_num = '".$account."' AND mem_password = '".$password."'";
-$result = mysqli_query($link, $sql);
-$total_records = mysqli_num_rows($result);
-$row = mysqli_fetch_assoc($result);
-if ($total_records > 0) {
-    if($row["manager_right"] == 0) {
-       $_SESSION["loginsession"] = $account;
-       header("Location:function.php");
-    } else {
-        $_SESSION["loginsession"] = $account;
-        header("Location:manager.php");
-    }
-} else {
-    echo "登入失敗!!!";
-    header("refresh:3;url = login.php");
-}
-?>
+if (empty($_SESSION["loginsession"])) {
+	echo "請先登入會員!!!";
+	header("refresh:3;url = login.php");
+} else ?>
+    <a href = "list.php">個人資料</a>
 <h4/>
-<html/>
