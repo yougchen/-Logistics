@@ -164,9 +164,15 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 
 $mem_id=$_POST["mem_id"];
 $mem_name=$_POST["mem_name"];
+$mem_phone=$_POST["mem_phone"];
+$mem_address=$_POST["mem_address"];
+$mem_email=$_POST["mem_email"];
 $mem_account_num=$_POST["mem_account"];
+$mem_birth=$_POST["mem_birth"];
+$mem_career=$_POST["mem_career"];
+$mem_gender=$_POST["mem_gender"];
 
-$sql2="UPDATE member SET mem_name='$mem_name',mem_account_num='$mem_account_num'WHERE mem_id='$mem_id'";
+$sql2="UPDATE member SET mem_name='$mem_name',mem_phone='$mem_phone',mem_address='$mem_address',mem_email='$mem_email',mem_account_num='$mem_account_num',mem_birth='$mem_birth',mem_career='$mem_career',mem_gender='$mem_gender' WHERE mem_id='$mem_id'";
 
 $result=mysqli_query($link,$sql2);
 $result=mysqli_query($link,"SELECT*FROM member WHERE mem_id='$mem_id'");
@@ -216,7 +222,7 @@ while($row=mysqli_fetch_assoc($result)){
 	echo "<a href='update.php?mem_id=$mem_id'>modify</a>";
 	echo "</td>";
 	echo "<td>";
-        	echo "<a href = 'pwd_edit_m.php?mem_id=$id'>pwd_edit</a>";
+        	echo "<a href = 'pwd_edit.php?mem_id=$id'>pwd_edit</a>";
         	echo "</td>";
 	echo "</tr>";
 }
