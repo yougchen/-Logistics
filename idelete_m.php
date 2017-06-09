@@ -110,21 +110,27 @@ table {
 
     a{
       text-decoration: none;
-      background-color: white;
-      color: black;
+      background-color: black;
+      color: white;
       font-size: 10px; 
       font-family: 微軟正黑體;
       margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
-    table{
-        border:0;
-        width:1100px;
+
+    table, th, td {
+    border: 1px solid black;
+    }  
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0px 0px 0px -150px;
     }
 
-    tr { 
-        border-bottom:1px solid; 
+    th, td {
+      padding: 15px;
     }
 </style>
 

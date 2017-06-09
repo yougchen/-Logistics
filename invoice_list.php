@@ -134,7 +134,7 @@ table {
     table {
     border-collapse: collapse;
     width: 100%;
-    margin: 0px 0px 0px -250px;
+    margin: 0px 0px 0px -150px;
     }
 
     th, td {
@@ -145,8 +145,6 @@ table {
 
     <body>
     <h1>急速快遞</h1> <br/>
-
-    <h2>歡迎管理者!!</h2>
 
     <div class = "menu">
 

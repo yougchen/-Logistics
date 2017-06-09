@@ -48,7 +48,7 @@ table {
 
    h2{
       text-align: center;
-      font-size: 50px; 
+      font-size: 20px; 
       font-family: 微軟正黑體;
       margin: 10px 10px 20px 10px;
     }
@@ -90,13 +90,13 @@ table {
 
     a{
       text-decoration: none;
-      background-color: white;
-      color: black;
-      font-size: 15px; 
+      background-color: black;
+      color: white;
+      font-size: 10px; 
       font-family: 微軟正黑體;
       margin: 10px 10px 10px 10px;
-      padding: 8px 20px 8px 20px;
-      line-height: 300%;
+      padding: 0px 10px 0px 10px;
+      
     }
 
     table, th, td {
@@ -105,15 +105,18 @@ table {
 
     table {
     border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px 10px;
+    width: 50%;
+    margin: 0px 0px 0px -150px;
+    }
 
+    th, td {
+      padding: 15px;
+    }
 
 </style>
 
 </head>
 
-</head>
 
     <body>
     <h1>急速快遞</h1> <br/>
@@ -130,14 +133,14 @@ table {
 
          <a href="logout.php">登出</a>
     </div>
-
+<h2>
             <a href="analysis_m.php?factor=寄送包裹種類分析">寄送包裹種類分析</a>
 
             <a href="analysis_m.php?factor=寄件地區數量分析">寄件地區數量分析</a>
 
             <a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
 
-            
+<h2/>            
 
     <?php
 if(isset($_POST["location"]))
@@ -206,3 +209,5 @@ if(isset($_POST["location"]))
 
 }
 ?>
+<body/>
+<html/>
