@@ -15,7 +15,7 @@ CREATE TABLE member
     mem_birth datetime not null,
     mem_career varchar(8) not null,
     mem_gender varchar(4) not null,
-    PRIMARY KEY(mem_id)
+    PRIMARY KEY(mem_id,mem_account_num)
  );
 
 ALTER TABLE `member` CHANGE `mem_name` `mem_name` VARCHAR(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
