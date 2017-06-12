@@ -177,17 +177,7 @@ $row = mysqli_fetch_array($result);
             <a href="logout.php">登出</a>
 
 <?php
-  if(isset($_GET["pac_id"])){
-          $id = $_GET["pac_id"];
-          $inv_id = $_GET["inv_id"];
-          $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
-
-      $result=mysqli_query($link,$sql2) or die("刪除失敗");
-      echo "<br/>資料已刪除";
-      echo "<br>";
-      echo "<a href = 'search_by_invoice.php?inv_id=$inv_id'>查看表單</a>";
-      echo "<br>";
-  } else {
+  
       mysqli_query($link,"SET NAMES 'UTF8'");
       $id=$_GET["inv_id"];
         
@@ -204,8 +194,6 @@ $row = mysqli_fetch_array($result);
       echo "<th>寄件時間</th>";
       echo "<th>金額</th>";
       echo "<th>訂單編號</th>";
-      echo "<th>刪除</th>";
-      echo "<th>資料修改</th>";
       echo "</tr>";
       echo "</thead>";
         while($row = mysqli_fetch_assoc($result)){
@@ -231,19 +219,12 @@ $row = mysqli_fetch_array($result);
            echo $row["inv_id"];
            $inv_id = $row["inv_id"];
            echo "</td>";
-           echo "<td>";
-           echo "<a href = 'search_by_invoice.php?pac_id=$id&inv_id=$inv_id'>delete</a>";
-           echo "</td>";
-           echo "<td>";
-           echo "<a href = 'search_by_invoice.php?pac_id=$id&inv_id=$inv_id'>modify</a>";
-           echo "</td>";
            echo "</tr>";
         }
       echo "</table>";
 
       mysqli_close($link);
-    }
-        }
+      }
      else {?>
         <a href = "invoice_list.php">訂單管理</a>
    
@@ -271,7 +252,17 @@ $row = mysqli_fetch_array($result);
     <body>
 
       <?php
+	if(isset($_GET["pac_id"])){
+          $id = $_GET["pac_id"];
+          $inv_id = $_GET["inv_id"];
+          $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
 
+      $result=mysqli_query($link,$sql2) or die("刪除失敗");
+      echo "<br/>資料已刪除";
+      echo "<br>";
+      echo "<a href = 'search_by_invoice.php?inv_id=$inv_id'>查看表單</a>";
+      echo "<br>";
+  	} else {
    		
 		
 		  mysqli_query($link,"SET NAMES 'UTF8'");
@@ -329,6 +320,7 @@ $row = mysqli_fetch_array($result);
 
       mysqli_close($link);
       }
-    }    ?>
+    }
+ }    ?>
     </body>
 </html>
