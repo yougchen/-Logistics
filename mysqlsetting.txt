@@ -62,7 +62,7 @@ INSERT INTO `invoice` (`inv_id`, `receiver_name`, `receiver_phone`, `receiver_em
 
  CREATE TABLE package
 (
-    pac_id int auto_increment unique,
+    pac_id int auto_increment not null,
     pac_type varchar(15) not null,
     pac_length int not null,
     pac_width int not null,
