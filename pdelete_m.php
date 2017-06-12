@@ -166,8 +166,9 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 
 $account = $_SESSION["loginsession"];
 $id=$_GET["pac_id"];
+$inv_id = $_GET["inv_id"];
 
-$sql2="DELETE FROM package WHERE pac_id='$id'";
+$sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
 
 $result=mysqli_query($link,$sql2);
 
@@ -210,12 +211,13 @@ $result=mysqli_query($link,$sql2);
 		echo $row["pac_price"];
 	    echo "</td><td>";
 		echo $row["inv_id"];
+        $inv_id = $row["inv_id"];
 		echo "</td>";
 		echo "<td>";
-		echo "<a href = 'pdelete_m.php?pac_id=$id'>delete</a>";
+		echo "<a href = 'pdelete_m.php?pac_id=$id&inv_id=$inv_id'>delete</a>";
 		echo "</td>";
 		echo "<td>";
-		echo "<a href = 'pupdate_m.php?pac_id=$id'>modify</a>";
+		echo "<a href = 'pupdate_m.php?pac_id=$id&inv_id=$inv_id'>modify</a>";
 		echo "</td>";
 		echo "</tr>";
 	}

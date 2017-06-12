@@ -153,8 +153,9 @@ include("config.php");
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
 $id=$_GET["pac_id"];
+$inv_id = $_GET["inv_id"];
 
-$sql2="SELECT * FROM package WHERE pac_id='$id'";
+$sql2="SELECT * FROM package WHERE pac_id='$id' and inv_id='$inv_id'";
 $result=mysqli_query($link,$sql2);
 
 while ($row=mysqli_fetch_assoc($result)) {

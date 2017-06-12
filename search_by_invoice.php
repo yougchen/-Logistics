@@ -209,12 +209,13 @@ table {
         	echo $row["pac_price"];
             echo "</td><td>";
         	echo $row["inv_id"];
+        	$inv_id = $row["inv_id"];
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'pdelete_m.php?pac_id=$id'>delete</a>";
+        	echo "<a href = 'pdelete_m.php?pac_id=$id&inv_id=$inv_id'>delete</a>";
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'pupdate_m.php?pac_id=$id'>modify</a>";
+        	echo "<a href = 'pupdate_m.php?pac_id=$id&inv_id=$inv_id'>modify</a>";
         	echo "</td>";
         	echo "</tr>";
         }
