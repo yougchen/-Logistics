@@ -149,7 +149,7 @@ if(isset($_GET["factor"]))
 {
     if($_GET["factor"]=="寄送包裹種類分析")
     {
-    	echo "<form action = \"serch_pac_type_m.php\" method = \"POST\">
+    	echo "<form action = \"search_pac_type_m.php\" method = \"POST\">
  		<select name=\"pac_type\">
     			<option value = '一般常溫用品'>一般常溫用品</option>
     			<option value = '低溫保鮮品'>低溫保鮮品</option>
@@ -162,7 +162,7 @@ if(isset($_GET["factor"]))
 	
 	if($_GET["factor"]=="收件地區數量分析")
     {
-    	echo  "收件地區<form action = \"serch_receive_by_location_m.php\" method = \"POST\">
+    	echo  "收件地區<form action = \"search_receive_by_location_m.php\" method = \"POST\">
  		<select name=\"location\">
     			<option value = '基隆市'>基隆市</option>
     			<option value = '台北市'>台北市</option>
@@ -193,7 +193,7 @@ if(isset($_GET["factor"]))
     if($_GET["factor"]=="會員分析")
     {
 
-    	echo  "<form action = \"serch_account.php\" method = \"POST\">
+    	echo  "<form action = \"search_account.php\" method = \"POST\">
     	會員年齡:<input type=\"text\" name=\"age\" value=''><br>
  		<select name=\"mem_gender\">
  				<option value = 'null'></option>
@@ -206,7 +206,7 @@ if(isset($_GET["factor"]))
     
     if($_GET["factor"]=="寄件地區數量分析")
     {
-    	echo  "寄件地區<form action = \"serch_send_by_location_m.php\" method = \"POST\">
+    	echo  "寄件地區<form action = \"search_send_by_location_m.php\" method = \"POST\">
  		<select name=\"location\">
     			<option value = '基隆市'>基隆市</option>
     			<option value = '台北市'>台北市</option>
