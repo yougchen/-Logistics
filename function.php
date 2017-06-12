@@ -151,5 +151,6 @@ if (empty($_SESSION["loginsession"])) {
 	header("refresh:3;url = login.php");
 } else ?>
     <a href = "list.php">個人資料</a>
+    <br/>
     <a href = "order.php">個人寄件訂單</a>
 <h4/>
