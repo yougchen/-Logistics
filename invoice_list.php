@@ -202,7 +202,7 @@ table {
 	        echo "<tr>";
         	echo "<td>";
         	$id = $row["inv_id"];
-	        echo "<a href = 'serch_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
+	        echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
         	echo "</td><td>";
         	echo $row["receiver_name"];
         	echo "</td><td>";
