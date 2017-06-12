@@ -70,9 +70,9 @@ table {
 
     h2{
       text-align: center;
-      font-size: 35px; 
+      font-size: 15px; 
       font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
+      margin: 35px 20px 20px 10px;
     }
 
     .menu{
@@ -114,38 +114,29 @@ table {
       color: white;
       font-size: 10px; 
       font-family: 微軟正黑體;
-      margin: 0px 50px 0px 0px;
+      margin: 0px 50px 0px 50px;
       padding: 0px 10px 0px 10px
 
     }
     table, th, td {
     border: 1px solid black;
-    }
-     
+    }  
+
     table {
     border-collapse: collapse;
     width: 100%;
+    margin: 0px 0px 0px -100px;
     }
 
     th, td {
       padding: 15px;
     }
-
-    table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px -150px;
-    }
-
-    th, td {
-      padding: 15px;
-    }    
 </style>
+
 </head>
 
     <body>
     <h1>急速快遞</h1> <br/>
-
     <div class = "menu">
 
         <a href = "invoice_list.php">訂單管理</a>
@@ -164,7 +155,6 @@ table {
 <html/>
 <!DOCTYPE html>
 <html lang = "en">
-
     <head>
         <title></title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1" charset = "UTF-8">
@@ -175,25 +165,25 @@ table {
         <?php
 
    		header('Content-Type: text/html; charset=utf-8');
-        session_start();
+   		
         include("config.php");
 		
 		mysqli_query($link,"SET NAMES 'UTF8'");
+		$id=$_GET["inv_id"];
         
-        $result = mysqli_query($link, "SELECT * FROM invoice");
+        $result = mysqli_query($link, "SELECT * FROM package where inv_id = '$id'");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";
-        echo "<th>編號</th>";
-        echo "<th>收件人名字</th>";
-        echo "<th>收件人手機</th>";
-        echo "<th>收件人信箱</th>";
-        echo "<th>收件時間</th>";
-        echo "<th>收件地址</th>";
+        echo "<th>包裹編號</th>";
+        echo "<th>包裹品項</th>";
+        echo "<th>包裹長度</th>";
+        echo "<th>包裹寬度</th>";
+        echo "<th>包裹高度</th>";
+        echo "<th>包裹運送方式</th>";
         echo "<th>寄件時間</th>";
         echo "<th>金額</th>";
-        echo "<th>送達</th>";
-        echo "<th>寄件人編號</th>";
+        echo "<th>訂單編號</th>";
         echo "<th>刪除</th>";
         echo "<th>資料修改</th>";
         echo "</tr>";
@@ -201,32 +191,30 @@ table {
         while($row = mysqli_fetch_assoc($result)){
 	        echo "<tr>";
         	echo "<td>";
-        	$id = $row["inv_id"];
-	        echo "<a href = 'serch_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
+	        echo $row["pac_id"];
+	        $id = $row["pac_id"];
         	echo "</td><td>";
-        	echo $row["receiver_name"];
+        	echo $row["pac_type"];
         	echo "</td><td>";
-        	echo $row["receiver_phone"];
+        	echo $row["pac_length"];
         	echo "</td><td>";
-        	echo $row["receiver_email"];
+        	echo $row["pac_width"];
             echo "</td><td>";
-        	echo $row["arrive_time"];
+        	echo $row["pac_height"];
             echo "</td><td>";
-        	echo $row["arrive_address"];
+        	echo $row["pac_weight"];
             echo "</td><td>";
-        	echo $row["send_time"];
+        	echo $row["pac_delivery_method"];
             echo "</td><td>";
-        	echo $row["total_price"];
+        	echo $row["pac_price"];
             echo "</td><td>";
-        	echo $row["if_success"];
-            echo "</td><td>";
-        	echo $row["mem_id"];
+        	echo $row["inv_id"];
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'idelete_m.php?inv_id=$id'>delete</a>";
+        	echo "<a href = 'pdelete_m.php?pac_id=$id'>delete</a>";
         	echo "</td>";
         	echo "<td>";
-        	echo "<a href = 'iupdate_m.php?inv_id=$id'>modify</a>";
+        	echo "<a href = 'pupdate_m.php?pac_id=$id'>modify</a>";
         	echo "</td>";
         	echo "</tr>";
         }
@@ -235,5 +223,4 @@ table {
         mysqli_close($link);
         ?>
     </body>
-    
 </html>
