@@ -159,12 +159,8 @@ table {
 		<body>
 			<h2>
 			<?php 
-				$link=@mysqli_connect(
-				'localhost',
-				'root',
-				'',
-				'logistics');
 
+        include("config.php");
 				$inv_id=$_POST["inv_id"];
 
 				$sql1="SELECT invoice.inv_id,receiver_name,receiver_phone,receiver_email,
