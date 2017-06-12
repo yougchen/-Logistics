@@ -38,17 +38,19 @@ $mem_id = $_SESSION['loginsession'];
 // $result = mysqli_query($link,$sql) or die("MySQL insert error");
 
 
-//找出當前Auto_increment當前值
+//找出當前invoice Auto_increment當前值
 $sql="show table status where name ='invoice'";
 $query=mysqli_query($link,$sql);
 $row = mysqli_fetch_array($query);
 $Auto_increment = $row['Auto_increment'];
 
 //尋找mem_id
-$sql2="SELECT mem_id FROM member WHERE mem_account_num='$mem_id'";
+$sql2="SELECT mem_id FROM member WHERE mem_account_num ='$mem_id'";
 $query2=mysqli_query($link,$sql2);
 $row2 = mysqli_fetch_array($query2);
 $mem_id=$row2["mem_id"];
+
+
 
 //echo "<br/>".$Auto_increment;
 
@@ -75,7 +77,7 @@ for($n = 1;$n <= $number;$n++){
    $pac_price = 150;
   }
 
-  $sql3 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES (NULL,'".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
+  $sql3 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES ('$n','".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
 
 
 
