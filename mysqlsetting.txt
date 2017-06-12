@@ -9,7 +9,7 @@ CREATE TABLE member
     mem_phone varchar(10) not null,
     mem_address varchar(35) not null,
     mem_email varchar(35) not null,
-    mem_account_num varchar(15) not null,
+    mem_account_num varchar(15) unique,
     mem_password varchar(35) not null,
     manager_right int not null,
     mem_birth datetime not null,
