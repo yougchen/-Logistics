@@ -154,8 +154,8 @@ if (empty($_SESSION["loginsession"])) { ?>
   
             <a href="account.php">帳號</a>
 <?php
-	echo "<br/>請先登入會員!!!".$_SESSION["loginsession"];
-	//header("refresh:3;url = login.php");
+	echo "<br/><br/>請先登入會員!!!";
+	header("refresh:3;url = login.php");
 } else {
 $account = $_SESSION["loginsession"];
 
