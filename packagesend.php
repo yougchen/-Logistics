@@ -169,7 +169,7 @@ if(isset($_POST["number"]))
 	
 
 
-    echo "<form action = \"actionsend.php\" method = \"POST\">";
+    echo "<form action = \"actionsend.php\" method = \"POST\" accept-charset=\"utf-8\">";
     echo "<input type='hidden' name='number' value='".$number."'>"."<br>";
 
     echo "<input type='hidden' name='rname' value='".$rname."'>"."<br>";
@@ -184,16 +184,16 @@ if(isset($_POST["number"]))
     for($n = 1;$n <= $number;$n++){
     	echo "
     		包裹資料 <br>
-    		包裹類型:<input type=\"radio\" name=\"PackageType".$n."\" value=\"1\" checked = \"True\">一般常溫用品
-    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"2\">低溫保鮮品
-    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"3\">冷凍保鮮品
-    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"4\">易碎品 <br>
+    		包裹類型:<input type=\"radio\" name=\"PackageType".$n."\" value=\"一般常溫用品\" checked = \"True\">一般常溫用品
+    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"低溫保鮮品\">低溫保鮮品
+    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"冷凍保鮮品\">冷凍保鮮品
+    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"易碎品\">易碎品 <br>
     		包裹長度:<input type=\"text\" name=\"length[]\" value=\"\" required pattern = '[0-9]{1,}' maxlength = 11>(單位:公分)<br>
     		包裹寬度:<input type=\"text\" name=\"width[]\" value=\"\" required pattern = '[0-9]{1,}' maxlength = 11>(單位:公分)<br>
     		包裹高度:<input type=\"text\" name=\"height[]\" value=\"\" required pattern = '[0-9]{1,}' maxlength = 11>(單位:公分)<br>
     		包裹重量:<input type=\"text\" name=\"weight[]\" value=\"\" required pattern = '[0-9]{1,}' maxlength = 11>(單位:公克)<br>
-    		運送方式:<input type=\"radio\" name=\"delivery_method".$n."\" value=\"1\" checked = \"True\">一般寄件
-             <input type=\"radio\" name=\"delivery_method".$n."\" value=\"2\">急件 <br>";
+    		運送方式:<input type=\"radio\" name=\"delivery_method".$n."\" value=\"一般寄件\" checked = \"True\">一般寄件
+             <input type=\"radio\" name=\"delivery_method".$n."\" value=\"急件\">急件 <br>";
 
     }
 
