@@ -127,7 +127,7 @@ $total_price = $row["total_price"];
 //   "mem_id" => $mem_id
 // );
 //echo json_encode($data_array2);
-$sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id) VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$total_price."','".$rsend_time."','".$arrive_time."','".$mem_id."')";
+$sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id,if_success) VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$total_price."','".$rsend_time."','".$arrive_time."','".$mem_id."',0)";
 
 /*if (!mysqli_query($link,$sql5))
   {

@@ -171,7 +171,7 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	$inv_id=$_POST["inv_id"];
 
 
-$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id'";
+$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
 
 $result=mysqli_query($link,$sql2);
         
