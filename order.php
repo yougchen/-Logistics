@@ -216,17 +216,23 @@ $result = mysqli_query($link, "SELECT * FROM invoice where mem_id = '$mem_id'");
           echo $row["receiver_phone"];
           echo "</td><td>";
           echo $row["receiver_email"];
-            echo "</td><td>";
+          echo "</td><td>";
           echo $row["arrive_time"];
-            echo "</td><td>";
+          echo "</td><td>";
           echo $row["arrive_address"];
-            echo "</td><td>";
+          echo "</td><td>";
           echo $row["send_time"];
-            echo "</td><td>";
+          echo "</td><td>";
           echo $row["total_price"];
-            echo "</td><td>";
-          echo $row["if_success"];
-            echo "</td><td>";
+            if($row["if_success"]<1)
+			{
+				echo "<td>未送達</td>";
+			}
+			else
+			{
+				echo "<td>送達</td>";
+			}
+          echo "</td><td>";
           echo $row["mem_id"];
           echo "</td>";
           echo "</tr>";
