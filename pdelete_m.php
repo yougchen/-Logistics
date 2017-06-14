@@ -182,7 +182,7 @@ $result=mysqli_query($link,$sql2);
 	echo "<th>包裹長度</th>";
 	echo "<th>包裹寬度</th>";
 	echo "<th>包裹高度</th>";
-	echo "<th>包裹運送方式</th>";
+	echo "<th>包裹重量</th>";
 	echo "<th>寄件方式</th>";
 	echo "<th>金額</th>";
 	echo "<th>訂單編號</th>";
