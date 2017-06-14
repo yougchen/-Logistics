@@ -149,9 +149,13 @@ table {
     <?php
 if(isset($_POST["pac_type"]))
 {
-    	include("config.php");
+
+		header('Content-Type: text/html; charset=utf-8');
+		include("config.php");		
+		mysqli_query($link,"SET NAMES 'UTF8'");
 
     	$pac_type = $_POST["pac_type"];
+   
 
     	$sql = "SELECT * FROM package where pac_type = '$pac_type'";
 
