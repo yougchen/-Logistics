@@ -124,8 +124,8 @@ table {
 
     table {
     border-collapse: collapse;
-    width: 100%;
-    margin: 0px 0px 0px -100px;
+    width: 150%;
+    margin: 20px 0px 0px -150px;
     }
 
     th, td {
