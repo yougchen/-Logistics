@@ -205,8 +205,15 @@ echo "</td><td>";
 echo $row["send_time"];
 echo "</td><td>";
 echo $row["total_price"];
-echo "</td><td>";
-echo $row["if_success"];
+        
+if($row["if_success"]<1)
+{
+	echo "<td>未送達</td>";
+}
+else
+{
+	echo "<td>送達</td>";
+}
 echo "</td><td>";
 echo $row["mem_id"];
 echo "</td>";
