@@ -252,6 +252,7 @@ $row = mysqli_fetch_array($result);
     <body>
 
       <?php
+    //判斷是否為刪除功能
 	if(isset($_GET["pac_id"])){
           $id = $_GET["pac_id"];
           $inv_id = $_GET["inv_id"];
@@ -259,11 +260,27 @@ $row = mysqli_fetch_array($result);
 
       $result=mysqli_query($link,$sql2) or die("刪除失敗");
       echo "<br/>資料已刪除";
-      echo "<br>";
-      echo "<a href = 'search_by_invoice.php?inv_id=$inv_id'>查看表單</a>";
-      echo "<br>";
   	} else {
-   		
+
+		mysqli_query($link,"SET NAMES 'UTF8'");
+  		//判斷是否為修改功能
+  		if(isset($_POST["pac_id"])){
+  			$pac_id=$_POST["pac_id"];
+			$pac_type=$_POST["pac_type"];
+			$pac_length=$_POST["pac_length"];
+			$pac_width=$_POST["pac_width"];
+			$pac_height=$_POST["pac_height"];
+			$pac_weight=$_POST["pac_weight"];
+			$pac_delivery_method=$_POST["pac_delivery_method"];
+			$pac_price=$_POST["pac_price"];
+			$inv_id=$_POST["inv_id"];
+
+
+			$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+
+			mysqli_query($link,$sql2) or die("update fall");
+  		}
+   	}	
 		
 		  mysqli_query($link,"SET NAMES 'UTF8'");
 		  $id=$_GET["inv_id"];
@@ -296,31 +313,31 @@ $row = mysqli_fetch_array($result);
         	 echo $row["pac_length"];
         	 echo "</td><td>";
         	 echo $row["pac_width"];
-           echo "</td><td>";
+          	 echo "</td><td>";
         	 echo $row["pac_height"];
-           echo "</td><td>";
+        	 echo "</td><td>";
         	 echo $row["pac_weight"];
-           echo "</td><td>";
-           echo $row["pac_delivery_method"];
-           echo "</td><td>";
+           	 echo "</td><td>";
+           	 echo $row["pac_delivery_method"];
+           	 echo "</td><td>";
         	 echo $row["pac_price"];
-           echo "</td><td>";
+           	 echo "</td><td>";
         	 echo $row["inv_id"];
-           $inv_id = $row["inv_id"];
+             $inv_id = $row["inv_id"];
         	 echo "</td>";
         	 echo "<td>";
         	 echo "<a href = 'search_by_invoice.php?pac_id=$id&inv_id=$inv_id'>delete</a>";
         	 echo "</td>";
         	 echo "<td>";
-        	 echo "<a href = 'search_by_invoice.php?pac_id=$id&inv_id=$inv_id'>modify</a>";
+        	 echo "<a href = 'pupdate_m.php?factor=invoice&pac_id=$id&inv_id=$inv_id'>modify</a>";
         	 echo "</td>";
         	 echo "</tr>";
         }
       echo "</table>";
 
       mysqli_close($link);
-      }
+      
     }
- }    ?>
+}    ?>
     </body>
 </html>

@@ -147,6 +147,7 @@ table {
     </div>
 <html/>
 <?php
+
 header('Content-Type: text/html; charset=utf-8');
 
 include("config.php");
@@ -169,11 +170,17 @@ while ($row=mysqli_fetch_assoc($result)) {
 	$pac_price=$row["pac_price"];
 	$inv_id=$row["inv_id"];
 }
-echo "
-<meta charset=\"utf-8\">
-<form action='actionpupdate_m.php' method='post' accept-charset=\"utf-8\">";
-//echo "ID:".$id."<br/>";
 
+echo "<meta charset=\"utf-8\">";
+if(isset($_GET["factor"]))
+{
+	echo "<form action='search_by_invoice.php?inv_id=$inv_id' method='post' accept-charset=\"utf-8\">";
+}
+else
+{
+	echo "<form action='actionpupdate_m.php' method='post' accept-charset=\"utf-8\">";
+//echo "ID:".$id."<br/>";
+}
 echo "包裹編號:<input type='text' value='$pac_id' name='pac_id'><br/>";
 echo "包裹品項:<input type='text' value='$pac_type' name='pac_type'><br/>";
 echo "包裹長度:<input type='text' value='$pac_length' name='pac_length'><br/>";
