@@ -187,7 +187,7 @@ echo "包裹長度:<input type='text' value='$pac_length' name='pac_length'><br/
 echo "包裹寬度:<input type='text' value='$pac_width' name='pac_width'><br/>";
 echo "包裹高度:<input type='text' value='$pac_height' name='pac_height'><br/>";
 echo "包裹運送方式:<input type='text' value='$pac_weight' name='pac_weight'><br/>";
-echo "寄件時間:<input type='text' value='$pac_delivery_method' name='pac_delivery_method'><br/>";
+echo "寄件方式:<input type='text' value='$pac_delivery_method' name='pac_delivery_method'><br/>";
 echo "金額:<input type='text' value='$pac_price' name='pac_price'><br/>";
 echo "訂單編號:<input type='text' value='$inv_id' name='inv_id'><br/>";
 echo "<input type='submit' neme = 'submit' value='修改'>";

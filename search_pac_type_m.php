@@ -171,7 +171,7 @@ if(isset($_POST["pac_type"]))
         echo "<th>包裹寬度</th>";
         echo "<th>包裹高度</th>";
         echo "<th>包裹運送方式</th>";
-        echo "<th>寄件時間</th>";
+        echo "<th>寄件方式</th>";
         echo "<th>金額</th>";
         echo "<th>訂單編號</th>";
         echo "</tr>";
