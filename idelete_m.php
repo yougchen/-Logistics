@@ -189,7 +189,7 @@ echo "</thead>";
 while($row = mysqli_fetch_assoc($result)){
 echo "<tr>";
 echo "<td>";
-echo $row["inv_id"];
+echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
 $id = $row["inv_id"];
 echo "</td><td>";
 echo $row["receiver_name"];
