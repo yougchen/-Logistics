@@ -1,10 +1,4 @@
-<!--加入會員-->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>急速運送</title>
 
-<style>
 /* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
 License: none (public domain)
@@ -70,9 +64,9 @@ table {
 
     h2{
       text-align: center;
-      font-size: 25px; 
+      font-size: 35px; 
       font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
+      margin: 35px 20px 20px 10px;
     }
 
     .menu{
@@ -109,82 +103,74 @@ table {
     }
 
     a{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      color: blue;
-      margin: 0 auto;
       text-decoration: none;
-      text-align: center;
+      background-color: black;
+      color: white;
+      font-size: 10px; 
+      font-family: 微軟正黑體;
+      margin: 0px 50px 0px 50px;
+      padding: 0px 10px 0px 10px
+
     }
-</style>
+    .analysis a{
+      text-decoration: none;
+      background-color: black;
+      color: white;
+      font-size: 15px; 
+      font-family: 微軟正黑體;
+      margin: 0px 10px 0px 10px;
+      padding: 15px 10px 15px 10px
 
-</head>
+    }
+    .analysis table {
+      text-align: center;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 50px 0px 0px 0px;
+    }
 
-    <body>
-    <h1>急速快遞</h1> <br/>
+    .analysis select{
+      font-size: 16px;
+      font-family: 微軟正黑體;
+      margin: 0px;
+      padding: 1px;
+    }
 
-<?php
-header('Content-Type: text/html; charset=utf-8');
-include("config.php");
-session_start();
-//判斷是否已登入
-if (empty($_SESSION["loginsession"])) { ?>
-	<div class = "menu">
-            <a href="Service.php">商品服務</a>
+    .analysis input{
+      font-size: 14px;
+      font-family: 微軟正黑體;
+      margin: 10px;
+      padding: 2px;
+    }
 
-            <a href="send.php">寄件</a>
-   
-            <a href="recive.php">收件</a>
+    .analysis_table table {
+      text-align: center;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 100px 0px 0px -20px;
+    }
+    .package table {
+      text-align: center;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 50px 0px 0px -20px;
+    }
+    .account table {
+      text-align: center;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 50px 0px 0px -300px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }  
 
-            <a href="search.php">查詢</a>
-  
-            <a href="account.php">帳號</a>
-    </div>
-<?php
-	echo "<br/><br/><h2>請先登入會員!!!</h2>";
-	header("refresh:3;url = login.php");
-} else {
-$account = $_SESSION["loginsession"];
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 50px 0px 0px -200px;
+    }
 
-//判斷是否為管理者
-$sql = "SELECT manager_right FROM member WHERE mem_account_num = '$account'";
-$result = mysqli_query($link, $sql);
-$row = mysqli_fetch_array($result);
-	   if($row["manager_right"] == 0) { ?>
-	   <div class = "menu">
-            <a href="Service.php">商品服務</a>
-
-            <a href="send.php">寄件</a>
-   
-            <a href="recive.php">收件</a>
-
-            <a href="search.php">查詢</a>
-  
-            <a href="account.php">帳號</a>
-
-            <a href="logout.php">登出</a>
-       </div>
-<?php
-	echo "<br/><br/><h2>權限不夠!!!</h2>";
-	header("refresh:3;url = index.php");
-
-	}
-	else{?>
-	<div class = "menu">
-        <a href = "invoice_list.php">訂單管理</a>
-   
-        <a href = "package_list.php">包裹管理</a>
-  
-        <a href = "list_m.php">會員管理</a>
-        
-        <a href = "analysis_m.php">資料分析</a>
-
-        <a href="index.php">首頁</a>
-
-         <a href="logout.php">登出</a>         
-    </div>
-    	<h2>歡迎管理者!!</h2>
-   	<?php
-   }
-}
-?>
+    th, td {
+      padding: 15px;
+    }

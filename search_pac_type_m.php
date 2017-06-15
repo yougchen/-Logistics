@@ -2,118 +2,7 @@
 <html>
 <head>
     <title>急速運送</title>
-
-<style>
-/* http://meyerweb.com/eric/tools/css/reset/ 
-v2.0 | 20110126
-License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-smay {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* start here */
-
-    body{
-      width: 700px;
-      margin: 0 auto;
-    }
-
-    h1{
-      text-align: center;
-      font-size: 50px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
-    }
-
-   h2{
-      text-align: center;
-      font-size: 20px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
-    }
-
-
-
-    .menu{
-      text-align: center;
-    }
-
-    .menu a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
-      font-family: 微軟正黑體;
-      margin: 10px 0px 10px 0px;
-      padding: 8px 20px 8px 20px;
-    }
-    
-    .menu a:hover{
-      background-color: white;
-      color: black;
-    }
-
-    form{
-      font-size: 10px;
-      font-family: 微軟正黑體;
-      text-align: left;
-      padding: 20px;
-    }
-
-    input{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      margin: 1px;
-      padding: 0px;
-    }
-
-    a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 10px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 10px 10px;
-      padding: 0px 10px 0px 10px;
-      
-    }
-    table, th, td {
-    border: 1px solid black;
-    }  
-
-    table {
-    border-collapse: collapse;
-    width: 50%;
-    margin: 0px 0px 0px -150px;
-    }
-
-    th, td {
-      padding: 15px;
-    }
-
-
-</style>
+    <link rel="stylesheet" href="manager.css">
 
 </head>
 
@@ -121,37 +10,85 @@ table {
     <body>
     <h1>急速快遞</h1> <br/>
 
-    <div class="menu">
+<?php
+header('Content-Type: text/html; charset=utf-8');
+include("config.php");
+session_start();
+//判斷是否已登入
+if (empty($_SESSION["loginsession"])) { ?>
+	<div class = "menu">
+            <a href="Service.php">商品服務</a>
 
+            <a href="send.php">寄件</a>
+   
+            <a href="recive.php">收件</a>
+
+            <a href="search.php">查詢</a>
+  
+            <a href="account.php">帳號</a>
+    </div>
+<?php
+	echo "<br/><br/><h2>請先登入會員!!!</h2>";
+	header("refresh:3;url = login.php");
+} else {
+$account = $_SESSION["loginsession"];
+
+//判斷是否為管理者
+$sql = "SELECT manager_right FROM member WHERE mem_account_num = '$account'";
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_array($result);
+	   if($row["manager_right"] == 0) { ?>
+	   <div class = "menu">
+            <a href="Service.php">商品服務</a>
+
+            <a href="send.php">寄件</a>
+   
+            <a href="recive.php">收件</a>
+
+            <a href="search.php">查詢</a>
+  
+            <a href="account.php">帳號</a>
+
+            <a href="logout.php">登出</a>
+       </div>
+<?php
+	echo "<br/><br/><h2>權限不夠!!!</h2>";
+	header("refresh:3;url = index.php");
+
+	}
+	else{?>
+	<div class = "menu">
         <a href = "invoice_list.php">訂單管理</a>
    
         <a href = "package_list.php">包裹管理</a>
   
         <a href = "list_m.php">會員管理</a>
-
+        
         <a href = "analysis_m.php">資料分析</a>
 
         <a href="index.php">首頁</a>
 
-         <a href="logout.php">登出</a>
+         <a href="logout.php">登出</a>         
     </div>
 
 <h2>
+
+	<div class = "analysis">
             <a href="analysis_m.php?factor=寄送包裹種類分析">寄送包裹種類分析</a>
 
             <a href="analysis_m.php?factor=寄件地區數量分析">寄件地區數量分析</a>
 
             <a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
+    </div>
 
-<h2/>
+</h2>
             
-
+	   
+	<div class = "analysis">
     <?php
 if(isset($_POST["pac_type"]))
 {
 
-		header('Content-Type: text/html; charset=utf-8');
-		include("config.php");		
 		mysqli_query($link,"SET NAMES 'UTF8'");
 
     	$pac_type = $_POST["pac_type"];
@@ -207,7 +144,9 @@ if(isset($_POST["pac_type"]))
 
 
 }
+	}
+}
 ?>
-
-<body/>
-<html/>
+</div>
+</body>
+</html>

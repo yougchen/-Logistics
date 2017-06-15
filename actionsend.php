@@ -1,5 +1,38 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
+include("config.php");
 session_start();
+//判斷是否已登入
+if (empty($_SESSION["loginsession"])) { ?>
+	<div class = "menu">
+            <a href="Service.php">商品服務</a>
+
+            <a href="send.php">寄件</a>
+   
+            <a href="recive.php">收件</a>
+
+            <a href="search.php">查詢</a>
+  
+            <a href="account.php">帳號</a>
+    </div>
+<?php
+	echo "<br/><br/><h2>請先登入會員!!!</h2>";
+	header("refresh:3;url = login.php");
+} else {?>
+		<div class = "menu">
+            <a href="Service.php">商品服務</a>
+
+            <a href="send.php">寄件</a>
+   
+            <a href="recive.php">收件</a>
+
+            <a href="search.php">查詢</a>
+  
+            <a href="account.php">帳號</a>
+
+            <a href="logout.php">登出</a>
+        </div>
+<?php
 date_default_timezone_set("Asia/Taipei");
 
 
@@ -152,4 +185,5 @@ echo "<a href = 'bill.php?inv_id=$Auto_increment'>查看表單</a>";
 echo "<br>";
 echo "<a href = 'index.php'>回到首頁</a>";
 
+}
 }

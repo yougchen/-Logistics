@@ -3,147 +3,19 @@
 <html>
 <head>
     <title>急速運送</title>
-
-<style>
-/* http://meyerweb.com/eric/tools/css/reset/ 
-v2.0 | 20110126
-License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* start here */
-
-    body{
-      width: 700px;
-      margin: 0 auto;
-    }
-
-    h1{
-      text-align: center;
-      font-size: 50px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
-    }
-
-    h2{
-      text-align: center;
-      font-size: 15px; 
-      font-family: 微軟正黑體;
-      margin: 35px 20px 20px 10px;
-    }
-
-    .menu{
-      text-align: center;
-    }
-
-    .menu a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
-      font-family: 微軟正黑體;
-      margin: 10px 0px 10px 0px;
-      padding: 8px 20px 8px 20px;
-    }
-    
-    .menu a:hover{
-      background-color: white;
-      color: black;
-    }
-
-    form{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      text-align: left;
-      padding: 20px;
-    }
-
-    input{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      margin: 10px;
-      padding: 8px;
-    }
-
-    a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 10px; 
-      font-family: 微軟正黑體;
-      margin: 0px 50px 0px 50px;
-      padding: 0px 10px 0px 10px
-
-    }
-    table, th, td {
-    border: 1px solid black;
-    }  
-
-    table {
-    border-collapse: collapse;
-    width: 150%;
-    margin: 20px 0px 0px -150px;
-    }
-
-    th, td {
-      padding: 15px;
-    }
-</style>
+    <link rel="stylesheet" href="manager.css">
 
 </head>
 
     <body>
     <h1>急速快遞</h1> <br/>
-    <div class = "menu">
 <?php
 header('Content-Type: text/html; charset=utf-8');
 include("config.php");
 session_start();
 //判斷是否已登入
 if (empty($_SESSION["loginsession"])) { ?>
+	<div class = "menu">
             <a href="Service.php">商品服務</a>
 
             <a href="send.php">寄件</a>
@@ -153,6 +25,7 @@ if (empty($_SESSION["loginsession"])) { ?>
             <a href="search.php">查詢</a>
   
             <a href="account.php">帳號</a>
+    </div>
 <?php
 	echo "<br/><br/>請先登入會員!!!";
 	header("refresh:3;url = login.php");
@@ -164,6 +37,7 @@ $sql = "SELECT manager_right FROM member WHERE mem_account_num = '$account'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_array($result);
 	   if($row["manager_right"] == 0) { ?>
+	   <div class = "menu">
             <a href="Service.php">商品服務</a>
 
             <a href="send.php">寄件</a>
@@ -175,7 +49,7 @@ $row = mysqli_fetch_array($result);
             <a href="account.php">帳號</a>
 
             <a href="logout.php">登出</a>
-
+       </div>
 <?php
   
       mysqli_query($link,"SET NAMES 'UTF8'");
@@ -226,6 +100,7 @@ $row = mysqli_fetch_array($result);
       mysqli_close($link);
       }
      else {?>
+     <div class = "menu">
         <a href = "invoice_list.php">訂單管理</a>
    
         <a href = "package_list.php">包裹管理</a>
@@ -237,19 +112,12 @@ $row = mysqli_fetch_array($result);
         <a href="index.php">首頁</a>
 
          <a href="logout.php">登出</a>         
-  
-
     </div>
 
-<html/>
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <title></title>
-        <meta name = "viewport" content = "width=device-width, initial-scale=1" charset = "UTF-8">
-        <link href = "css/style.css" rel = "stylesheet">
-    </head>
-    <body>
+
+    
+	<div class = "analysis_table">
+    
 
       <?php
     //判斷是否為刪除功能
@@ -259,7 +127,6 @@ $row = mysqli_fetch_array($result);
           $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
 
       $result=mysqli_query($link,$sql2) or die("刪除失敗");
-      echo "<br/>資料已刪除";
   	} else {
 
 		mysqli_query($link,"SET NAMES 'UTF8'");
@@ -338,6 +205,8 @@ $row = mysqli_fetch_array($result);
       mysqli_close($link);
       
     }
-}    ?>
+}    
+?>
+	</div>
     </body>
 </html>
