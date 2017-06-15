@@ -18,12 +18,14 @@ $rphone = $_POST["rphone"];
 $remail = $_POST["remail"];
 $raddress = $_POST["raddress"];
 $rsend_time = $_POST["rsend_time"];
+$delivery_method = $_POST["pac_delivery_method"];
+
 
 $rsend_time = date("Y-m-d H:i:s", $rsend_time);	
 $mem_id = $_SESSION['loginsession'];
 
 
-
+echo date("Y-m-d H:i:s", strtotime($rsend_time));;
 
 // $sql = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$now."')";
 
@@ -49,6 +51,30 @@ $sql2="SELECT mem_id FROM member WHERE mem_account_num ='$mem_id'";
 $query2=mysqli_query($link,$sql2);
 $row2 = mysqli_fetch_array($query2);
 $mem_id=$row2["mem_id"];
+//設定到達時間
+if ($delivery_method == 1) {
+  $arrive_time = strtotime($rsend_time);
+  $arrive_time = strtotime("+5 days", $arrive_time);
+  //echo date("Y-m-d", $arrive_time);
+  $arrive_time = date("Y-m-d H:i:s", $arrive_time);
+} else {
+	$arrive_time = strtotime($rsend_time);
+  $arrive_time = strtotime("+2 days", $arrive_time);
+  //echo date("Y-m-d", $arrive_time);
+  $arrive_time = date("Y-m-d H:i:s", $arrive_time);
+}
+//insert invoice
+$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id,if_success)
+ VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$arrive_time."','".$mem_id."',0)";
+
+//if (!mysqli_query($link,$sql3))
+//  {
+//  echo("<br/>Error description: " . mysqli_error($link));
+ // }
+
+
+$result = mysqli_query($link,$sql3) or die("MySQL insert error");
+
 
 
 
@@ -56,14 +82,11 @@ $mem_id=$row2["mem_id"];
 
 for($n = 1;$n <= $number;$n++){
 	$packagename = "PackageType".$n;
-	$delivery_method = "delivery_method".$n;
 	$package_type = $_POST[$packagename];
 	$length = $_POST["length"];
 	$width = $_POST["width"];
 	$height = $_POST["height"];
 	$weight = $_POST["weight"];
-	$delivery_method = $_POST[$delivery_method];
-
 
 	$array_num=$n-1;
 
@@ -77,31 +100,20 @@ for($n = 1;$n <= $number;$n++){
    $pac_price = 150;
   }
 
-  $sql3 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) VALUES ('$n','".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
+  $sql4 = "INSERT INTO package (pac_id,pac_type, pac_length, pac_width, pac_height, pac_weight, pac_delivery_method,pac_price,inv_id) 
+  VALUES ('$n','".$package_type."', '".$length[$array_num]."', '".$width[$array_num]."', '".$height[$array_num]."', '".$weight[$array_num]."', '$delivery_method','$pac_price','$Auto_increment')";
 
 
 
-  $result = mysqli_query($link,$sql3) or die("MySQL  insert error");
+  $result = mysqli_query($link,$sql4) or die("MySQL insert error");
 }
 
 
 //======================================================================================
 
-if ($delivery_method == 1) {
-  $arrive_time = strtotime($rsend_time);
-  $arrive_time = strtotime("+5 days", $arrive_time);
-  //echo date("Y-m-d", $arrive_time);
-  $arrive_time = date("Y-m-d H:i:s", $arrive_time);
-} else {
-	$arrive_time = strtotime($rsend_time);
-  $arrive_time = strtotime("+2 days", $arrive_time);
-  //echo date("Y-m-d", $arrive_time);
-  $arrive_time = date("Y-m-d H:i:s", strtotime($arrive_time));
 
-  //echo $arrive_time;
-}
-$sql4 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$Auto_increment' ";
-$result2 = mysqli_query($link,$sql4) or die("my sql select error");
+$sql5 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$Auto_increment' ";
+$result2 = mysqli_query($link,$sql5) or die("my sql select error");
 $row=mysqli_fetch_assoc($result2);
 $total_price = $row["total_price"];
 // $data_array1[] = array (
@@ -127,15 +139,12 @@ $total_price = $row["total_price"];
 //   "mem_id" => $mem_id
 // );
 //echo json_encode($data_array2);
-$sql5 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, total_price,send_time,arrive_time,mem_id,if_success) VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$total_price."','".$rsend_time."','".$arrive_time."','".$mem_id."',0)";
+$inv_id = $Auto_increment;
 
-/*if (!mysqli_query($link,$sql5))
-  {
-  echo("<br/>Error description: " . mysqli_error($link));
-  }*/
+$sql2="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
 
+$result=mysqli_query($link,$sql2) or die("mysql update error");
 
-$result = mysqli_query($link,$sql5) or die("MySQL insert error");
 
 
 echo "表單已送出";

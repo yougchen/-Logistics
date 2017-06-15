@@ -175,11 +175,15 @@ table {
 	?>
     <form action = "packagesend.php" method = "POST" accept-charset=\"utf-8\">
     寄件資料 <br>
+
+    運送方式:<input type="radio" name="delivery_method" value="一般寄件" checked = \"True\">一般寄件
+            <input type="radio" name="delivery_method" value="急件" >急件 <br>
     收件人姓名:<input type="text" name="rname" value=""><br>
-    收件人電話:<input type="tel" name="rphone"  required placeholder="09xxxxxxxx" pattern="[0-9]{9,}" maxlength="10"><br>
+    收件人電話:<input type="tel" name="rphone"  required placeholder="09xxxxxxxx" pattern="^0[0-9]{8,}" maxlength="10"><br>
     收件人信箱:<input type='email' name='remail' required placeholder='example@mail.com' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'><br>
+
     收件人地址:<input type="text" name="raddress" value="" required maxlength='35'><br>
-    <?php //送出時間: ?><input type="hidden" name="rsend_time" value="<?php date_default_timezone_set("Asia/Taipei");$rsend_time=time();echo $rsend_time?>"><br>
+    <?php //送出時間: ?><input type="hidden" name="rsend_time" value="<?php date_default_timezone_set("Asia/Taipei");$rsend_time=time();?>"><br>
     請選擇你要選幾個包裹(<=20)<br/>
 
 			<select name="number" >
