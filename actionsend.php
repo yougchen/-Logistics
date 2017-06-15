@@ -25,7 +25,6 @@ $rsend_time = date("Y-m-d H:i:s", $rsend_time);
 $mem_id = $_SESSION['loginsession'];
 
 
-echo date("Y-m-d H:i:s", strtotime($rsend_time));;
 
 // $sql = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id) VALUES (NULL,'".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$now."')";
 
@@ -113,8 +112,8 @@ for($n = 1;$n <= $number;$n++){
 
 
 $sql5 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$Auto_increment' ";
-$result2 = mysqli_query($link,$sql5) or die("my sql select error");
-$row=mysqli_fetch_assoc($result2);
+$result = mysqli_query($link,$sql5) or die("my sql select error");
+$row=mysqli_fetch_assoc($result);
 $total_price = $row["total_price"];
 // $data_array1[] = array (
 // "package_type" => $package_type,
@@ -141,9 +140,9 @@ $total_price = $row["total_price"];
 //echo json_encode($data_array2);
 $inv_id = $Auto_increment;
 
-$sql2="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
+$sql6="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
 
-$result=mysqli_query($link,$sql2) or die("mysql update error");
+$result=mysqli_query($link,$sql6) or die("mysql update error");
 
 
 

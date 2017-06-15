@@ -177,7 +177,7 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 $sql2="UPDATE invoice SET receiver_name='$receiver_name',receiver_phone='$receiver_phone',receiver_email='$receiver_email',arrive_time='$arrive_time',arrive_address='$arrive_address',send_time='$send_time',total_price='$total_price',if_success='$if_success',mem_id='$mem_id'WHERE inv_id='$inv_id'";
 
 $result=mysqli_query($link,$sql2);
-        $result = mysqli_query($link, "SELECT * FROM invoice");
+        $result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";
@@ -198,8 +198,8 @@ $result=mysqli_query($link,$sql2);
         while($row = mysqli_fetch_assoc($result)){
 	        echo "<tr>";
         	echo "<td>";
-	        echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
 	        $id = $row["inv_id"];
+	        echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
         	echo "</td><td>";
         	echo $row["receiver_name"];
         	echo "</td><td>";

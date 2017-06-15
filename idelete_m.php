@@ -164,11 +164,25 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 $account = $_SESSION["loginsession"];
 $id=$_GET["inv_id"];
 
-$sql2="DELETE FROM invoice WHERE inv_id='$id'";
+$result = mysqli_query($link, "SELECT pac_id FROM package WHERE inv_id='$id'");
+if(!$result)
+	{
+		echo ("Error: ".mysqli_error($link));
+		exit();
+	}
+else{
+	while ($row = mysqli_fetch_array($result,MYSQL_BOTH))
+	{
+		$pac_id = $row["pac_id"];
+		$sql2 = "DELETE FROM package WHERE pac_id = '$pac_id' and inv_id='$id'";
+		mysqli_query($link,$sql2)  ;
+	}
+}
+$sql3 = "DELETE FROM invoice WHERE inv_id='$id'";
 
-$result=mysqli_query($link,$sql2);
+$result=mysqli_query($link,$sql3);
 
-$result = mysqli_query($link, "SELECT * FROM invoice");
+$result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");
 echo "<table border=1>";
 echo "<thead>";
 echo "<tr>";
@@ -189,8 +203,8 @@ echo "</thead>";
 while($row = mysqli_fetch_assoc($result)){
 echo "<tr>";
 echo "<td>";
-echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
 $id = $row["inv_id"];
+echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
 echo "</td><td>";
 echo $row["receiver_name"];
 echo "</td><td>";

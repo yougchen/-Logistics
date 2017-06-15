@@ -173,7 +173,7 @@ table {
 		
 		mysqli_query($link,"SET NAMES 'UTF8'");
         
-        $result = mysqli_query($link, "SELECT * FROM package");
+        $result = mysqli_query($link, "SELECT * FROM package order by inv_id, pac_id");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";

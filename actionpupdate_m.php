@@ -170,12 +170,21 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	$pac_price=$_POST["pac_price"];
 	$inv_id=$_POST["inv_id"];
 
+//更新package
+$sql1="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
 
-$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+$result=mysqli_query($link,$sql1);
 
-$result=mysqli_query($link,$sql2);
+//算total price
+$sql2 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$inv_id' ";
+$result = mysqli_query($link,$sql2) or die("my sql select error");
+$row=mysqli_fetch_assoc($result);
+$total_price = $row["total_price"];
+//更新invoice;
+$sql3="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
+$result=mysqli_query($link,$sql3) or die("mysql update error");
         
-        $result = mysqli_query($link, "SELECT * FROM package");
+        $result = mysqli_query($link, "SELECT * FROM package order by inv_id, pac_id");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";

@@ -180,7 +180,7 @@ table {
 		
 		mysqli_query($link,"SET NAMES 'UTF8'");
         
-        $result = mysqli_query($link, "SELECT * FROM invoice");
+        $result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";

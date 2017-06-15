@@ -167,13 +167,33 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 $account = $_SESSION["loginsession"];
 $id=$_GET["pac_id"];
 $inv_id = $_GET["inv_id"];
+//刪除package
+$sql1="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
+$result=mysqli_query($link,$sql1) or die ("delete fall");
 
-$sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
+//判斷invoice內是否為0
+$result = mysqli_query($link, "SELECT count(*) FROM package WHERE inv_id = '$inv_id'");
+$row = mysqli_fetch_array($result,MYSQL_BOTH);
 
-$result=mysqli_query($link,$sql2);
+$num = $row["count(*)"];
+if($num == 0){
+	//刪除invoice
+	$sql2 = "DELETE FROM invoice WHERE inv_id='$inv_id'";
 
+	$result=mysqli_query($link,$sql2);
+}
+else{
+//算total price
+	$sql3 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$inv_id' ";
+	$result = mysqli_query($link,$sql3) or die("my sql select error");
+	$row=mysqli_fetch_assoc($result);
+	$total_price = $row["total_price"];
+//更新invoice;
+	$sql4="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
+	$result=mysqli_query($link,$sql4) or die("mysql update error");
+}
 	
-	$result = mysqli_query($link, "SELECT * FROM package");
+	$result = mysqli_query($link, "SELECT * FROM package order by inv_id, pac_id");
 	echo "<table border=1>";
 	echo "<thead>";
 	echo "<tr>";
