@@ -161,14 +161,15 @@ if(isset($_POST["number"]))
 {
 
 	session_start();
+	date_default_timezone_set("Asia/Taipei");
+
 
 	$number = $_POST["number"];
-
+	$rsend_time=time();
 	$rname = $_POST["rname"];
 	$rphone = $_POST["rphone"];
 	$remail = $_POST["remail"];
 	$raddress = $_POST["raddress"];
-	$rsend_time = $_POST["rsend_time"];
 	$pac_delivery_method = $_POST["delivery_method"];
 	
 
@@ -185,8 +186,8 @@ if(isset($_POST["number"]))
     echo "<input type='hidden' name='remail' value='".$remail."'>"."<br>";
 
     echo "<input type='hidden' name='raddress' value='".$raddress."'>"."<br>";
-    
-    echo "<input type='hidden' name='rsend_time' value='".$rsend_time."'>"."<br>";
+     //送出時間: 
+    echo "<input type=\"hidden\" name=\"rsend_time\" value=\"$rsend_time\"><br>";
 
     for($n = 1;$n <= $number;$n++){
     	
