@@ -122,11 +122,34 @@ $row = mysqli_fetch_array($result);
       <?php
     //判斷是否為刪除功能
 	if(isset($_GET["pac_id"])){
-          $id = $_GET["pac_id"];
-          $inv_id = $_GET["inv_id"];
-          $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
+        $id = $_GET["pac_id"];
+        $inv_id = $_GET["inv_id"];
+        //刪除package
+        $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
+      	$result=mysqli_query($link,$sql2) or die("刪除失敗");
 
-      $result=mysqli_query($link,$sql2) or die("刪除失敗");
+		//判斷invoice內是否為0
+		$result = mysqli_query($link, "SELECT count(*) FROM package WHERE inv_id = '$inv_id'");
+		$row = mysqli_fetch_array($result,MYSQL_BOTH);
+
+		$num = $row["count(*)"];
+		if($num == 0){
+			//刪除invoice
+			$sql2 = "DELETE FROM invoice WHERE inv_id='$inv_id'";
+
+			$result=mysqli_query($link,$sql2);
+		}
+		else{
+		//算total price
+			$sql3 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$inv_id' ";
+			$result = mysqli_query($link,$sql3) or die("my sql select error");
+			$row=mysqli_fetch_assoc($result);
+			$total_price = $row["total_price"];
+		//更新invoice;
+			$sql4="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
+			$result=mysqli_query($link,$sql4) or die("mysql update error");
+		}
+
   	} else {
 
 		mysqli_query($link,"SET NAMES 'UTF8'");
@@ -142,10 +165,19 @@ $row = mysqli_fetch_array($result);
 			$pac_price=$_POST["pac_price"];
 			$inv_id=$_POST["inv_id"];
 
-
+			//更新package
 			$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
 
 			mysqli_query($link,$sql2) or die("update fall");
+			//算total price
+			$sql2 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$inv_id' ";
+			$result = mysqli_query($link,$sql2) or die("my sql select error");
+			$row=mysqli_fetch_assoc($result);
+			$total_price = $row["total_price"];
+			//更新invoice;
+			$sql3="UPDATE invoice SET total_price='$total_price' WHERE inv_id='$inv_id'";
+			$result=mysqli_query($link,$sql3) or die("mysql update error");
+        
   		}
    	}	
 		
