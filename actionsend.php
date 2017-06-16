@@ -99,12 +99,12 @@ $query2=mysqli_query($link,$sql2);
 $row2 = mysqli_fetch_array($query2);
 $mem_id=$row2["mem_id"];
 //設定到達時間
-if ($delivery_method == 1) {
+if ($delivery_method == "一般寄件") {
   $arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+5 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
   $arrive_time = date("Y-m-d H:i:s", $arrive_time);
-} else {
+} else if ($delivery_method == "急件"){
 	$arrive_time = strtotime($rsend_time);
   $arrive_time = strtotime("+2 days", $arrive_time);
   //echo date("Y-m-d", $arrive_time);
