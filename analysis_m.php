@@ -79,6 +79,8 @@ $row = mysqli_fetch_array($result);
 			<a href="analysis_m.php?factor=寄件地區數量分析">寄件地區數量分析</a>
 
 			<a href="analysis_m.php?factor=收件地區數量分析">收件地區數量分析</a>
+
+			<a href="analysis_m.php?factor=會員分析">會員分析</a>
 	</div>
 </h2>
 			
@@ -133,7 +135,7 @@ if(isset($_GET["factor"]))
     {
 
     	echo  "<form action = \"search_account.php\" method = \"POST\">
-    	會員年齡:<input type=\"text\" name=\"age\" value=''><br>
+    	會員年齡:<input type=\"text\" name=\"age\" value='' pattern = '^[1-9]{1,}[0-9]*' maxlength = 3><br>
  		<select name=\"mem_gender\">
  				<option value = 'null'></option>
     			<option value = '男'>男</option>
