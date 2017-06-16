@@ -1,4 +1,15 @@
-<?php
+<!--加入會員-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>急速運送</title>
+    <link rel="stylesheet" href="normal.css">
+
+</head>
+
+    <body>
+    <h1>急速快遞</h1> <br/>
+    <?php
 header('Content-Type: text/html; charset=utf-8');
 include("config.php");
 session_start();
@@ -14,6 +25,8 @@ if (empty($_SESSION["loginsession"])) { ?>
             <a href="search.php">查詢</a>
   
             <a href="account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
     </div>
 <?php
 	echo "<br/><br/><h2>請先登入會員!!!</h2>";
@@ -29,6 +42,8 @@ if (empty($_SESSION["loginsession"])) { ?>
             <a href="search.php">查詢</a>
   
             <a href="account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
 
             <a href="logout.php">登出</a>
         </div>
@@ -179,11 +194,11 @@ $result=mysqli_query($link,$sql6) or die("mysql update error");
 
 
 
-echo "表單已送出";
+echo "<h2>表單已送出";
 echo "<br>";
 echo "<a href = 'bill.php?inv_id=$Auto_increment'>查看表單</a>";
 echo "<br>";
-echo "<a href = 'index.php'>回到首頁</a>";
+echo "<a href = 'index.php'>回到首頁</a></h2>";
 
 }
 }

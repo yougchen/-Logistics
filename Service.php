@@ -2,123 +2,7 @@
 <html>
 <head>
     <title>急速運送</title>
-
-<style>
-/* http://meyerweb.com/eric/tools/css/reset/ 
-v2.0 | 20110126
-License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* start here */
-
-    body{
-      width: 700px;
-      margin: 0 auto;
-    }
-
-    h1{
-      text-align: center;
-      font-size: 50px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
-    }
-
-   h2{
-      text-align: center;
-      font-size: 50px; 
-      font-family: 微軟正黑體;
-      margin: 10px 10px 20px 10px;
-    }
-
-
-
-    .menu{
-      text-align: center;
-    }
-
-    .menu a{
-      text-decoration: none;
-      background-color: black;
-      color: white;
-      font-size: 20px; 
-      font-family: 微軟正黑體;
-      margin: 10px 0px 10px 0px;
-      padding: 8px 20px 8px 20px;
-    }
-    
-    .menu a:hover{
-      background-color: white;
-      color: black;
-    }
-
-    form{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      text-align: left;
-      padding: 20px;
-    }
-
-    input{
-      font-size: 18px;
-      font-family: 微軟正黑體;
-      margin: 10px;
-      padding: 8px;
-    }
-
-    a{
-   	  text-decoration: none;
-      background-color: white;
-      color: black;
-      font-size: 15px; 
-      font-family: 微軟正黑體;
-      margin: 10px 0px 10px 0px;
-      padding: 8px 20px 8px 20px;
-    }
-</style>
+    <link rel="stylesheet" href="normal.css">
 
 </head>
 
@@ -144,7 +28,6 @@ table {
             <?php } ?>
     </div>
 
-</html>
 	
 <h2>
 <?php
@@ -156,7 +39,7 @@ echo "
 <a href=\"Service.php?factor=經濟宅急便\">經濟宅急便</a>
 <a href=\"Service.php?factor=當日宅急便\">當日宅急便</a>
 <a href=\"Service.php?factor=到付宅急便\">到付宅急便</a>
-<br/><br/> ";
+<br/><br/> <div class = 'service'>";
 
 //<a href="">配達完通知</a>
 //<a href="">配送預告</a>
@@ -250,7 +133,7 @@ echo "<h4>";
 echo "</h4>";
 }
 ?>
-<h2/>
+</h2>
 </body>	
 </html>
 
