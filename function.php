@@ -8,7 +8,13 @@
 
     <body>
     <h1>急速快遞</h1> <br/>
-    <div class="menu">
+<?php
+header('Content-Type: text/html; charset=utf-8');
+include("config.php");
+session_start();
+//判斷是否已登入
+if (empty($_SESSION["loginsession"])) { ?>
+    <div class = "menu">
             <a href="Service.php">商品服務</a>
 
             <a href="send.php">寄件</a>
@@ -21,22 +27,29 @@
 
             <a href="index.php">首頁</a>
 
-            <?php session_start(); ?>
-            <?php if (empty($_SESSION["loginsession"])) { ?>
-            <?php } else { ?>
-            <a href="logout.php">登出</a>
-            <?php } ?>
-
     </div>
-
-
 <?php
+    echo "<br/><br/><h2>請先登入會員!!!</h2>";
+    header("refresh:3;url = login.php");
+} else {?>
+        <div class = "menu">
+            <a href="Service.php">商品服務</a>
 
-include("config.php");
-if (empty($_SESSION["loginsession"])) {
-	echo "請先登入會員!!!";
-	header("refresh:3;url = login.php");
-} else{ ?>
+            <a href="send.php">寄件</a>
+   
+            <a href="recive.php">收件</a>
+
+            <a href="search.php">查詢</a>
+  
+            <a href="account.php">帳號</a>
+
+            <a href="index.php">首頁</a>
+
+
+            <a href="logout.php">登出</a>
+        </div>
+
+
 <h2>
     <a href = "list.php">個人資料</a>
     <br/>
