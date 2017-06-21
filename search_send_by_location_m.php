@@ -93,7 +93,9 @@ if(isset($_POST["location"]))
 
     	$location = $_POST["location"];
 
-    	$sql = "SELECT * FROM member Where mem_address like '%$location%'";
+    	$sql = "SELECT member.mem_name, member.mem_phone, member.mem_address, member.mem_email
+        , member.mem_account_num, member.mem_password, member.manager_right, member.mem_birth, member.mem_career
+        , member.mem_gender, member.mem_id FROM invoice,member Where invoice.mem_id = member.mem_id and member.mem_address like '%$location%' group by member.mem_id";
 
     	$result = mysqli_query($link, $sql);
 
