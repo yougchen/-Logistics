@@ -59,6 +59,7 @@ if(isset($_POST["number"]))
 	$raddress = $_POST["raddress"];
 	$pac_delivery_method = $_POST["delivery_method"];
 	
+	
 
 
     echo "<form action = \"actionsend.php\" method = \"POST\" accept-charset=\"utf-8\">";
@@ -81,7 +82,8 @@ if(isset($_POST["number"]))
     	echo "
     		包裹資料 <br>";
     		
-    	echo "包裹類型:<input type=\"radio\" name=\"PackageType".$n."\" value=\"一般常溫用品\" checked = \"True\">一般常溫用品
+    	echo "包裹類型:
+    				<input type=\"radio\" name=\"PackageType".$n."\" value=\"一般常溫用品\" checked = \"True\">一般常溫用品
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"低溫保鮮品\">低溫保鮮品
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"冷凍保鮮品\">冷凍保鮮品
     				<input type=\"radio\" name=\"PackageType".$n."\" value=\"易碎品\">易碎品<br>
