@@ -80,7 +80,11 @@ $row = mysqli_fetch_array($result);
     </head>
     <body>
 
-    
+	<div class = "table">
+	<h2>
+    	<a href = "insert_invoice_m.php">訂單新增</a>
+    </h2>
+    </div>
         <?php
 		
 		mysqli_query($link,"SET NAMES 'UTF8'");

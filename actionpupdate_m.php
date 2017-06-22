@@ -71,6 +71,11 @@ $row = mysqli_fetch_array($result);
          <a href="logout.php">登出</a>         
     </div>
 
+    <div class = "ptable">
+	<h2>
+	    <a href = "packagesend_m.php">包裹新增</a>
+	</h2>
+	</div>
  
     <div class = "package">
 <?php
@@ -78,17 +83,32 @@ $row = mysqli_fetch_array($result);
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
 	$pac_id=$_POST["pac_id"];
-	$pac_type=$_POST["pac_type"];
-	$pac_length=$_POST["pac_length"];
-	$pac_width=$_POST["pac_width"];
-	$pac_height=$_POST["pac_height"];
-	$pac_weight=$_POST["pac_weight"];
-	$pac_delivery_method=$_POST["pac_delivery_method"];
+	$package_type=$_POST["pac_type"];
+	$length[]=$_POST["pac_length"];
+	$width[]=$_POST["pac_width"];
+	$height[]=$_POST["pac_height"];
+	$weight[]=$_POST["pac_weight"];
+	$delivery_method=$_POST["pac_delivery_method"];
 	$pac_price=$_POST["pac_price"];
 	$inv_id=$_POST["inv_id"];
 
+	//運費對應，使用package_price_count.php要有的模板
+	//常溫
+	$price = array("60" => "130", "90" => "170", "120" => "210", "150" => "250");
+	$K = array_keys($price);
+	//低溫
+	$price_cold = array("60" => "160", "90" => "225", "120" => "290");
+	$K_cold = array_keys($price_cold);
+	//經濟
+	$price_cheap = array("5000" => "95");
+	$K_cheap = array_keys($price_cheap);
+
+	$array_num = 0;
+
+	include("package_price_count.php");
+
 //更新package
-$sql1="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+$sql1="UPDATE package SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
 
 $result=mysqli_query($link,$sql1);
 

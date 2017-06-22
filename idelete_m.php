@@ -25,6 +25,7 @@ if (empty($_SESSION["loginsession"])) { ?>
   
             <a href="account.php">帳號</a>
     </div>
+    
 <?php
 	echo "<br/><br/><h2>請先登入會員!!!</h2>";
 	header("refresh:3;url = login.php");
@@ -69,6 +70,11 @@ $row = mysqli_fetch_array($result);
          <a href="logout.php">登出</a>         
     </div>
 
+	<div class = "table">
+	<h2>
+    	<a href = "insert_invoice_m.php">訂單新增</a>
+    </h2>
+    </div>
 
 <?php
 

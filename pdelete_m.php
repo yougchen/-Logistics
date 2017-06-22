@@ -71,6 +71,11 @@ $row = mysqli_fetch_array($result);
          <a href="logout.php">登出</a>         
     </div>
 
+    <div class = "ptable">
+	<h2>
+	    <a href = "packagesend_m.php">包裹新增</a>
+	</h2>
+	</div>
 
     <div class = "package">
 <?php

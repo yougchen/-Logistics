@@ -64,7 +64,7 @@ $row = mysqli_fetch_array($result);
       echo "<th>包裹長度</th>";
       echo "<th>包裹寬度</th>";
       echo "<th>包裹高度</th>";
-      echo "<th>包裹運送方式</th>";
+      echo "<th>包裹重量</th>";
       echo "<th>寄件方式</th>";
       echo "<th>金額</th>";
       echo "<th>訂單編號</th>";
@@ -113,8 +113,6 @@ $row = mysqli_fetch_array($result);
 
          <a href="logout.php">登出</a>         
     </div>
-
-
     
 	<div class = "analysis_table">
     
@@ -123,7 +121,7 @@ $row = mysqli_fetch_array($result);
     //判斷是否為刪除功能
 	if(isset($_GET["pac_id"])){
         $id = $_GET["pac_id"];
-        $inv_id = $_GET["inv_id"];
+        $inv_id = $_GET["inv_id"];        
         //刪除package
         $sql2="DELETE FROM package WHERE pac_id='$id' and inv_id = '$inv_id'";
       	$result=mysqli_query($link,$sql2) or die("刪除失敗");
@@ -155,18 +153,37 @@ $row = mysqli_fetch_array($result);
 		mysqli_query($link,"SET NAMES 'UTF8'");
   		//判斷是否為修改功能
   		if(isset($_POST["pac_id"])){
-  			$pac_id=$_POST["pac_id"];
-			$pac_type=$_POST["pac_type"];
-			$pac_length=$_POST["pac_length"];
-			$pac_width=$_POST["pac_width"];
-			$pac_height=$_POST["pac_height"];
-			$pac_weight=$_POST["pac_weight"];
-			$pac_delivery_method=$_POST["pac_delivery_method"];
+			$pac_id=$_POST["pac_id"];
+			$package_type=$_POST["pac_type"];
+			$length[]=$_POST["pac_length"];
+			$width[]=$_POST["pac_width"];
+			$height[]=$_POST["pac_height"];
+			$weight[]=$_POST["pac_weight"];
+			$delivery_method=$_POST["pac_delivery_method"];
 			$pac_price=$_POST["pac_price"];
 			$inv_id=$_POST["inv_id"];
 
-			//更新package
-			$sql2="UPDATE package SET pac_id='$pac_id',pac_type='$pac_type',pac_length='$pac_length',pac_width='$pac_width',pac_height='$pac_height',pac_weight='$pac_weight',pac_delivery_method='$pac_delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+			//運費對應，使用package_price_count.php要有的模板
+			//常溫
+			$price = array("60" => "130", "90" => "170", "120" => "210", "150" => "250");
+			$K = array_keys($price);
+			//低溫
+			$price_cold = array("60" => "160", "90" => "225", "120" => "290");
+			$K_cold = array_keys($price_cold);
+			//經濟
+			$price_cheap = array("5000" => "95");
+			$K_cheap = array_keys($price_cheap);
+
+			$array_num = 0;
+
+			include("package_price_count.php");
+
+		//更新package
+			$sql2="UPDATE package 
+				SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'
+				WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+
+
 
 			mysqli_query($link,$sql2) or die("update fall");
 			//算total price
@@ -179,10 +196,16 @@ $row = mysqli_fetch_array($result);
 			$result=mysqli_query($link,$sql3) or die("mysql update error");
         
   		}
-   	}	
-		
+   	}
 		  mysqli_query($link,"SET NAMES 'UTF8'");
 		  $id=$_GET["inv_id"];
+
+	echo "<div class = \"ptable\">
+		  <h2>
+	      	<a href = \"packagesend_m.php?inv_id=$id\">包裹新增</a>
+	      </h2>
+	      </div>";	
+	
         
       $result = mysqli_query($link, "SELECT * FROM package where inv_id = '$id'");
       echo "<table border=1>";
@@ -193,7 +216,7 @@ $row = mysqli_fetch_array($result);
       echo "<th>包裹長度</th>";
       echo "<th>包裹寬度</th>";
       echo "<th>包裹高度</th>";
-      echo "<th>包裹運送方式</th>";
+      echo "<th>包裹重量</th>";
       echo "<th>寄件方式</th>";
       echo "<th>金額</th>";
       echo "<th>訂單編號</th>";
