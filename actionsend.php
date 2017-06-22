@@ -152,7 +152,7 @@ include("package_price_count.php");
 //======================================================================================
 
 
-$sql5 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$Auto_Increment' ";
+$sql5 = "SELECT SUM(pac_price) as total_price FROM package WHERE package.inv_id = '$Auto_increment' ";
 $result = mysqli_query($link,$sql5) or die("my sql select error");
 $row=mysqli_fetch_assoc($result);
 $total_price = $row["total_price"];
