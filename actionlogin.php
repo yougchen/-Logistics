@@ -40,10 +40,12 @@ if ($total_records > 0) {
        $_SESSION["loginsession"] = $account;
        session_write_close();
        header("Location:function.php");die();
+        ob_end_flush(); 
     } else {
         $_SESSION["loginsession"] = $account;
         session_write_close();
         header("Location:manager.php");die();
+         ob_end_flush(); 
     }
 } else {
     echo "登入失敗!!!";
