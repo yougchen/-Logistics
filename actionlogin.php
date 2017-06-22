@@ -38,15 +38,18 @@ $row = mysqli_fetch_assoc($result);
 if ($total_records > 0) {
     if($row["manager_right"] == 0) {
        $_SESSION["loginsession"] = $account;
-       header("Location:function.php");
+       session_write_close();
+       header("Location:function.php");die();
     } else {
         $_SESSION["loginsession"] = $account;
-        header("Location:manager.php");
+        session_write_close();
+        header("Location:manager.php");die();
     }
 } else {
     echo "登入失敗!!!";
-    header("refresh:3;url = login.php");
+    header("refresh:3;url=login.php");
 }
 ?>
 <h4/>
 <html/>
+
