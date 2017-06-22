@@ -96,7 +96,7 @@ if(isset($_POST["pac_type"]))
     	$pac_type = $_POST["pac_type"];
    
 
-    	$sql = "SELECT * FROM package where pac_type = '$pac_type'";
+    	$sql = "SELECT * FROM package where pac_type = '$pac_type' order by inv_id, pac_id ";
 
     	$result = mysqli_query($link, $sql);
 
