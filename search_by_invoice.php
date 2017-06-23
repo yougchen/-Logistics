@@ -206,7 +206,7 @@ $row = mysqli_fetch_array($result);
 		//更新package
 			$sql2="UPDATE package 
 				SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'
-				WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+				WHERE pac_id='$pac_id1' and inv_id='$inv_id'";
 
 
 
