@@ -63,6 +63,8 @@ if (empty($_SESSION["loginsession"])) { ?>
   
             <a href="account.php">帳號</a>
 
+        	<a href="index.php">首頁</a>
+
             <a href="logout.php">登出</a>
        </div>
 <?php
