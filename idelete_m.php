@@ -105,6 +105,7 @@ $result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");
 echo "<table border=1>";
 echo "<thead>";
 echo "<tr>";
+echo "<th>最後運送預告</th>";
 echo "<th>編號</th>";
 echo "<th>收件人名字</th>";
 echo "<th>收件人手機</th>";
@@ -123,6 +124,8 @@ while($row = mysqli_fetch_assoc($result)){
 echo "<tr>";
 echo "<td>";
 $id = $row["inv_id"];
+echo "<div class = 'mail'><h2><a href='send_email.php?inv_id=$id&factor=manager'>送到收件人的運送通知</a></h2></div>";
+echo "</td><td>";
 echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
 echo "</td><td>";
 echo $row["receiver_name"];

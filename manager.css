@@ -112,6 +112,23 @@ table {
       padding: 0px 10px 0px 10px
 
     }
+    .mail a{
+      text-decoration: none;
+      background-color: black;
+      color: white;
+      font-size: 15px; 
+      font-family: 微軟正黑體;
+      margin: 0px 10px 0px -150px;
+      padding: 0px 10px 0px 10px
+
+    }
+    .mail h2{
+      text-align: center;
+      font-size: 35px; 
+      font-family: 微軟正黑體;
+      margin:0px 0px 0px -50px;;
+      padding:0px 0px 0px 200px;
+    }
     .analysis a{
       text-decoration: none;
       background-color: black;
@@ -196,8 +213,8 @@ table {
       font-family: 微軟正黑體;
       margin: 0px 10px 0px 100px;
       padding: 5px 5px 5px 5px
-
     }
+
     table, th, td {
       border: 1px solid black;
     }  
@@ -211,3 +228,4 @@ table {
     th, td {
       padding: 15px;
     }
+

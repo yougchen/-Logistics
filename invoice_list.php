@@ -93,6 +93,7 @@ $row = mysqli_fetch_array($result);
         echo "<table border=1>";
         echo "<thead>";
         echo "<tr>";
+        echo "<th>最後運送預告</th>";
         echo "<th>編號</th>";
         echo "<th>收件人名字</th>";
         echo "<th>收件人手機</th>";
@@ -108,9 +109,12 @@ $row = mysqli_fetch_array($result);
         echo "</tr>";
         echo "</thead>";
         while($row = mysqli_fetch_assoc($result)){
+        	$id = $row["inv_id"];
+
 	        echo "<tr>";
         	echo "<td>";
-        	$id = $row["inv_id"];
+        	echo "<div class = 'mail'><h2><a href='send_email.php?inv_id=$id&factor=manager'>送到收件人的運送通知</a></h2></div>";
+        	echo "</td><td>";
 	        echo "<a href = 'search_by_invoice.php?inv_id=$id'>".$row["inv_id"]."</a>";
         	echo "</td><td>";
         	echo $row["receiver_name"];
@@ -143,7 +147,9 @@ $row = mysqli_fetch_array($result);
         	echo "<td>";
         	echo "<a href = 'iupdate_m.php?inv_id=$id'>modify</a>";
         	echo "</td>";
+
         	echo "</tr>";
+
         }
         echo "</table>";
 
