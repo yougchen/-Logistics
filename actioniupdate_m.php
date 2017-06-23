@@ -120,7 +120,35 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	$mem_id=$_POST["mem_id"];
 
 
-$sql2="UPDATE invoice SET inv_id='$inv_id', receiver_name='$receiver_name',receiver_phone='$receiver_phone',receiver_email='$receiver_email',arrive_time='$arrive_time',arrive_address='$arrive_address',send_time='$send_time',total_price='$total_price',if_success='$if_success',mem_id='$mem_id'WHERE inv_id='$inv_id1'";
+	$sql2="UPDATE invoice SET inv_id='$inv_id', receiver_name='$receiver_name',receiver_phone='$receiver_phone',receiver_email='$receiver_email',arrive_time='$arrive_time',arrive_address='$arrive_address',send_time='$send_time',total_price='$total_price',if_success='$if_success',mem_id='$mem_id'WHERE inv_id='$inv_id1'";
+
+	//使用package陣列記值必須有的。
+	$array_num = 0;
+
+	//取出package資料
+    $result = mysqli_query($link, "SELECT * FROM package where inv_id = '$inv_id1'");
+
+    while($row = mysqli_fetch_assoc($result)){
+
+
+		$pac_id = $row["pac_id"];
+		$package_type=$row["pac_type"];
+		$length[]=$row["pac_length"];
+		$width[]=$row["pac_width"];
+		$height[]=$row["pac_height"];
+		$weight[]=$row["pac_weight"];
+		$delivery_method=$row["pac_delivery_method"];
+		$pac_price=$row["pac_price"];
+
+		//更新package
+		$sql3="UPDATE package 
+			SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'
+			WHERE pac_id='$pac_id' and inv_id='$inv_id1'";
+
+		mysqli_query($link,$sql3) or die("update fall");
+
+    }
+
 
 $result=mysqli_query($link,$sql2);
         $result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");
