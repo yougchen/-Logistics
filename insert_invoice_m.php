@@ -86,7 +86,7 @@ $row = mysqli_fetch_array($result);
 
     收件時間<input type="date" name="arrive_time" required ><br>
 
-	送達:<input type="text" name="if_success" required pattern="^[01]$"><br/>
+	送達:<input type="text" name="if_success" required pattern="^[01]$">(0代表未送達；1則是已送達)<br/>
 
     
     請選擇你要選幾個包裹(<=20)<br/>

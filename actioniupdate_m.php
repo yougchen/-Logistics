@@ -81,7 +81,34 @@ $row = mysqli_fetch_array($result);
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
 
+	//改後
 	$inv_id=$_POST["inv_id"];
+
+	//未改前
+	$inv_id1=$_POST["inv_id1"];
+
+	//判斷是否相同
+	if($inv_id == $inv_id1){
+
+	}
+	else{
+		//判斷inv_id是否已有
+		if(isset($_POST["inv_id"]) && $_POST["inv_id"] != ""){
+			//改後
+			$inv_id=$_POST["inv_id"];
+			$sql = "SELECT * FROM invoice WHERE inv_id = '$inv_id'";
+			$result = mysqli_query($link, $sql);
+			$total_records = mysqli_num_rows($result);
+			//有資料
+			if ($total_records > 0) {
+				header("refresh:3;url=invoice_list.php");
+				echo "<br />編號已有";
+				exit();
+			}
+		}
+	}
+
+
 	$receiver_name=$_POST["receiver_name"];
 	$receiver_phone=$_POST["receiver_phone"];
 	$receiver_email=$_POST["receiver_email"];
@@ -93,7 +120,7 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	$mem_id=$_POST["mem_id"];
 
 
-$sql2="UPDATE invoice SET receiver_name='$receiver_name',receiver_phone='$receiver_phone',receiver_email='$receiver_email',arrive_time='$arrive_time',arrive_address='$arrive_address',send_time='$send_time',total_price='$total_price',if_success='$if_success',mem_id='$mem_id'WHERE inv_id='$inv_id'";
+$sql2="UPDATE invoice SET inv_id='$inv_id', receiver_name='$receiver_name',receiver_phone='$receiver_phone',receiver_email='$receiver_email',arrive_time='$arrive_time',arrive_address='$arrive_address',send_time='$send_time',total_price='$total_price',if_success='$if_success',mem_id='$mem_id'WHERE inv_id='$inv_id1'";
 
 $result=mysqli_query($link,$sql2);
         $result = mysqli_query($link, "SELECT * FROM invoice order by inv_id");

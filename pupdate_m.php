@@ -83,7 +83,9 @@ $sql2="SELECT * FROM package WHERE pac_id='$id' and inv_id='$inv_id'";
 $result=mysqli_query($link,$sql2);
 
 while ($row=mysqli_fetch_assoc($result)) {
-	$pac_id=$row["pac_id"];
+
+	//pac_id可能會被改
+	$pac_id1=$row["pac_id"];
 	$pac_type=$row["pac_type"];
 	$pac_length=$row["pac_length"];
 	$pac_width=$row["pac_width"];
@@ -104,7 +106,11 @@ else
 	echo "<form action='actionpupdate_m.php' method='post' accept-charset=\"utf-8\">";
 //echo "ID:".$id."<br/>";
 }
-echo "包裹編號:<input type='text' value='$pac_id' name='pac_id'><br/>";
+
+echo "<input type='hidden' name='pac_id1' value='".$pac_id1."'>"."<br>";
+echo "<input type='hidden' name='inv_id' value='".$inv_id."'>"."<br>";
+
+echo "包裹編號:<input type='text' value='$pac_id1' name='pac_id'><br/>";
 echo "包裹品項:<input type='text' value='$pac_type' name='pac_type'><br/>";
 echo "包裹長度:<input type='text' value='$pac_length' name='pac_length'><br/>";
 echo "包裹寬度:<input type='text' value='$pac_width' name='pac_width'><br/>";
@@ -112,7 +118,7 @@ echo "包裹高度:<input type='text' value='$pac_height' name='pac_height'><br/
 echo "包裹重量:<input type='text' value='$pac_weight' name='pac_weight'><br/>";
 echo "寄件方式:<input type='text' value='$pac_delivery_method' name='pac_delivery_method'><br/>";
 echo "金額:<input type='text' value='$pac_price' name='pac_price'><br/>";
-echo "訂單編號:<input type='text' value='$inv_id' name='inv_id'><br/>";
+echo "訂單編號:".$inv_id."(不可修改)";
 echo "<input type='submit' neme = 'submit' value='修改'>";
 echo "</form>";
 	}

@@ -153,7 +153,6 @@ $row = mysqli_fetch_array($result);
 		mysqli_query($link,"SET NAMES 'UTF8'");
   		//判斷是否為修改功能
   		if(isset($_POST["pac_id"])){
-			$pac_id=$_POST["pac_id"];
 			$package_type=$_POST["pac_type"];
 			$length[]=$_POST["pac_length"];
 			$width[]=$_POST["pac_width"];
@@ -163,6 +162,32 @@ $row = mysqli_fetch_array($result);
 			$pac_price=$_POST["pac_price"];
 			$inv_id=$_POST["inv_id"];
 
+			//改後
+			$pac_id = $_POST["pac_id"];
+
+			//未改前
+			$pac_id1=$_POST["pac_id1"];
+			//判斷是否相同
+			if($pac_id == $pac_id1){
+
+			}
+			else{
+				//判斷pac_id是否已有
+				if(isset($_POST["pac_id"]) && $_POST["pac_id"] != ""){
+					//改後
+					$pac_id = $_POST["pac_id"];
+					$sql = "SELECT count(*) FROM package WHERE inv_id = '$inv_id' and pac_id = '$pac_id'";
+					$result = mysqli_query($link, $sql);
+					$row = mysqli_fetch_assoc($result);
+					$total_records = $row["count(*)"];
+					//有資料
+					if ($total_records > 0) {
+						header("refresh:3;url=package_list.php");
+						echo "<br />包裹編號已有";
+						exit();
+					}
+				}
+			}
 			//運費對應，使用package_price_count.php要有的模板
 			//常溫
 			$price = array("60" => "130", "90" => "170", "120" => "210", "150" => "250");

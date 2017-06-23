@@ -82,7 +82,8 @@ $row = mysqli_fetch_array($result);
 
 		
 mysqli_query($link,"SET NAMES 'UTF8'");
-	$pac_id=$_POST["pac_id"];
+
+
 	$package_type=$_POST["pac_type"];
 	$length[]=$_POST["pac_length"];
 	$width[]=$_POST["pac_width"];
@@ -91,6 +92,36 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	$delivery_method=$_POST["pac_delivery_method"];
 	$pac_price=$_POST["pac_price"];
 	$inv_id=$_POST["inv_id"];
+
+	//改後
+	$pac_id = $_POST["pac_id"];
+
+	//未改前
+	$pac_id1=$_POST["pac_id1"];
+
+	//判斷是否相同
+	if($pac_id == $pac_id1){
+
+	}
+	else{
+		//判斷pac_id是否已有
+		if(isset($_POST["pac_id"]) && $_POST["pac_id"] != ""){
+			//改後
+			$pac_id = $_POST["pac_id"];
+			$sql = "SELECT count(*) FROM package WHERE inv_id = '$inv_id' and pac_id = '$pac_id'";
+			$result = mysqli_query($link, $sql);
+			$row = mysqli_fetch_assoc($result);
+			$total_records = $row["count(*)"];
+			//有資料
+			if ($total_records > 0) {
+				header("refresh:3;url=package_list.php");
+				echo "<br />包裹編號已有";
+				exit();
+			}
+		}
+	}
+
+
 
 	//運費對應，使用package_price_count.php要有的模板
 	//常溫
@@ -108,7 +139,7 @@ mysqli_query($link,"SET NAMES 'UTF8'");
 	include("package_price_count.php");
 
 //更新package
-$sql1="UPDATE package SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id' and inv_id='$inv_id'";
+$sql1="UPDATE package SET pac_id='$pac_id',pac_type='$package_type',pac_length='$length[$array_num]',pac_width='$width[$array_num]',pac_height='$height[$array_num]',pac_weight='$weight[$array_num]',pac_delivery_method='$delivery_method',pac_price='$pac_price',inv_id='$inv_id'WHERE pac_id='$pac_id1' and inv_id='$inv_id'";
 
 $result=mysqli_query($link,$sql1);
 
