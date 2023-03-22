@@ -28,16 +28,16 @@
 
     header('Content-Type: text/html; charset=utf-8');
     //連結資料庫
-    $link=@mysql_connect(
+    $link=@mysqli_connect(
         'localhost',
         'root',
         '123456',
         'logistics');
 
-     mysql_query("SET NAMES 'UTF8'");
+     mysqli_query($link,"SET NAMES 'UTF8'");
 
     //開啟資料庫
-    $db = mysql_select_db("logistics", $link);
+    $db = mysqli_select_db($link,"logistics" );
     $mem_account_num = $_POST['mem_account_num'];
     $mem_name = $_POST['mem_name'];
     $mem_password = $_POST['mem_password'];
@@ -52,7 +52,7 @@
         
         values (NULL, '$mem_name', '$mem_phone', '$mem_address', '$mem_email', '$mem_account_num', '$mem_password', '0',  '$mem_birth', '$mem_career', '$mem_gender')";
 
-           mysql_query ($queryStr,$link) or die ('<br/> 加入失敗');
+           mysqli_query ($link,$queryStr) or die ('<br/> 加入失敗');
 
     
     echo "<h2 style= 'font-size:30px; text-align:center; margin:0 auto; margin-top:30px;' >- - - - 歡迎加入會員 - - - -</h2>";
@@ -85,7 +85,7 @@
     echo $_POST["mem_career"];
     echo "</p><br>";
 
-    mysql_close($link);
+    mysqli_close($link);
 
     echo "<a href=login.php style='border:1px solid black; background-color:black; color:white; margin:10px 10px 10px 200px; padding: 8px 20px 8px 20px; '>登入賬號</a>";
     echo "<a href=account.php style='border:1px solid black; background-color:black; color:white; margin:10px; padding: 8px 20px 8px 20px;'>返回賬號頁</a>";

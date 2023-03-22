@@ -108,7 +108,8 @@ if(isset($_POST["number"]))
 		}
 	}
 	else{
-		//找出當前invoice Auto_increment當前值
+		//找出當前invoice Auto_increment當前值		
+		$query=mysqli_query($link,"SET information_schema_stats_expiry = 0");
 		$sql="show table status where name ='invoice'";
 		$query=mysqli_query($link,$sql);
 		$row = mysqli_fetch_array($query);
@@ -117,7 +118,7 @@ if(isset($_POST["number"]))
 
 	$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address,send_time,arrive_time,mem_id,if_success)
  	VALUES ('".$inv_id."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$arrive_time."','".$mem_id."','".$if_success."')";
-	$result = mysqli_query($link,$sql3) or die("MySQL insert error: ".mysqli_error($link));
+	$result = mysqli_query($link,$sql3) or die("MySQL sql3 insert error: ".mysqli_error($link));
 
 	
     echo "<form action = \"actionsend_m.php\" method = \"POST\" accept-charset=\"utf-8\">";

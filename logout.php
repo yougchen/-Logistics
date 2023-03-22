@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-session_unset("$_SESSION[loginsession]");
+session_unset();
 header("location:login.php");
 
 ?>

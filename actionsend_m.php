@@ -106,7 +106,7 @@ if(isset($_POST["number"])){
 
 
 
-	  $result = mysqli_query($link,$sql) or die("MySQL insert error".mysqli_error($link));
+	  $result = mysqli_query($link,$sql) or die("MySQL insert error:".mysqli_error($link));
 
 	}
 	//update total_price

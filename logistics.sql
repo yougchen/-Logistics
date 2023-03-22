@@ -241,6 +241,7 @@ INSERT INTO `package` (`pac_id`, `pac_type`, `pac_length`, `pac_width`, `pac_hei
 -- 資料表索引 `invoice`
 --
 ALTER TABLE `invoice`
+  ADD FOREIGN KEY(mem_id) REFERENCES logistics.member(mem_id) ON UPDATE CASCADE,
   ADD PRIMARY KEY (`inv_id`),
   ADD UNIQUE KEY `inv_id` (`inv_id`),
   ADD KEY `mem_id` (`mem_id`);
@@ -257,6 +258,7 @@ ALTER TABLE `member`
 -- 資料表索引 `package`
 --
 ALTER TABLE `package`
+  ADD FOREIGN KEY(inv_id) REFERENCES logistics.invoice(inv_id) ON UPDATE CASCADE,
   ADD PRIMARY KEY (`pac_id`,`inv_id`),
   ADD KEY `inv_id` (`inv_id`);
 

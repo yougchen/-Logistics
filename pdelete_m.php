@@ -92,7 +92,7 @@ $result=mysqli_query($link,$sql1) or die ("delete fall");
 
 //判斷invoice內是否為0
 $result = mysqli_query($link, "SELECT count(*) FROM package WHERE inv_id = '$inv_id'");
-$row = mysqli_fetch_array($result,MYSQL_BOTH);
+$row = mysqli_fetch_array($result,MYSQLI_BOTH);
 
 $num = $row["count(*)"];
 if($num == 0){

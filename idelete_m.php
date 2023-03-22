@@ -90,7 +90,7 @@ if(!$result)
 		exit();
 	}
 else{
-	while ($row = mysqli_fetch_array($result,MYSQL_BOTH))
+	while ($row = mysqli_fetch_array($result,MYSQLI_BOTH))
 	{
 		$pac_id = $row["pac_id"];
 		$sql2 = "DELETE FROM package WHERE pac_id = '$pac_id' and inv_id='$id'";

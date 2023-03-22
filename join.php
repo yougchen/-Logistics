@@ -25,14 +25,14 @@
 
   <?php
    //連結資料庫
-    $link=@mysql_connect(
+    $link=@mysqli_connect(
         'localhost',
         'root',
         '123456',
         'logistics');
 
     //開啟資料庫
-    $db = mysql_select_db("logistics", $link);
+    $db = mysqli_select_db($link,"logistics" );
 
     echo "<form method=\"post\" name=\"form\"action=\"normal.php\" onClick=\"return check\" accept-charset=\"utf-8\">";
     echo "帳號名稱：<input type='text' name='mem_account_num' required maxlength='15' pattern='.{6,}'>";

@@ -83,6 +83,8 @@ $mem_id = $_SESSION['loginsession'];
 
 
 //找出當前invoice Auto_increment當前值
+
+$query=mysqli_query($link,"SET information_schema_stats_expiry = 0");
 $sql="show table status where name ='invoice'";
 $query=mysqli_query($link,$sql);
 $row = mysqli_fetch_array($query);
@@ -106,7 +108,7 @@ if ($delivery_method == "一般寄件") {
   $arrive_time = date("Y-m-d H:i:s", $arrive_time);
 }
 //insert invoice
-$sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id,if_success)
+$sql3 = "INSERT ignore INTO invoice (inv_id,receiver_name, receiver_phone, receiver_email, arrive_address, send_time,arrive_time,mem_id,if_success)
  VALUES ('".$Auto_increment."','".$rname."', '".$rphone."', '".$remail."', '".$raddress."', '".$rsend_time."','".$arrive_time."','".$mem_id."',0)";
 
 //if (!mysqli_query($link,$sql3))
@@ -115,7 +117,7 @@ $sql3 = "INSERT INTO invoice (inv_id,receiver_name, receiver_phone, receiver_ema
  // }
 
 
-$result = mysqli_query($link,$sql3) or die("MySQL insert error");
+$result = mysqli_query($link,$sql3) or die("MySQL sql3 insert error:".mysqli_error($link));
 
 //運費對應
 //常溫
@@ -145,7 +147,7 @@ include("package_price_count.php");
 
 
 
-  $result = mysqli_query($link,$sql4) or die("MySQL insert error");
+  $result = mysqli_query($link,$sql4) or die("MySQL sql4 insert error".mysqli_error($link));
 }
 
 

@@ -10,6 +10,10 @@
     <body>
     <h1>急速快遞</h1> <br/>
     <?php
+	
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
 header('Content-Type: text/html; charset=utf-8');
 include("config.php");
 session_start();
@@ -108,26 +112,37 @@ if(isset($_GET["inv_id"])){
 		";
 	}
 
-	include("PHPMailer-master\PHPMailerAutoload.php"); //匯入PHPMailer類別       
+	//匯入PHPMailer類別       
+	require 'PHPMailer/PHPMailer/src/Exception.php';
+	require 'PHPMailer/PHPMailer/src/PHPMailer.php';
+	require 'PHPMailer/PHPMailer/src/SMTP.php'; 
+	
 
-	$mail= new PHPMailer(); //建立新物件        
-	$mail->IsSMTP(); //設定使用SMTP方式寄信        
-	$mail->SMTPAuth = true; //設定SMTP需要驗證        
-	$mail->SMTPSecure = "ssl"; // Gmail的SMTP主機需要使用SSL連線   
-	$mail->Host = "smtp.gmail.com"; //Gamil的SMTP主機        
-	$mail->Port =465;  //Gamil的SMTP主機的SMTP埠位為465埠。        
-	$mail->CharSet = "utf8"; //設定郵件編碼        
 
-	$mail->Username = "speedsendperson@gmail.com"; //設定驗證帳號        
-	$mail->Password = "speedsendperson1234567890"; //設定驗證密碼        
+	try {
+	
+		$mail= new PHPMailer(true); //建立新物件        
+		$mail->IsSMTP(); //設定使用SMTP方式寄信        
+		$mail->SMTPAuth = true; //設定SMTP需要驗證        
+		$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Gmail的SMTP主機需要使用SSL連線   
+		$mail->Host = "smtp.gmail.com"; //Gamil的SMTP主機        
+		$mail->Port =465;  //Gamil的SMTP主機的SMTP埠位為465埠。        
+		$mail->CharSet = "utf8"; //設定郵件編碼        
+		
+		$mail->Username = "speedsendperson@gmail.com"; //設定驗證帳號        
+		$mail->Password = ""; //設定驗證密碼        
+		//speedsendperson1234567890
+		$mail->From ="speedsendperson@gmail.com";//設定寄件者信箱        
+		$mail->FromName = "急速快遞"; //設定寄件者姓名        
 
-	$mail->From ="speedsendperson@gmail.com";//設定寄件者信箱        
-	$mail->FromName = "急速快遞"; //設定寄件者姓名        
-
-	$mail->Subject = "寄送預告"; //設定郵件標題        
-	$mail->Body = $content; //設定郵件內容        
-	$mail->IsHTML(true); //設定郵件內容為HTML 
-	$mail->AddAddress($receiver_email, $receiver_name); //設定收件者郵件及名稱 
+		$mail->Subject = "寄送預告"; //設定郵件標題        
+		$mail->Body = $content; //設定郵件內容        
+		$mail->IsHTML(true); //設定郵件內容為HTML 
+		$mail->AddAddress($receiver_email, $receiver_name);
+	}
+	catch (Exception $e) {
+		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+	} //設定收件者郵件及名稱 
 	if(!$mail->Send()) {        
 	echo "<h2>Mailer Error</h2> ";        
 	} else {
