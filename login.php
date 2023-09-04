@@ -22,15 +22,6 @@
 
             <a href="index.php">首頁</a>
     </div>
-<html/>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
     
     <form action = "actionlogin.php" method = "POST">
         帳號:<input type="text" name="account"><br>
